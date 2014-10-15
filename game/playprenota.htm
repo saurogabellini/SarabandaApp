@@ -8,10 +8,24 @@
 <meta name="keyword" content="">     
 <meta name="HandheldFriendly" content="true" />
 <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<style>
+body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+</style>
+
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
 
 <script src="../phonegap.js"></script>
-<!-- Javascripts -->
-<script src="assets/js/jquery.1.7.1.min.js"></script>
+
 <script src="checkcambiodomanda.js"></script>
 <!-- / Javascripts -->
 <script  type="text/javascript">
@@ -83,6 +97,12 @@
 		var imgPosY = ($(window).height() - $("img#ImgP").height()) /2;		
 		$("#ImgP").css('left',imgPosX+'px');
 		$("#ImgP").css('top',imgPosY+'px');
+		
+				
+		$("#ImgP").on("tap",function(){
+			mYclick('P');
+		});
+		
     });
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
@@ -107,13 +127,9 @@
 
 <img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px; ">
 
-<a href="#" onclick="mYclick('P');" >
-<img src="assets/images/icons/P.png" id="ImgP" alt="img"  style="width:30%; position:absolute;">
-</a>
+<img src="assets/images/icons/P.png" id="ImgP" alt="img"  style="width:50%; position:absolute;">
 
 <br/>
-
-
 
 </div>
   

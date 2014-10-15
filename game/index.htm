@@ -60,7 +60,7 @@ height:60px;
 </style>
 
 <script  type="text/javascript">
-	var serverip = '192.168.2.10';
+	var serverip = '10.0.0.1';
     function login() {
 
         var login = "";
@@ -85,7 +85,7 @@ height:60px;
                     alert('PASSWORD ERRATA');
                 }
                 else {
-                    localStorage.setItem("login", login);
+                    localStorage.setItem("login", login.toUpperCase());
                     document.location.href = 'play.htm';
                }
             },
@@ -123,9 +123,9 @@ Collegati!
 <img src="assets/images/icons/D.png" height="5px">
 <img src="assets/images/icons/P.png" height="5px">
 <img src="assets/images/icons/Up.png" height="5px">
-<img src="assets/images/icons/down.png" height="5px">
-<img src="assets/images/icons/true.png" height="5px">
-<img src="assets/images/icons/false.png" height="5px">
+<img src="assets/images/icons/Down.png" height="5px">
+<img src="assets/images/icons/True.png" height="5px">
+<img src="assets/images/icons/False.png" height="5px">
 </div>
 </body>
 </html>

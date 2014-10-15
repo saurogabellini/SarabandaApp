@@ -16,13 +16,13 @@
             },
             url: uri,
             success: function(data) {
-				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-					$("#statusicon").attr('src','assets/images/ok.png');
-				}
-				if (data == '4' && pagina != data){
-							document.location.href = 'play.htm';
-					}
-				if (data == '2' && pagina != data){
+	    if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+			$("#statusicon").attr('src','assets/images/ok.png');
+	    }
+	    if (data == '4' && pagina != data){
+                    document.location.href = 'play.htm';
+            }
+            if (data == '2' && pagina != data){
                     document.location.href = 'playtruefalse.htm';
                 }
                 if (data == '0' && pagina != data) {
@@ -40,6 +40,6 @@
         
 
     };
-    setInterval(doStuff, 1333);
+    setInterval(doStuff, 1500);
 
 }
