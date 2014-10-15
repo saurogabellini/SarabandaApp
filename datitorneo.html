@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+		<title>Sarabanda</title>
+		<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+		<link rel="apple-touch-startup-image" href="img/apple-touch-startup-image.png">
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
+		<script type="text/javascript" src="js/o-script.js"></script>
+		    <style>
+    	.subFooter {
+	    position: fixed !important;
+	    bottom: 0px;
+	    width: 100%;
+	}
+	</style>
+				<script  type="text/javascript">  
+		$(document).ready( function() {			
+			elencoserate();	        
+		});
+		
+		function getUrlParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}   
+		function elencoserate()
+		{        
+        
+		var uri = 'http://www.chivuolessersarabanda.com/datitorneo.ashx?Id=' + getUrlParameter('ID');
+		$.ajax({
+			cache: false,
+			//type: "POST",
+			dataType: "text",
+			url: uri,
+			success: function (data) {						
+									
+					
+					
+               					
+			   		$("#elencoserate").html(data)
+					
+					
+					
+					//$("#Mail").html(JData.Mail);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+								
+				
+				
+				alert (textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+			}
+		});
+					         
+            
+    }
+	</script>
+	</head>
+	<body class="o-page p-blog">
+		<div id="page">
+			<div id="header">
+				<div class="header-content">
+					<a href="index.html" class="p-link-home"><i class="fa fa-home"></i></a>
+					<a class="menu-btn" href="#menu"></a>
+					<a href="javascript:history.back();" class="p-link-back"><i class="fa fa-arrow-left"></i></a>
+				</div>
+			</div>
+			<div class="bannerPane">
+				<div class="overlay"></div>
+				<div class="s-banner-content">					
+					Dati Torneo
+				</div>
+			</div>
+			<div id="content">
+				<table style="width:90%; ackground-color:gray;" >
+				<th >
+				<td style="background-color:gray;" >
+				<b>Classifica</b>
+				</td>
+				</th>
+				</table>
+				<div id="elencoserate" ></div>
+				
+	
+				
+			</div>
+			<div class="subFooter">Copyright 2013. All rights reserved.</div>
+			
+			<!-- Menu navigation -->
+			<nav id="menu">
+				<ul>
+					<li class="Selected">
+						<a href="index.html" rel="external">
+							<i class="fa fa-home"></i>Inizio
+						</a>
+					</li>
+					<li>
+						<a href="ChiSiamo.html" rel="external">
+							<i class="fa fa-question"></i>Info
+						</a>
+					</li>
+					<li>
+						<a href="Tornei.html" rel="external">
+							<i class="fa fa-users"></i>Tornei
+						</a>
+					</li>
+					<li>
+						<a href="Serate.html" rel="external">
+							<i class="fa fa-calendar"></i>Serate
+						</a>
+					</li>
+					<li>
+						<a href="Gioca.html" rel="external">
+							<i class="fa fa-puzzle-piece"></i>Gioca
+						</a>
+					</li>
+				</ul>
+			</nav>
+			
+		</div>
+	</body>
+</html>

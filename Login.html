@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+		<title>Iuvant - Login</title>
+		
+		<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+		<link rel="apple-touch-startup-image" href="img/apple-touch-startup-image.png">
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
+		<script type="text/javascript" src="js/o-script.js"></script>
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css" />	
+		<script src="js/jquery.mobile-1.4.2.min.js"></script>
+		<style>
+		 .subFooter {
+	    position: absolute !important;
+	    bottom: 0;
+	    width: 100%;
+		}
+		#mycheck {
+		 -webkit-animation-delay: 0s;-webkit-animation-direction: normal;-webkit-animation-duration: 0s;-webkit-animation-fill-mode: none;-webkit-animation-iteration-count: 1;-webkit-animation-name: none;-webkit-animation-play-state: running;-webkit-animation-timing-function: ease;-webkit-app-region: no-drag;-webkit-appearance: none;-webkit-backface-visibility: visible;-webkit-background-clip: border-box;-webkit-background-composite: source-over;-webkit-background-origin: padding-box;-webkit-background-size: auto;-webkit-border-fit: border;-webkit-border-horizontal-spacing: 0px;-webkit-border-image: none;-webkit-border-vertical-spacing: 0px;-webkit-box-align: stretch;-webkit-box-decoration-break: slice;-webkit-box-direction: normal;-webkit-box-flex: 0;-webkit-box-flex-group: 1;-webkit-box-lines: single;-webkit-box-ordinal-group: 1;-webkit-box-orient: horizontal;-webkit-box-pack: start;-webkit-box-reflect: none;-webkit-box-shadow: none;-webkit-clip-path: none;-webkit-column-break-after: auto;-webkit-column-break-before: auto;-webkit-column-break-inside: auto;-webkit-column-count: auto;-webkit-column-gap: normal;-webkit-column-rule-color: rgb(51, 51, 51);-webkit-column-rule-style: none;-webkit-column-rule-width: 0px;-webkit-column-span: none;-webkit-column-width: auto;-webkit-filter: none;-webkit-font-smoothing: auto;-webkit-highlight: none;-webkit-hyphenate-character: auto;-webkit-line-box-contain: block inline replaced;-webkit-line-break: auto;-webkit-line-clamp: none;-webkit-locale: auto;-webkit-margin-after-collapse: collapse;-webkit-margin-before-collapse: collapse;-webkit-mask-box-image: none;-webkit-mask-box-image-outset: 0px;-webkit-mask-box-image-repeat: stretch;-webkit-mask-box-image-slice: 0 fill;-webkit-mask-box-image-source: none;-webkit-mask-box-image-width: auto;-webkit-mask-clip: border-box;-webkit-mask-composite: source-over;-webkit-mask-image: none;-webkit-mask-origin: border-box;-webkit-mask-position: 0% 0%;-webkit-mask-repeat: repeat;-webkit-mask-size: auto;-webkit-perspective: none;-webkit-perspective-origin: 936.5px 22.5px;-webkit-print-color-adjust: economy;-webkit-rtl-ordering: logical;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);-webkit-text-combine: none;-webkit-text-decorations-in-effect: none;-webkit-text-emphasis-color: rgb(51, 51, 51);-webkit-text-emphasis-position: over;-webkit-text-emphasis-style: none;-webkit-text-fill-color: rgb(51, 51, 51);-webkit-text-orientation: vertical-right;-webkit-text-security: none;-webkit-text-stroke-color: rgb(51, 51, 51);-webkit-text-stroke-width: 0px;-webkit-transform: none;-webkit-transform-origin: 936.5px 22.5px;-webkit-transform-style: flat;-webkit-transition-delay: 0s;-webkit-transition-duration: 0s;-webkit-transition-property: all;-webkit-transition-timing-function: ease;-webkit-user-drag: auto;-webkit-user-modify: read-only;-webkit-user-select: text;-webkit-writing-mode: horizontal-tb;align-content: stretch;align-items: stretch;align-self: stretch;alignment-baseline: auto;backface-visibility: visible;background-attachment: scroll;background-blend-mode: normal;background-clip: border-box;background-color: rgba(0, 0, 0, 0);background-image: none;background-origin: padding-box;background-position: 0px 50%;background-repeat: repeat;background-size: auto;baseline-shift: baseline;border-bottom-color: rgba(130, 130, 130, 0.298039);border-bottom-left-radius: 0px;border-bottom-right-radius: 0px;border-bottom-style: solid;border-bottom-width: 0px;border-collapse: separate;border-image-outset: 0px;border-image-repeat: stretch;border-image-slice: 100%;border-image-source: none;border-image-width: 1;border-left-color: rgb(51, 51, 51);border-left-style: none;border-left-width: 0px;border-right-color: rgb(51, 51, 51);border-right-style: none;border-right-width: 0px;border-top-color: rgb(51, 51, 51);border-top-left-radius: 0px;border-top-right-radius: 0px;border-top-style: none;border-top-width: 0px;bottom: auto;box-shadow: none;box-sizing: content-box;buffered-rendering: auto;caption-side: top;clear: both;clip: auto;clip-path: none;clip-rule: nonzero;color: rgb(51, 51, 51);color-interpolation: srgb;color-interpolation-filters: linearrgb;color-rendering: auto;cursor: auto;direction: ltr;display: block;dominant-baseline: auto;empty-cells: show;fill: rgb(0, 0, 0);fill-opacity: 1;fill-rule: nonzero;filter: none;flex-basis: auto;flex-direction: row;flex-grow: 0;flex-shrink: 1;flex-wrap: nowrap;float: none;flood-color: rgb(0, 0, 0);flood-opacity: 1;font-family: Helvetica, Arial, sans-serif;font-kerning: auto;font-size: 16px;font-style: normal;font-variant: normal;font-variant-ligatures: normal;font-weight: normal;glyph-orientation-horizontal: 0deg;glyph-orientation-vertical: auto;height: 45px;image-rendering: auto;justify-content: flex-start;left: auto;letter-spacing: normal;lighting-color: rgb(255, 255, 255);line-height: normal;list-style-image: none;list-style-position: outside;list-style-type: disc;margin-bottom: 16px;margin-left: 0px;margin-right: 0px;margin-top: 16px;marker-end: none;marker-mid: none;marker-start: none;mask: none;mask-type: luminance;max-height: none;max-width: none;min-height: 0px;min-width: 0px;object-fit: fill;object-position: 50% 50%;opacity: 1;order: 0;orphans: auto;outline-color: rgb(51, 51, 51);outline-offset: 0px;outline-style: none;outline-width: 0px;overflow-wrap: normal;overflow-x: visible;overflow-y: visible;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;padding-top: 0px;page-break-after: auto;page-break-before: auto;page-break-inside: auto;paint-order: fill stroke markers;perspective: none;perspective-origin: 936.5px 22.5px;pointer-events: auto;position: relative;resize: none;right: auto;shape-rendering: auto;speak: normal;stop-color: rgb(0, 0, 0);stop-opacity: 1;stroke: none;stroke-dasharray: none;stroke-dashoffset: 0;stroke-linecap: butt;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-opacity: 1;stroke-width: 1;tab-size: 8;table-layout: auto;text-align: start;text-anchor: start;text-decoration: none solid rgb(51, 51, 51);text-indent: 0px;text-overflow: clip;text-rendering: auto;text-shadow: rgb(255, 255, 255) 0px 1px 0px;text-transform: none;top: auto;touch-action: auto;transform: none;transform-origin: 936.5px 22.5px;transform-style: flat;transition-delay: 0s;transition-duration: 0s;transition-property: all;transition-timing-function: ease;unicode-bidi: normal;vector-effect: none;vertical-align: baseline;visibility: visible;white-space: normal;widows: auto;width: 1873px;will-change: auto;word-break: normal;word-spacing: 0px;word-wrap: normal;writing-mode: lr-tb;z-index: auto;zoom: 1;
+		}
+		#mycheck2 {
+			-webkit-animation-delay: 0s;-webkit-animation-direction: normal;-webkit-animation-duration: 0s;-webkit-animation-fill-mode: none;-webkit-animation-iteration-count: 1;-webkit-animation-name: none;-webkit-animation-play-state: running;-webkit-animation-timing-function: ease;-webkit-app-region: no-drag;-webkit-appearance: none;-webkit-backface-visibility: visible;-webkit-background-clip: border-box;-webkit-background-composite: source-over;-webkit-background-origin: padding-box;-webkit-background-size: auto;-webkit-border-fit: border;-webkit-border-horizontal-spacing: 0px;-webkit-border-image: none;-webkit-border-vertical-spacing: 0px;-webkit-box-align: stretch;-webkit-box-decoration-break: slice;-webkit-box-direction: normal;-webkit-box-flex: 0;-webkit-box-flex-group: 1;-webkit-box-lines: single;-webkit-box-ordinal-group: 1;-webkit-box-orient: horizontal;-webkit-box-pack: start;-webkit-box-reflect: none;-webkit-box-shadow: none;-webkit-clip-path: none;-webkit-column-break-after: auto;-webkit-column-break-before: auto;-webkit-column-break-inside: auto;-webkit-column-count: auto;-webkit-column-gap: normal;-webkit-column-rule-color: rgb(51, 51, 51);-webkit-column-rule-style: none;-webkit-column-rule-width: 0px;-webkit-column-span: none;-webkit-column-width: auto;-webkit-filter: none;-webkit-font-smoothing: auto;-webkit-highlight: none;-webkit-hyphenate-character: auto;-webkit-line-box-contain: block inline replaced;-webkit-line-break: auto;-webkit-line-clamp: none;-webkit-locale: auto;-webkit-margin-after-collapse: collapse;-webkit-margin-before-collapse: collapse;-webkit-mask-box-image: none;-webkit-mask-box-image-outset: 0px;-webkit-mask-box-image-repeat: stretch;-webkit-mask-box-image-slice: 0 fill;-webkit-mask-box-image-source: none;-webkit-mask-box-image-width: auto;-webkit-mask-clip: border-box;-webkit-mask-composite: source-over;-webkit-mask-image: none;-webkit-mask-origin: border-box;-webkit-mask-position: 0% 0%;-webkit-mask-repeat: repeat;-webkit-mask-size: auto;-webkit-perspective: none;-webkit-perspective-origin: 561.890625px 21.09375px;-webkit-print-color-adjust: economy;-webkit-rtl-ordering: logical;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);-webkit-text-combine: none;-webkit-text-decorations-in-effect: none;-webkit-text-emphasis-color: rgb(51, 51, 51);-webkit-text-emphasis-position: over;-webkit-text-emphasis-style: none;-webkit-text-fill-color: rgb(51, 51, 51);-webkit-text-orientation: vertical-right;-webkit-text-security: none;-webkit-text-stroke-color: rgb(51, 51, 51);-webkit-text-stroke-width: 0px;-webkit-transform: none;-webkit-transform-origin: 561.890625px 21.09375px;-webkit-transform-style: flat;-webkit-transition-delay: 0s;-webkit-transition-duration: 0s;-webkit-transition-property: all;-webkit-transition-timing-function: ease;-webkit-user-drag: auto;-webkit-user-modify: read-only;-webkit-user-select: text;-webkit-writing-mode: horizontal-tb;align-content: stretch;align-items: stretch;align-self: stretch;alignment-baseline: auto;backface-visibility: visible;background-attachment: scroll;background-blend-mode: normal;background-clip: border-box;background-color: rgba(0, 0, 0, 0);background-image: none;background-origin: padding-box;background-position: 0% 0%;background-repeat: repeat;background-size: auto;baseline-shift: baseline;border-bottom-color: rgb(51, 51, 51);border-bottom-left-radius: 0px;border-bottom-right-radius: 0px;border-bottom-style: none;border-bottom-width: 0px;border-collapse: separate;border-image-outset: 0px;border-image-repeat: stretch;border-image-slice: 100%;border-image-source: none;border-image-width: 1;border-left-color: rgb(51, 51, 51);border-left-style: none;border-left-width: 0px;border-right-color: rgb(51, 51, 51);border-right-style: none;border-right-width: 0px;border-top-color: rgb(51, 51, 51);border-top-left-radius: 0px;border-top-right-radius: 0px;border-top-style: none;border-top-width: 0px;bottom: auto;box-shadow: none;box-sizing: content-box;buffered-rendering: auto;caption-side: top;clear: none;clip: auto;clip-path: none;clip-rule: nonzero;color: rgb(51, 51, 51);color-interpolation: srgb;color-interpolation-filters: linearrgb;color-rendering: auto;cursor: auto;direction: ltr;display: block;dominant-baseline: auto;empty-cells: show;fill: rgb(0, 0, 0);fill-opacity: 1;fill-rule: nonzero;filter: none;flex-basis: auto;flex-direction: row;flex-grow: 0;flex-shrink: 1;flex-wrap: nowrap;float: none;flood-color: rgb(0, 0, 0);flood-opacity: 1;font-family: Helvetica, Arial, sans-serif;font-kerning: auto;font-size: 16px;font-style: normal;font-variant: normal;font-variant-ligatures: normal;font-weight: normal;glyph-orientation-horizontal: 0deg;glyph-orientation-vertical: auto;height: 42.1875px;image-rendering: auto;justify-content: flex-start;left: auto;letter-spacing: normal;lighting-color: rgb(255, 255, 255);line-height: normal;list-style-image: none;list-style-position: outside;list-style-type: disc;margin-bottom: 0px;margin-left: 0px;margin-right: 0px;margin-top: 0px;marker-end: none;marker-mid: none;marker-start: none;mask: none;mask-type: luminance;max-height: none;max-width: none;min-height: 0px;min-width: 0px;object-fit: fill;object-position: 50% 50%;opacity: 1;order: 0;orphans: auto;outline-color: rgb(51, 51, 51);outline-offset: 0px;outline-style: none;outline-width: 0px;overflow-wrap: normal;overflow-x: visible;overflow-y: visible;padding-bottom: 0px;padding-left: 0px;padding-right: 0px;padding-top: 0px;page-break-after: auto;page-break-before: auto;page-break-inside: auto;paint-order: fill stroke markers;perspective: none;perspective-origin: 561.890625px 21.09375px;pointer-events: auto;position: relative;resize: none;right: auto;shape-rendering: auto;speak: normal;stop-color: rgb(0, 0, 0);stop-opacity: 1;stroke: none;stroke-dasharray: none;stroke-dashoffset: 0;stroke-linecap: butt;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-opacity: 1;stroke-width: 1;tab-size: 8;table-layout: auto;text-align: start;text-anchor: start;text-decoration: none solid rgb(51, 51, 51);text-indent: 0px;text-overflow: clip;text-rendering: auto;text-shadow: rgb(255, 255, 255) 0px 1px 0px;text-transform: none;top: auto;touch-action: auto;transform: none;transform-origin: 561.890625px 21.09375px;transform-style: flat;transition-delay: 0s;transition-duration: 0s;transition-property: all;transition-timing-function: ease;unicode-bidi: normal;vector-effect: none;vertical-align: baseline;visibility: visible;white-space: normal;widows: auto;width: 1123.796875px;will-change: auto;word-break: normal;word-spacing: 0px;word-wrap: normal;writing-mode: lr-tb;z-index: 1;zoom: 1;
+		}
+		</style>
+		<script  type="text/javascript">  
+
+	
+	    $(document).ready( function() {
+			var login = localStorage.getItem("login");
+			var password = localStorage.getItem("password");
+			var memorizza = localStorage.getItem("memorizza");
+               
+				$("#memorizza").prop("checked", false).checkboxradio("refresh");
+				if (memorizza =="1") {
+					$("#Txt_User").val(login);
+					$("#Txt_Password").val(password);                        
+					$("#memorizza").prop("checked", true).checkboxradio("refresh");			
+				}        
+		});
+
+
+
+function login() { 	    	
+		var login = "";
+        var password ="";
+
+        login = $("#Txt_User").val();
+        password = $("#Txt_Password").val();
+		
+		var uri = 'http://94.32.72.138/ODV/RestService/login.ashx?Utente=' + login + '&Password=' + password;
+		
+
+		$.ajax({			
+			url: uri,
+			success: function (data) {													
+				if (data !=  "OK")
+				{
+					alert ('PASSWORD ERRATA');
+				}
+				else
+				{
+                    
+                    localStorage.setItem("memorizza","0");
+                    
+                    if ($("#memorizza").is(':checked')) {
+                        localStorage.setItem("login", login);
+                        localStorage.setItem("password", password);
+                        localStorage.setItem("memorizza","1");
+                    }
+					
+                    //LoadUtenti();                    
+					localStorage.setItem("PSDlogin", login);
+                    localStorage.setItem("PSDpassword", password);
+					
+					document.location.href = 'Menu.html';
+				}
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				
+				alert (textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+			}
+		});
+	}
+
+
+
+		</script>
+	</head>
+	<body class="o-page p-blog">
+		<div id="page">
+			<div id="header">
+				<div class="header-content">
+					<a href="index.html" rel="external" class="p-link-home"><i class="fa fa-home"></i></a>
+					<a class="menu-btn" href="#menu"></a>
+					<a href="javascript:history.back();" class="p-link-back"><i class="fa fa-arrow-left"></i></a>
+				</div>
+			</div>
+			<div class="bannerPane banner-img3">
+				<div class="overlay"></div>
+				<div class="s-banner-content">					
+					<i class="fa fa-th-list"></i> Soci
+				</div>
+			</div>
+			<div id="content" style="background-color:#ffffff;>
+								   
+			<form id="contact" class="contactForm">	
+			USER NAME:<br/>
+			<input type="text"  id="Txt_User" /><br />
+			PASSWORD :<br/>
+			<input type="password"  id="Txt_Password" /><br />
+			<center>
+			<input type="buttton"  class="btn-normal" id="SubmitContact"  style="text-align: center;" onclick="login();" value="Login">
+			</center>
+			<br />
+			<br />
+			
+			<input type="checkbox" name="memorizza" id="memorizza"  />
+			<label style="margin-left:40px;">Memorizza Utente e Password</label>	
+			
+			</form>	
+			</div>
+			<div class="subFooter">Iuvant - Csv Vicenza</div>
+			
+			
+			<!-- Menu navigation -->
+			<nav id="menu">
+				<ul>
+					<li class="Selected">
+						<a href="index.html" rel="external">
+							<i class="fa fa-home"></i>Inizio
+						</a>
+					</li>
+					<li>
+						<a href="Login.html" rel="external">
+							<i class="fa fa-users"></i>Login
+						</a>
+					</li>
+					<li>
+						<a href="http://www.csv-vicenza.org/" rel="external">
+							<i class="fa fa-pencil-square-o"></i>Sito web
+						</a>
+					</li>
+		
+				</ul>
+			</nav>
+			
+		</div>
+	</body>
+</html>
