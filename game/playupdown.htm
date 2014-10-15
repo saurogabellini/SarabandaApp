@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+
+<!-- Javascripts -->
+<script src="assets/js/jquery.1.7.1.min.js"></script>
+<script src="checkcambiodomanda.js"></script>
+<!-- / Javascripts -->
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+
+    function mYclick(tasto) {
+
+        var login = "";
+
+        login = localStorage.getItem("login");
+
+
+
+        var uri = 'http://' + serverip + '/assegnarisposta.ashx?Risposta=' + tasto + '&Squadra=' + login;
+
+
+        $.ajax({
+            cache: false,
+            //type: "POST",
+            dataType: "text",
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                    x.overrideMimeType("application/json;charset=UTF-8");
+                }
+            },
+            url: uri,
+            success: function(data) {
+                if (data != "OK") {
+
+                }
+                else {
+                    if (tasto == 'A') {
+                        $("#ImgA").fadeTo("fast", 0.33);
+                        $("#ImgA").fadeTo("fast", 1);
+                    }
+                    if (tasto == 'B') {
+                        $("#ImgB").fadeTo("fast", 0.33);
+                        $("#ImgB").fadeTo("fast", 1);
+                    }
+                    if (tasto == 'C') {
+                        $("#ImgC").fadeTo("fast", 0.33);
+                        $("#ImgC").fadeTo("fast", 1);
+                    }
+                    if (tasto == 'D') {
+                        $("#ImgD").fadeTo("fast", 0.13);
+                        $("#ImgD").fadeTo("fast", 1);
+                    }
+                    if (tasto == 'P') {
+                        $("#ImgP").fadeTo("fast", 0.33);
+                        $("#ImgP").fadeTo("fast", 1);
+                    }
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        CambioPagina('U');
+		
+		var imgPosX = ($(window).width() - $("img#ImgP").width()) /2; 
+
+		
+		$("#ImgD").css('top','100px');		
+		$("#ImgA").css('top','10px');
+		
+		$("#ImgA").css('left',imgPosX+'px');
+		$("#ImgD").css('left',imgPosX+'px');
+    });
+</script>
+
+</head>
+<body bgcolor="#000000">
+<!-- Landscpae Mode Container -->
+<div class="container-landscape">Ruota il tuo device in portrait</div>
+<!-- / Landscape Mode Container -->
+<br />
+
+<div style="text-align:center; ">
+<a href="#" onclick="mYclick('A');" style="position:absolute; top:10%; left:1%; height:25%;">
+<img src="assets/images/icons/Up.png" id="ImgA"  style="height:100%;">
+</a>
+<a href="#" onclick="mYclick('D');" style="position:absolute; bottom:10%; right:1%; height:25%;">
+<img src="assets/images/icons/Down.png" id="ImgD" alt="img"style="height:100%;">
+</a>
+<br/>
+</div>
+  
+</body>
+</html>

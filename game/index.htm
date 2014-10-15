@@ -1,0 +1,131 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+
+
+<!-- Javascripts -->
+<script src="assets/js/jquery.1.7.1.min.js"></script>
+<!-- / Javascripts -->
+<style>
+
+body{
+	
+	 background-image: url('assets\images\backgrounds\leon1.png');
+    background-repeat: repeat-y;
+}
+
+.loginbox {
+background-color: #726e6e;
+
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+
+-moz-box-shadow: inset -3px -4px 3px 3px #888888;
+-webkit-box-shadow: inset -3px -4px 3px 3px #888888;
+box-shadow: inset -3px -4px 3px 3px #888888;
+height:60px;
+}
+
+.myButton {
+	background-color:#44c767;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:17px;
+	padding:16px 65px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+</style>
+
+<script  type="text/javascript">
+	var serverip = '192.168.2.10';
+    function login() {
+
+        var login = "";
+        var password = "";
+
+        login = $("#Login").val();
+		localStorage.setItem("serverip", serverip);
+        var uri = 'http://' +  serverip + '/verificacodice.ashx?codice=' + login;
+
+        $.ajax({
+            cache: false,
+            //type: "POST",
+            dataType: "text",
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                    x.overrideMimeType("application/json;charset=UTF-8");
+                }
+            },
+            url: uri,
+            success: function(data) {
+                if (data != "OK") {
+                    alert('PASSWORD ERRATA');
+                }
+                else {
+                    localStorage.setItem("login", login);
+                    document.location.href = 'play.htm';
+               }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+
+                alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+    }
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div style="text-align:center; ">
+<br/>
+<img src="logosarabanda.png" style="width:40%" alt="Chi vuol esser Sarabanda?">
+<br/>
+<b>Digita Il Tuo Codice:</b><br />
+<br/>
+<div class="loginbox">
+<span style="top:20px; position:relative; font-family: Arial, Helvetica, sans-serif; color:white;">Login</span>
+<input id="Login" type="text" placeholder="pin"  style="position:relative; width:60%; height:30px; top:10px; float:right; margin-right:2%;" /><br />
+</div>
+<br/>
+<a href="#" onclick="login();" class="myButton">
+Collegati!
+</a>
+</div>
+<img src="assets\images\logosarabanda.png" style="position:absolute; float: right; margin-right:2%; bottom:2px; width:40%;" >
+
+<div style="float:right;">
+<img src="assets/images/icons/A.png" height="5px">
+<img src="assets/images/icons/B.png" height="5px">
+<img src="assets/images/icons/C.png" height="5px">
+<img src="assets/images/icons/D.png" height="5px">
+<img src="assets/images/icons/P.png" height="5px">
+<img src="assets/images/icons/Up.png" height="5px">
+<img src="assets/images/icons/Down.png" height="5px">
+<img src="assets/images/icons/True.png" height="5px">
+<img src="assets/images/icons/False.png" height="5px">
+</div>
+</body>
+</html>
