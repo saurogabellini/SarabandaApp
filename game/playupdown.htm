@@ -9,7 +9,7 @@
 <meta name="HandheldFriendly" content="true" />
 <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 
-
+<script src="../phonegap.js"></script>
 <!-- Javascripts -->
 <script src="assets/js/jquery.1.7.1.min.js"></script>
 <script src="checkcambiodomanda.js"></script>
@@ -83,6 +83,21 @@
 		$("#ImgA").css('left',imgPosX+'px');
 		$("#ImgD").css('left',imgPosX+'px');
     });
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {
+        // Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!:-)');
+    }
 </script>
 
 </head>
