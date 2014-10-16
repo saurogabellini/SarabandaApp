@@ -91,7 +91,8 @@ user-select:none;
     }
 
     $(document).ready(function() {        
-        CambioPagina('4');
+        alert('cambio');
+		CambioPagina('4');
 		
 		$("#ImgA").on("tap",function(){
 			mYclick('A');
@@ -112,7 +113,8 @@ user-select:none;
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
     function onDeviceReady() {
-        // Register the event listener
+        alert('ondevice');
+		// Register the event listener
         document.addEventListener("backbutton", onBackKeyDown, false);
     }
 
