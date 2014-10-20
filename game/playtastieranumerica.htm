@@ -1,0 +1,202 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+ <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+ <link rel="stylesheet" href="assets/css/tastieranumerica.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
+
+<script src="../phonegap.js"></script>
+
+<script src="checkcambiodomanda.js"></script>
+<style>
+
+<!-- / Javascripts -->
+body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+.ui-page { background: #000000;}
+</style>
+
+
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+    function mYclick() {
+		var tasto ="";
+        var login = "";
+				       
+		
+        login = localStorage.getItem("login");
+
+		var appoggio = $("#Mylabel").html();
+		if (appoggio.length > 17) {
+			tasto = appoggio.substring(17,appoggio.length);	
+			$("#Mylabel").html("La tua risposta :");
+		}
+		
+		
+				
+		
+        var uri = 'http://' + serverip + '/assegnarisposta.ashx?Risposta=' + tasto + '&Squadra=' + login;
+
+
+        $.ajax({
+            cache: false,
+            //type: "POST",
+            dataType: "text",
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                    x.overrideMimeType("application/json;charset=UTF-8");
+                }
+            },
+            url: uri,
+            success: function(data) {
+                if (data != "OK") {
+
+                }
+                else {
+
+				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+					$("#statusicon").attr('src','assets/images/ok.png');
+				}	
+               }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+
+		$("#statusicon").attr('src','assets/images/error.png');
+		
+                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+    }
+
+    $(document).ready(function() {  
+		
+		CambioPagina('6');
+		
+		$("#tasto1").on("tap",function(){		    		
+			tastopremuto('1');
+		});
+		$("#tasto2").on("tap",function(){		    
+			tastopremuto('2');
+		});
+		$("#tasto3").on("tap",function(){		    
+			tastopremuto('3');
+		});
+		$("#tasto4").on("tap",function(){		    
+			tastopremuto('4');
+		});
+		$("#tasto5").on("tap",function(){		    		
+			tastopremuto('5');
+		});
+		$("#tasto6").on("tap",function(){		    
+			tastopremuto('6');
+		});
+		$("#tasto7").on("tap",function(){		    
+			tastopremuto('7');
+		});
+		$("#tasto8").on("tap",function(){		    
+			tastopremuto('8');
+		});
+		$("#tasto9").on("tap",function(){		    
+			tastopremuto('9');
+		});
+		$("#tasto0").on("tap",function(){		    
+			tastopremuto('0');
+		});
+	    $("#tastoback").on("tap",function(){
+			tastopremuto('back');
+		});	
+
+		$("#invio").on("tap",function(){
+			mYclick();
+		});	
+    });
+	
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {        
+		// Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!');
+    }
+
+	function tastopremuto(tasto)
+	{
+		if (tasto == 'back') {
+			var appoggio = $("#Mylabel").html();
+			if (appoggio.length > 17) {
+				appoggio = appoggio.substring(0,appoggio.length -1);			
+				$("#Mylabel").html( appoggio );
+			}
+		} else
+		{
+			$("#Mylabel").html($("#Mylabel").html() + tasto);
+		}
+	}
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div data-role="page"  data-title="6 Tasti">
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
+<br />
+<label id="Mylabel" style="position: relative; color:white;">La tua risposta :</label>
+
+<div id="keyboard">
+    	<ul class="cf" id="qwerty">
+	    	<li><a href="#" id="tasto7" class="key c65"><span>7</span></a></li>
+			<li><a href="#" id="tasto8" class="key c66"><span>8</span></a></li>
+			<li><a href="#" id="tasto9" class="key c67"><span>9</span></a></li>			
+		</ul>
+		<ul class="cf" id="qwerty">				
+			<li><a href="#" id="tasto4" class="key c70"><span>4</span></a></li>
+			<li><a href="#" id="tasto5" class="key c71"><span>5</span></a></li>
+			<li><a href="#" id="tasto6" class="key c72"><span>6</span></a></li>						
+		</ul>
+		<ul class="cf" id="qwerty">				    
+			<li><a href="#" id="tasto1" class="key c75"><span>1</span></a></li>
+	    	<li><a href="#" id="tasto2" class="key c76"><span>2</span></a></li>
+	    	<li><a href="#" id="tasto3" class="key c77"><span>3</span></a></li>	    		    	
+		</ul>		
+        <ul class="cf" id="qwerty">
+	    	<li><a href="#"  id="tasto0" class="key c90"><span>0</span></a></li>	  
+			<li><a href="#"  id="tastoback" class="key enter" ><span>Canc.</span></a></li>	  
+			<li><a href="#"  id="invio" class="key enter"><span>Invio</span></a></li>	  						
+        </ul>
+		<ul class="cf" id="bottomrow">
+      
+  </ul>
+    </div>
+
+</div>
+</body>
+</html>

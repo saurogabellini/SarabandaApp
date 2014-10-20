@@ -8,7 +8,15 @@
 <meta name="keyword" content="">     
 <meta name="HandheldFriendly" content="true" />
 <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
 
+<script src="../phonegap.js"></script>
+
+<script src="checkcambiodomanda.js"></script>
+<!-- / Javascripts -->
 <style>
 body {
 -webkit-touch-callout:none;
@@ -19,29 +27,29 @@ body {
 user-select:none;
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+.ui-page { background: #000000;}
 </style>
 
-<!-- Javascripts -->
-<script src="assets/js/jquery-1.11.1.min.js"></script>
-<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
-<script src="../phonegap.js"></script>
-<script src="checkcambiodomanda.js"></script>
-<!-- / Javascripts -->
+
 <script  type="text/javascript">
 	var serverip = localStorage.getItem("serverip");
-	
     function mYclick(tasto) {
 
         var login = "";
-
+        
+		
         login = localStorage.getItem("login");
 
 
-
         var uri = 'http://' + serverip + '/assegnarisposta.ashx?Risposta=' + tasto + '&Squadra=' + login;
-	
-	
-		
+
+
         $.ajax({
             cache: false,
             //type: "POST",
@@ -77,66 +85,59 @@ user-select:none;
                         $("#ImgP").fadeTo("fast", 0.33);
                         $("#ImgP").fadeTo("fast", 1);
                     }
+					navigator.notification.vibrate(500);
+					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+						$("#statusicon").attr('src','assets/images/ok.png');
+					}
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+
+				$("#statusicon").attr('src','assets/images/error.png');
+		
+                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
             }
         });
     }
 
-    $(document).ready(function() {
-        CambioPagina('U');
-		
-		var imgPosX = ($(window).width() - $("img#ImgP").width()) /2; 
-
-		
-		$("#ImgD").css('top','100px');		
-		$("#ImgA").css('top','10px');
-		
-		$("#ImgA").css('left',imgPosX+'px');
-		$("#ImgD").css('left',imgPosX+'px');
-		
+    $(document).ready(function() {                
+		CambioPagina('U');
 		
 		$("#ImgA").on("tap",function(){
 			mYclick('A');
 		});
 		$("#ImgD").on("tap",function(){
 			mYclick('D');
-		});
+		});		 
     });
 	
-	
-	document.addEventListener("deviceready", onDeviceReady, false);
+		document.addEventListener("deviceready", onDeviceReady, false);
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
-    function onDeviceReady() {
-        // Register the event listener
+    function onDeviceReady() {        
+		// Register the event listener
         document.addEventListener("backbutton", onBackKeyDown, false);
     }
 
     // Handle the back button
     //
     function onBackKeyDown() {
-	  alert('Stai giocando non puoi uscire!:-)');
+	  alert('Stai giocando non puoi uscire!');
     }
+
 </script>
 
 </head>
 <body bgcolor="#000000">
+<div data-role="page"  data-title="Up Down">
 
-<br />
 <img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
 
-<div style="text-align:center; ">
-<a href="#"  style="position:absolute; top:10%; left:1%; height:25%;">
-<img src="assets/images/icons/Up.png" id="ImgA"  style="height:100%;">
-</a>
-<a href="#" style="position:absolute; bottom:10%; right:1%; height:25%;">
-<img src="assets/images/icons/down.png" id="ImgD" alt="img"style="height:100%;">
-</a>
-<br/>
+
+<img src="assets/images/icons/Up.png" id="ImgA"  style="position:absolute; top:10%; left:10%; height:25%;">
+
+<img src="assets/images/icons/down.png" id="ImgD"  style="position:absolute; top:70%; right:10%; height:25%;">
 </div>
   
 </body>

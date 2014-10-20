@@ -8,6 +8,15 @@
 <meta name="keyword" content="">     
 <meta name="HandheldFriendly" content="true" />
 <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
+
+<script src="../phonegap.js"></script>
+
+<script src="checkcambiodomanda.js"></script>
+<!-- / Javascripts -->
 <style>
 body {
 -webkit-touch-callout:none;
@@ -18,19 +27,18 @@ body {
 user-select:none;
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+.ui-page { background: #000000;}
 </style>
 
-<!-- Javascripts -->
-<script src="assets/js/jquery-1.11.1.min.js"></script>
-<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
 
-<script src="../phonegap.js"></script>
-
-<script src="checkcambiodomanda.js"></script>
-<!-- / Javascripts -->
 <script  type="text/javascript">
 	var serverip = localStorage.getItem("serverip");
-	
     function mYclick(tasto) {
 
         var login = "";
@@ -77,61 +85,59 @@ user-select:none;
                         $("#ImgP").fadeTo("fast", 0.33);
                         $("#ImgP").fadeTo("fast", 1);
                     }
-		    if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-			$("#statusicon").attr('src','assets/images/ok.png');
-		    }
+					navigator.notification.vibrate(500);
+					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+						$("#statusicon").attr('src','assets/images/ok.png');
+					}
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
 
-		$("#statusicon").attr('src','assets/images/error.png');
+				$("#statusicon").attr('src','assets/images/error.png');
 		
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
             }
         });
     }
 
-    $(document).ready(function() {        
-        CambioPagina('0');
-		var imgPosX = ($(window).width() - $("img#ImgP").width()) /2; 
-		var imgPosY = ($(window).height() - $("img#ImgP").height()) /2;		
-		$("#ImgP").css('left',imgPosX+'px');
-		$("#ImgP").css('top',imgPosY+'px');
+    $(document).ready(function() {                
+		CambioPagina('0');
 		
-				
+		
 		$("#ImgP").on("tap",function(){
 			mYclick('P');
-		});
-		
+		});		 
     });
 	
-	document.addEventListener("deviceready", onDeviceReady, false);
+		document.addEventListener("deviceready", onDeviceReady, false);
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
-    function onDeviceReady() {
-        // Register the event listener
+    function onDeviceReady() {        
+		// Register the event listener
         document.addEventListener("backbutton", onBackKeyDown, false);
     }
 
     // Handle the back button
     //
     function onBackKeyDown() {
-	  alert('Stai giocando non puoi uscire!:-)');
+	  alert('Stai giocando non puoi uscire!');
     }
+
 </script>
 
 </head>
 <body bgcolor="#000000">
-<br />
+<div data-role="page"  data-title="Up Down">
 
-<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px; ">
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
 
-<img src="assets/images/icons/P.png" id="ImgP" alt="img"  style="width:50%; position:absolute;">
 
-<br/>
+<img src="assets/images/icons/P.png" id="ImgP"  style="width:50%; position:absolute; top:25%; left:25%; ">
+
 
 </div>
   
 </body>
 </html>
+

@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 <!-- Javascripts -->
 <script src="assets/js/jquery-1.11.1.min.js"></script>
- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+ <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
 <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
 
 <script src="../phonegap.js"></script>
@@ -87,9 +87,12 @@ body {
                         $("#ImgP").fadeTo("fast", 0.33);
                         $("#ImgP").fadeTo("fast", 1);
                     }
-		    if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-			$("#statusicon").attr('src','assets/images/ok.png');
-		    }
+					
+					navigator.notification.vibrate(500);
+					
+					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+						$("#statusicon").attr('src','assets/images/ok.png');
+					}
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {

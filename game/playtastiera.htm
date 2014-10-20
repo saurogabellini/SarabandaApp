@@ -1,0 +1,271 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+ <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+ <link rel="stylesheet" href="assets/css/tastiera.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
+
+<script src="../phonegap.js"></script>
+
+<script src="checkcambiodomanda.js"></script>
+<style>
+
+<!-- / Javascripts -->
+body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+.ui-page { background: #000000;}
+</style>
+
+
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+    function mYclick() {
+		var tasto ="";
+        var login = "";
+				       
+		
+        login = localStorage.getItem("login");
+
+		var appoggio = $("#Mylabel").html();
+		if (appoggio.length > 17) {
+			tasto = appoggio.substring(17,appoggio.length);	
+			$("#Mylabel").html("La tua risposta :");
+		}							
+		
+        var uri = 'http://' + serverip + '/assegnarisposta.ashx?Risposta=' + tasto + '&Squadra=' + login;
+
+
+        $.ajax({
+            cache: false,
+            //type: "POST",
+            dataType: "text",
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                    x.overrideMimeType("application/json;charset=UTF-8");
+                }
+            },
+            url: uri,
+            success: function(data) {
+                if (data != "OK") {
+
+                }
+                else {
+
+				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+					$("#statusicon").attr('src','assets/images/ok.png');
+				}	
+               }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+
+		$("#statusicon").attr('src','assets/images/error.png');
+		
+                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+    }
+
+    $(document).ready(function() {  
+		
+		CambioPagina('6');
+		
+		$("#tastoA").on("tap",function(){		    
+			tastopremuto('A');
+		});
+		$("#tastoB").on("tap",function(){			
+			tastopremuto('B');
+		});
+		$("#tastoC").on("tap",function(){
+			tastopremuto('C');
+		});
+		$("#tastoD").on("tap",function(){
+			tastopremuto('D');
+		});	
+		$("#tastoE").on("tap",function(){
+			tastopremuto('E');
+		});
+		$("#tastoF").on("tap",function(){		
+			tastopremuto('F');
+		});			
+		$("#tastoG").on("tap",function(){
+			tastopremuto('G');
+		});		
+		$("#tastoH").on("tap",function(){
+			tastopremuto('H');
+		});		
+		$("#tastoI").on("tap",function(){
+			tastopremuto('I');
+		});		
+		$("#tastoJ").on("tap",function(){
+			tastopremuto('J');
+		});		
+		$("#tastoK").on("tap",function(){
+			tastopremuto('K');
+		});		
+		$("#tastoL").on("tap",function(){
+			tastopremuto('L');
+		});		
+		$("#tastoM").on("tap",function(){
+			tastopremuto('M');
+		});		
+		$("#tastoN").on("tap",function(){
+			tastopremuto('N');
+		});		
+		$("#tastoO").on("tap",function(){
+			tastopremuto('O');
+		});		
+		$("#tastoP").on("tap",function(){
+			tastopremuto('P');
+		});		
+		$("#tastoQ").on("tap",function(){
+			tastopremuto('Q');
+		});		
+		$("#tastoR").on("tap",function(){
+			tastopremuto('R');
+		});		
+		$("#tastoS").on("tap",function(){
+			tastopremuto('S');
+		});		
+		$("#tastoT").on("tap",function(){
+			tastopremuto('T');
+		});		
+		$("#tastoU").on("tap",function(){
+			tastopremuto('U');
+		});		
+		$("#tastoV").on("tap",function(){
+			tastopremuto('V');
+		});		
+		$("#tastoW").on("tap",function(){
+			tastopremuto('W');
+		});		
+		$("#tastoX").on("tap",function(){		
+			tastopremuto('X');
+		});		
+		$("#tastoY").on("tap",function(){
+			tastopremuto('Y');
+		});		
+		$("#tastoZ").on("tap",function(){
+			tastopremuto('Z');
+		});		
+	    $("#tastoback").on("tap",function(){
+			tastopremuto('back');
+		});	
+		$("#tasto").on("tap",function(){		
+			tastopremuto(' ');
+		});	
+		$("#invio").on("tap",function(){
+			mYclick();
+		});	
+    });
+	
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {        
+		// Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!');
+    }
+
+	function tastopremuto(tasto)
+	{
+		if (tasto == 'back') {
+			var appoggio = $("#Mylabel").html();
+			if (appoggio.length > 17) {
+				appoggio = appoggio.substring(0,appoggio.length -1);			
+				$("#Mylabel").html( appoggio );
+			}
+		} else
+		{
+			$("#Mylabel").html($("#Mylabel").html() + tasto);
+		}
+	}
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div data-role="page"  data-title="6 Tasti">
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
+<br />
+<label id="Mylabel" style="position: relative; color:white;">La tua risposta :</label>
+
+<div id="keyboard">
+    	<ul class="cf" id="qwerty">
+	    	<li><a href="#" id="tastoA" class="key c65"><span>A</span></a></li>
+			<li><a href="#" id="tastoB" class="key c66"><span>b</span></a></li>
+			<li><a href="#" id="tastoC" class="key c67"><span>c</span></a></li>
+			<li><a href="#" id="tastoD" class="key c68"><span>d</span></a></li>
+			<li><a href="#" id="tastoE" class="key c69"><span>e</span></a></li>
+		</ul>
+		<ul class="cf" id="qwerty">				
+			<li><a href="#" id="tastoF" class="key c70"><span>f</span></a></li>
+			<li><a href="#" id="tastoG" class="key c71"><span>g</span></a></li>
+			<li><a href="#" id="tastoH" class="key c72"><span>h</span></a></li>			
+			<li><a href="#" id="tastoI" class="key c73"><span>i</span></a></li>
+			<li><a href="#" id="tastoJ" class="key c74"><span>j</span></a></li>
+		</ul>
+		<ul class="cf" id="qwerty">				    
+			<li><a href="#" id="tastoK" class="key c75"><span>k</span></a></li>
+	    	<li><a href="#" id="tastoL" class="key c76"><span>l</span></a></li>
+	    	<li><a href="#"  id="tastoM" class="key c77"><span>m</span></a></li>	    	
+	    	<li><a href="#"  id="tastoN" class="key c78"><span>n</span></a></li>
+			<li><a href="#"  id="tastoO" class="key c79"><span>o</span></a></li>
+		</ul>
+		<ul class="cf" id="qwerty">	    	
+	    	<li><a href="#"  id="tastoP" class="key c80"><span>p</span></a></li>			
+			<li><a href="#"  id="tastoQ" class="key c81"><span>q</span></a></li>
+			<li><a href="#"  id="tastoR" class="key c82"><span>r</span></a></li>
+			<li><a href="#"  id="tastoS" class="key c83"><span>s</span></a></li>
+			<li><a href="#"  id="tastoT" class="key c84"><span>t</span></a></li>
+        </ul>
+		<ul class="cf" id="qwerty">	    						
+			<li><a href="#"  id="tastoU" class="key c85"><span>u</span></a></li>
+			<li><a href="#"  id="tastoV" class="key c86"><span>v</span></a></li>		
+			<li><a href="#"  id="tastoW" class="key c87"><span>w</span></a></li>
+	    	<li><a href="#"  id="tastoX" class="key c88"><span>x</span></a></li>	    		    	
+	    	<li><a href="#"  id="tastoY" class="key c89"><span>y</span></a></li>        				    	
+	    </ul>
+		
+        <ul class="cf" id="qwerty">
+	    	<li><a href="#"  id="tastoZ" class="key c90"><span>z</span></a></li>	  
+			<li><a href="#"  id="invio" class="key enter" style="width: 98px;"><span>Invio</span></a></li>	  
+			<li><a href="#"  id="tasto"  class="key " ><span></span></a></li>	  
+			<li><a href="#"  id="tastoback" class="key enter" ><span>Canc.</span></a></li>	  
+        </ul>
+		<ul class="cf" id="bottomrow">
+      
+  </ul>
+    </div>
+
+</div>
+</body>
+</html>
