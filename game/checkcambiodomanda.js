@@ -31,6 +31,15 @@
                 if (data == 'U' && pagina != data) {
                     document.location.href = 'playupdown.htm';
                 }
+				if (data == '6' && pagina != data) {
+                    document.location.href = 'play6.htm';
+                }
+				if (data == 'T' && pagina != data) {
+                    document.location.href = 'playtastiera.htm';
+                }
+				if (data == 'N' && pagina != data) {
+                    document.location.href = 'playtastieranumerica.htm';
+                }
             },
             error: function(jqXHR, textStatus, errorThrown) {
 		$("#statusicon").attr('src','assets/images/error.png');

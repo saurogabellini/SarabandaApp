@@ -11,6 +11,7 @@
 
 <!-- Javascripts -->
 <script src="assets/js/jquery.1.7.1.min.js"></script>
+<script src="../phonegap.js"></script>
 
 <!-- / Javascripts -->
 <style>
@@ -64,6 +65,7 @@ height:60px;
 	var serverip = '10.0.0.1';
     function login() {
 
+	   navigator.notification.vibrate(2500);
         var login = "";
         var password = "";
 
