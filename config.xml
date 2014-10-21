@@ -6,7 +6,7 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <plugin name="Notification" value="org.apache.cordova.Notification"/>
+    <plugin name="vibration" value="org.apache.cordova.vibration"/>
 
     <name>Sarabanda App</name>
 
