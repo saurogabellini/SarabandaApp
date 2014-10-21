@@ -73,10 +73,10 @@ body {
 
                 }
                 else {
-
-				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-					$("#statusicon").attr('src','assets/images/ok.png');
-				}	
+					navigator.notification.vibrate(250);
+					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+						$("#statusicon").attr('src','assets/images/ok.png');
+					}	
                }
             },
             error: function(jqXHR, textStatus, errorThrown) {

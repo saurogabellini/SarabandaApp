@@ -83,12 +83,15 @@ body {
                         $("#ImgD").fadeTo("fast", 0.13);
                         $("#ImgD").fadeTo("fast", 1);
                     }
-                    if (tasto == 'P') {
-                        $("#ImgP").fadeTo("fast", 0.33);
-                        $("#ImgP").fadeTo("fast", 1);
+                    if (tasto == 'E') {
+                        $("#ImgE").fadeTo("fast", 0.33);
+                        $("#ImgE").fadeTo("fast", 1);
                     }
-					
-					navigator.notification.vibrate(500);
+					if (tasto == 'F') {
+                        $("#ImgF").fadeTo("fast", 0.33);
+                        $("#ImgF").fadeTo("fast", 1);
+                    }
+					navigator.notification.vibrate(250);
 					
 					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
 						$("#statusicon").attr('src','assets/images/ok.png');
