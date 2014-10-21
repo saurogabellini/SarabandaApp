@@ -62,10 +62,14 @@ height:60px;
 </style>
 
 <script  type="text/javascript">
-	var serverip = '10.0.0.1';
-    function login() {
+    var serverip = '192.168.2.10';
 
-        navigator.vibrate(3000);
+    $(document).ready( function() {			
+	$("#Login").val(localStorage.getItem("serverip"));
+    });
+
+    function login() {
+        
         var login = "";
         var password = "";
 
