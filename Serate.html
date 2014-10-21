@@ -20,6 +20,7 @@
 		<script type="text/javascript" src="js/o-script.js"></script>
 		<script src="cordova.js"></script>
                 <script type="text/javascript" src="vibration.js"></script>
+                <script type="text/javascript" src="js/vibration.js"></script>
 
 		    <style>
     	.subFooter {
@@ -28,15 +29,23 @@
 	    width: 100%;
 	}
 	</style>
-				<script  type="text/javascript">  
+		<script  type="text/javascript">
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    alert('vibro');
+    navigator.vibrate(3000);
+}  
+
 		$(document).ready( function() {			
 			elencoserate();	        
 		});
 		function elencoserate()
 		{        		
-                 alert('vibro');
+                 
 
-		navigator.vibrate(3000);
+		
 		var uri = 'http://www.chivuolessersarabanda.com/serate.ashx';
 		$.ajax({
 			cache: false,
