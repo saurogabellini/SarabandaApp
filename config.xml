@@ -6,7 +6,8 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <plugin name="vibration" value="org.apache.cordova.vibration"/>
+    
+    <gap:plugin name="org.apache.cordova.vibration" version="0.3.11" />
 
     <name>Sarabanda App</name>
 
