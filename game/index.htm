@@ -74,7 +74,15 @@ height:60px;
         var password = "";
 
         login = $("#Login").val();
+        if (login.toUpperCase() == 'DEMO') {
+            localStorage.setItem("serverip", "www.sodo.it/S2");
+            localStorage.setItem("login", login.toUpperCase());
+            document.location.href = 'play.htm';
+            return ;
+        }
 		localStorage.setItem("serverip", serverip);
+
+
         var uri = 'http://' +  serverip + '/verificacodice.ashx?codice=' + login;
 
         $.ajax({

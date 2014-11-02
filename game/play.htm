@@ -100,7 +100,16 @@ body {
         });
     }
 
-    $(document).ready(function() {                
+    $(document).ready(function() {          
+        var login = "";
+        
+        
+        login = localStorage.getItem("login");
+
+        if (login == 'DEMO')
+        {
+            $("#backbuttonapple").html('<a href="index.htm" rel="external"><img src="assets/images/icons/arrow.jpg"></a>');
+        }
 		CambioPagina('4');
 		
 		$("#ImgA").on("tap",function(){
@@ -139,6 +148,7 @@ body {
 <div data-role="page"  data-title="Prenota">
 
 <img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
+<div id="backbuttonapple"></div>
 
 
 <img src="assets/images/icons/A.png" id="ImgA" alt="img" style="position:absolute; top:10%; left:1%; height:25%;">
