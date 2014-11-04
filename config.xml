@@ -7,7 +7,9 @@
     <!-- versionCode is optional and Android only -->
 
      <name>Sarabanda App</name>
-
+     <icon src="img/icon-certify-76.png" gap:platform="ios" width="76" height="76"/> 
+     <icon src="img/icon-certify-120.png" gap:platform="ios" width="120" height="120"/> 
+     <icon src="img/icon-certify-152.png" gap:platform="ios" width="152" height="152"/> 
  
 
     <author href="http://www.chivuolessersarabada.com" email="info@chivuolessersarabada.com">
