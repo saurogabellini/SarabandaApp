@@ -65,12 +65,12 @@ height:60px;
     var serverip = '10.0.0.1';
 
     $(document).ready( function() {			
-		$("#Login").val(localStorage.getItem("login"));  
-		window.plugins.insomnia.keepAwake()
+		$("#Login").val(localStorage.getItem("login"));  		
 	});
 
     function login() {
         
+		window.plugins.insomnia.keepAwake();
         var login = "";
         var password = "";
 
