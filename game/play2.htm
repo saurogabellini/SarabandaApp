@@ -1,0 +1,132 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
+
+<script src="../phonegap.js"></script>
+
+<script src="checkcambiodomanda.js"></script>
+<!-- / Javascripts -->
+<style>
+body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+.ui-page { background: #000000;}
+</style>
+
+
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+    function mYclick(tasto) {
+
+        var login = "";
+        
+		
+        login = localStorage.getItem("login");
+
+
+        var uri = 'http://' + serverip + '/assegnarisposta.ashx?Risposta=' + tasto + '&Squadra=' + login;
+
+
+        $.ajax({
+            cache: false,
+            //type: "POST",
+            dataType: "text",
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                    x.overrideMimeType("application/json;charset=UTF-8");
+                }
+            },
+            url: uri,
+            success: function(data) {
+                if (data != "OK") {
+
+                }
+                else {
+                    if (tasto == 'A') {
+                        $("#ImgA").fadeTo("fast", 0.33);
+                        $("#ImgA").fadeTo("fast", 1);
+                    }
+                    if (tasto == 'B') {
+                        $("#ImgB").fadeTo("fast", 0.33);
+                        $("#ImgB").fadeTo("fast", 1);
+                    }
+					navigator.notification.vibrate(250);
+					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+						$("#statusicon").attr('src','assets/images/ok.png');
+					}
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+
+				$("#statusicon").attr('src','assets/images/error.png');
+		
+                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+    }
+
+    $(document).ready(function() {                
+		CambioPagina('B');
+		
+		$("#ImgA").on("tap",function(){
+			mYclick('A');
+		});
+		$("#ImgB").on("tap",function(){
+			mYclick('B');
+		});		 
+    });
+	
+		document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {        
+		// Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!');
+    }
+
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div data-role="page"  data-title="Up Down">
+
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
+
+
+<img src="assets/images/icons/A.png" id="ImgA"  style="position:absolute; top:10%; left:10%; height:25%;">
+
+<img src="assets/images/icons/B.png" id="ImgB"  style="position:absolute; top:70%; right:10%; height:25%;">
+</div>
+  
+</body>
+</html>

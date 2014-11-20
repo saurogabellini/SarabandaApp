@@ -13,12 +13,13 @@
     <icon src="img/icon-certify-120.png" gap:platform="ios" width="120" height="120"/> 
     <icon src="img/icon-certify-152.png" gap:platform="ios" width="152" height="152"/> 
  
-	<gap:splash src="splash.png"/>
+	<gap:splash src="splash.png"  width="320" height="480"/>
     <author href="http://www.chivuolessersarabada.com" email="info@chivuolessersarabada.com">
         Sauro Gabellini
     </author>
 
     
     <gap:plugin name="org.apache.cordova.vibration"  />
+	<gap:plugin name="nl.x-services.plugins.insomnia" />	
 	<access origin="*" />
 </widget>

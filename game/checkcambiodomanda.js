@@ -19,11 +19,14 @@
 	    if ($("#statusicon").attr('src') == 'assets/images/error.png') {
 			$("#statusicon").attr('src','assets/images/ok.png');
 	    }
-	    if (data == '4' && pagina != data){
+				if (data == '4' && pagina != data){
                     document.location.href = 'play.htm';
-            }
-            if (data == '2' && pagina != data){
+				}
+				if (data == '2' && pagina != data){
                     document.location.href = 'playtruefalse.htm';
+                }
+				if (data == 'B' && pagina != data){
+                    document.location.href = 'play2.htm';
                 }
                 if (data == '0' && pagina != data) {
                     document.location.href = 'playprenota.htm';
