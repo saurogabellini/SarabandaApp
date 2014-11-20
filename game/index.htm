@@ -65,14 +65,9 @@ height:60px;
     var serverip = '10.0.0.1';
 
     $(document).ready( function() {			
-		$("#Login").val(localStorage.getItem("login"));
-        try
-        {
-          window.plugins.insomnia.keepAwake(function(){alert("Insomnia!");}, function(){alert("insomnia failed!");});
-        } catch (e) { alert("fatal error for insomnia!"); }
-
-
-    });
+		$("#Login").val(localStorage.getItem("login"));  
+		window.plugins.insomnia.keepAwake()
+	});
 
     function login() {
         
