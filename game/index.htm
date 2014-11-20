@@ -12,7 +12,6 @@
 <!-- Javascripts -->
 <script src="assets/js/jquery.1.7.1.min.js"></script>
 <script src="../phonegap.js"></script>
-<script type="text/javascript" src="../Insomnia.js"></script>
 
 <!-- / Javascripts -->
 <style>
@@ -67,8 +66,12 @@ height:60px;
 
     $(document).ready( function() {			
 		$("#Login").val(localStorage.getItem("login"));
-		window.plugins.insomnia.keepAwake();
-		alert('ok');
+        try
+        {
+          window.plugins.insomnia.keepAwake(function(){alert("Insomnia!");}, function(){alert("insomnia failed!");});
+        } catch (e) { alert("fatal error for insomnia!"); }
+
+
     });
 
     function login() {
