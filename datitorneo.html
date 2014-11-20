@@ -56,18 +56,15 @@
 									
 					
 					
-               					
+               		localStorage.setItem("datatorneo" + getUrlParameter('ID'), data);			
 			   		$("#elencoserate").html(data)
 					
 					
 					
 					//$("#Mail").html(JData.Mail);
 			},
-			error: function (jqXHR, textStatus, errorThrown) {
-								
-				
-				
-				alert (textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+			error: function (jqXHR, textStatus, errorThrown) {														
+				$("#elencoserate").html(localStorage.getItem("datatorneo") + getUrlParameter('ID'));
 			}
 		});
 					         
@@ -118,6 +115,11 @@
 							<i class="fa fa-question"></i>Info
 						</a>
 					</li>
+					<li>
+						<a href="regole.html" rel="external">
+							<i class="fa fa-check"></i>Regole
+						</a>
+					</li>					
 					<li>
 						<a href="Tornei.html" rel="external">
 							<i class="fa fa-users"></i>Tornei

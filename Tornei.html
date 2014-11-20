@@ -39,21 +39,16 @@
 			dataType: "text",
 			url: uri,
 			success: function (data) {						
-									
-					
-					
-               					
+																		
+					localStorage.setItem("datatornei", data);
 			   		$("#elencoserate").html(data)
 					
 					
 					
 					//$("#Mail").html(JData.Mail);
 			},
-			error: function (jqXHR, textStatus, errorThrown) {
-								
-				
-				
-				alert (textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+			error: function (jqXHR, textStatus, errorThrown) {														
+				$("#elencoserate").html(localStorage.getItem("datatornei"));	
 			}
 		});
 					         
@@ -96,6 +91,11 @@
 					<li>
 						<a href="ChiSiamo.html" rel="external">
 							<i class="fa fa-question"></i>Info
+						</a>
+					</li>
+					<li>
+						<a href="regole.html" rel="external">
+							<i class="fa fa-check"></i>Regole
 						</a>
 					</li>
 					<li>
