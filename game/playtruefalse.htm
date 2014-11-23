@@ -47,7 +47,7 @@ body {
         login = localStorage.getItem("login");
 
 
-        var uri = 'http://' + serverip + '/assegnarisposta.ashx?Risposta=' + tasto + '&Squadra=' + login;
+        var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
 
         $.ajax({
@@ -61,10 +61,6 @@ body {
             },
             url: uri,
             success: function(data) {
-                if (data != "OK") {
-
-                }
-                else {
                     if (tasto == 'A') {
                         $("#ImgA").fadeTo("fast", 0.33);
                         $("#ImgA").fadeTo("fast", 1);
@@ -85,11 +81,12 @@ body {
                         $("#ImgP").fadeTo("fast", 0.33);
                         $("#ImgP").fadeTo("fast", 1);
                     }
-					navigator.notification.vibrate(250);
+					
 					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
 						$("#statusicon").attr('src','assets/images/ok.png');
 					}
-                }
+					VerificaPagina(data,'2');
+					navigator.notification.vibrate(250);
             },
             error: function(jqXHR, textStatus, errorThrown) {
 

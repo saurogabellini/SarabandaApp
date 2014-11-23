@@ -1,4 +1,33 @@
-﻿function CambioPagina(pagina) {
+﻿function VerificaPagina(data,pagina) {
+		if (data == '4' && pagina != data){
+			document.location.href = 'play.htm';
+		}
+		if (data == '2' && pagina != data){
+			document.location.href = 'playtruefalse.htm';
+		}
+		if (data == 'B' && pagina != data){
+			document.location.href = 'play2.htm';
+		}
+		if (data == '0' && pagina != data) {
+			document.location.href = 'playprenota.htm';
+		}
+		if (data == 'U' && pagina != data) {
+			document.location.href = 'playupdown.htm';
+		}
+		if (data == '6' && pagina != data) {
+			document.location.href = 'play6.htm';
+		}
+		if (data == 'T' && pagina != data) {
+			document.location.href = 'playtastiera.htm';
+		}
+		if (data == 'N' && pagina != data) {
+			document.location.href = 'playtastieranumerica.htm';
+		}
+ 
+}
+
+
+function CambioPagina(pagina) {
 
     var doStuff = function() {
           
@@ -16,34 +45,11 @@
             },
             url: uri,
             success: function(data) {
-	    if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-			$("#statusicon").attr('src','assets/images/ok.png');
-	    }
-				if (data == '4' && pagina != data){
-                    document.location.href = 'play.htm';
-				}
-				if (data == '2' && pagina != data){
-                    document.location.href = 'playtruefalse.htm';
-                }
-				if (data == 'B' && pagina != data){
-                    document.location.href = 'play2.htm';
-                }
-                if (data == '0' && pagina != data) {
-                    document.location.href = 'playprenota.htm';
-                }
-                if (data == 'U' && pagina != data) {
-                    document.location.href = 'playupdown.htm';
-                }
-				if (data == '6' && pagina != data) {
-                    document.location.href = 'play6.htm';
-                }
-				if (data == 'T' && pagina != data) {
-                    document.location.href = 'playtastiera.htm';
-                }
-				if (data == 'N' && pagina != data) {
-                    document.location.href = 'playtastieranumerica.htm';
-                }
-            },
+			if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+				$("#statusicon").attr('src','assets/images/ok.png');
+			}
+			VerificaPagina(data,pagina);
+           },
             error: function(jqXHR, textStatus, errorThrown) {
 		$("#statusicon").attr('src','assets/images/error.png');
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
