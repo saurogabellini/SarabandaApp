@@ -17,7 +17,11 @@
     <icon src="img/icon-certify-120.png" gap:platform="ios" width="120" height="120"/> 
     <icon src="img/icon-certify-152.png" gap:platform="ios" width="152" height="152"/> 
  
-	<gap:splash src="splash.png"  width="320" height="480"/>
+	
+    <gap:splash src="splash.png"          gap:platform="ios"     width="320" height="480" />
+    <gap:splash src="splashx2.png"       gap:platform="ios"     width="640" height="960" />
+    <gap:splash src="splashipad.png"            gap:platform="ios"     width="768" height="1024" />
+    
     <author href="http://www.chivuolessersarabada.com" email="info@chivuolessersarabada.com">
         Sauro Gabellini
     </author>
