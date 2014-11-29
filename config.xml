@@ -15,7 +15,7 @@
     <name>Sarabanda App</name>
     <icon src="icon.png" gap:platform="ios" width="57" height="57"/>
     <icon src="img/icon-certify-57.png" gap:platform="ios" width=“57” height=“57"/>
-    <icon src="img/icon-certify-76.png" gap:platform="ios" width="72” height="72”/>	
+    <icon src="img/icon-certify-72.png" gap:platform="ios" width="72” height="72”/>	
     <icon src="img/icon-certify-76.png" gap:platform="ios" width="76" height="76"/> 
     <icon src="img/icon-certify-120.png" gap:platform="ios" width="120" height="120"/> 
     <icon src="img/icon-certify-152.png" gap:platform="ios" width="152" height="152"/> 
@@ -23,7 +23,7 @@
 		
     <gap:splash src="splash.png"          gap:platform="ios"     width="320" height="480" />
     <gap:splash src="splashx2.png"       gap:platform="ios"     width="640" height="960" />
-    <gap:splash src="splash-568h@2x.png"          gap:platform="ios"     width=“640 height=“1136 />
+    <gap:splash src="splash-568h@2x.png"          gap:platform="ios"     width=“640 height=“1136" />
     <gap:splash src="splashipad.png"            gap:platform="ios"     width="768" height="1024" />
     
     <author href="http://www.chivuolessersarabada.com" email="info@chivuolessersarabada.com">
