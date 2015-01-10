@@ -1,0 +1,236 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
+
+    <script src="assets/jqueryui/jquery-ui.min.js"></script>
+
+    <script src="assets/uitouch/jquery.ui.touch-punch.min.js"></script>
+
+<script src="checkcambiodomanda.js"></script>
+<script src="../phonegap.js"></script>
+<!-- / Javascripts -->
+<style>
+body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+.ui-page { background: #000000;}
+
+@media all and (orientation:portrait) {
+    @-ms-viewport {
+        width:device-width;
+        user-zoom: fixed;
+        max-zoom: 1;
+        min-zoom: 1;
+    }
+}
+
+#sortable { list-style-type: none; padding: 0; width: 100%; }
+#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 10%; text-align:center; }
+#sortable li span { position: absolute; margin-left: -1.3em; }
+  
+
+.myButton {
+	background-color:#44c767;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:17px;
+	padding:16px 65px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+            
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+</style>
+
+
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+	var RicezioneOk = 0;
+	
+	function mYclick() {
+		if (RicezioneOk == 1) {
+            return false;
+        }
+        RicezioneOk = 1;
+
+	    var login = "";
+	    var tasto = "";
+	    tasto = $("#sortable").html();
+
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
+	    tasto = tasto.replace('</li>', '');
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
+	    tasto = tasto.replace('</li>', '');
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
+	    tasto = tasto.replace('</li>', '');
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
+	    tasto = tasto.replace('</li>', '');
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
+	    tasto = tasto.replace('</li>', '');
+
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
+	    tasto = tasto.replace('</li>', '');
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
+	    tasto = tasto.replace('</li>', '');
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
+	    tasto = tasto.replace('</li>', '');
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
+	    tasto = tasto.replace('</li>', '');
+	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
+	    tasto = tasto.replace('</li>', '');
+
+        
+	    var risultato ="";
+
+	    var i = 0;
+	    
+	    for (i = 0; i < tasto.length; i ++)
+	    {	        
+         if (tasto.charAt(i) == "A") {
+             risultato  +=tasto.charAt(i); 
+	       }
+         if (tasto.charAt(i) == "B") {
+             risultato  +=tasto.charAt(i); 
+         }
+         if (tasto.charAt(i) == "C") {
+             risultato  +=tasto.charAt(i); 
+         }
+         if (tasto.charAt(i) == "D") {
+             risultato  +=tasto.charAt(i); 
+         }         
+	    }
+
+
+        login = localStorage.getItem("login");
+
+        var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + risultato + '&Squadra=' + login;
+
+
+        $.ajax({
+            cache: false,
+            //type: "POST",
+            dataType: "text",
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                    x.overrideMimeType("application/json;charset=UTF-8");
+                }
+            },
+            url: uri,
+            success: function(data) {
+					RicezioneOk = 0;
+                    VerificaPagina(data, 'S4');
+						
+					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+					$("#statusicon").attr('src','assets/images/ok.png');
+					}   
+					navigator.notification.vibrate(250);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				RicezioneOk = 0;
+				$("#statusicon").attr('src','assets/images/error.png');
+		
+                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+	}
+
+	$(document).bind('pageinit', function () {
+		RicezioneOk = 0;
+		CambioPagina('S4');
+	
+	    $("#sortable").sortable({
+	        items: "li:not(.ui-li-divider)"
+	    });
+	    $("#sortable").sortable();
+	    $("#sortable").disableSelection();
+	    $("#sortable").bind("sortstop", function (event, ui) {
+	        $('#sortable').listview('refresh');
+	    });
+	});
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+	// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {        
+		// Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!');
+    }
+
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div data-role="page"  data-title="Prenota">
+
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
+<br />
+<br />
+<br />
+<table style="width:100%;">
+                <tr>
+				<td style="width:10%;"></td>
+                    <td>
+    <div data-role="content" data-theme="c">
+        <ul data-role="listview" data-inset="true" data-theme="d" id="sortable" style="text-align:center;">            
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>            
+        </ul>
+    </div>
+	</td>
+	<td style="width:10%;"></td>
+	</tr>
+	</table>
+    <br/>
+    <br />
+    <br />
+    <div style="text-align:center;    top:10px;">
+        <a href="#" onclick="mYclick();" class="myButton">Invia</a>
+    </div>
+</div>
+  
+</body>
+</html>

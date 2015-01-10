@@ -18,6 +18,7 @@
 <script src="checkcambiodomanda.js"></script>
 <!-- / Javascripts -->
 <style>
+
 body {
 -webkit-touch-callout:none;
 -webkit-user-select:none;
@@ -34,23 +35,51 @@ body {
 }
 
 .ui-page { background: #000000;}
+
+.myButton {
+	background-color:#44c767;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:17px;
+	padding:16px 65px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
 </style>
 
 
 <script  type="text/javascript">
 	var serverip = localStorage.getItem("serverip");
 	var RicezioneOk = 0;
-	
-    function mYclick(tasto) {
-		if (RicezioneOk == 1) {
+    function mYclick() {
+
+	    if (RicezioneOk == 1) {
             return false;
         }
         RicezioneOk = 1;
-        var login = "";
-        
 		
+        var login = ""; 
+		var tasto ="";
         login = localStorage.getItem("login");
-
+		tasto = $("#Login").val();
+		$("#Login").val('');
+		
+		alert(tasto);
 
         var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
@@ -66,33 +95,13 @@ body {
             },
             url: uri,
             success: function(data) {
-					RicezioneOk = 0;
-                    if (tasto == 'A') {
-                        $("#ImgA").fadeTo("fast", 0.33);
-                        $("#ImgA").fadeTo("fast", 1);
-                    }
-                    if (tasto == 'B') {
-                        $("#ImgB").fadeTo("fast", 0.33);
-                        $("#ImgB").fadeTo("fast", 1);
-                    }
-                    if (tasto == 'C') {
-                        $("#ImgC").fadeTo("fast", 0.33);
-                        $("#ImgC").fadeTo("fast", 1);
-                    }
-                    if (tasto == 'D') {
-                        $("#ImgD").fadeTo("fast", 0.13);
-                        $("#ImgD").fadeTo("fast", 1);
-                    }
-                    if (tasto == 'P') {
-                        $("#ImgP").fadeTo("fast", 0.33);
-                        $("#ImgP").fadeTo("fast", 1);
-                    }
-					
-					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-						$("#statusicon").attr('src','assets/images/ok.png');
-					}
-					VerificaPagina(data,'U');
-					navigator.notification.vibrate(250);
+				RicezioneOk = 0;
+						
+				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+					$("#statusicon").attr('src','assets/images/ok.png');
+				}
+				VerificaPagina(data,'CH');
+				navigator.notification.vibrate(250);
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				RicezioneOk = 0;
@@ -104,18 +113,17 @@ body {
     }
 
     $(document).ready(function() {          
-		RicezioneOk = 0;
-		CambioPagina('U');
-		
-		$("#ImgA").on("tap",function(){
-			mYclick('A');
-		});
-		$("#ImgD").on("tap",function(){
-			mYclick('D');
-		});		 
+        var login = "";
+        
+        
+        login = localStorage.getItem("login");
+
+        
+		CambioPagina('CH');
+			 
     });
 	
-		document.addEventListener("deviceready", onDeviceReady, false);
+	document.addEventListener("deviceready", onDeviceReady, false);
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
@@ -134,14 +142,26 @@ body {
 
 </head>
 <body bgcolor="#000000">
-<div data-role="page"  data-title="Up Down">
+<div data-role="page"  data-title="Prenota">
 
 <img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
 
+<div style="text-align:center; ">
+<br/>
+<img src="logosarabanda.png" style="width:40%" alt="Chi vuol esser Sarabanda?">
+<br/>
+<b>Chat :</b><br />
+<br/>
 
-<img src="assets/images/icons/Up.png" id="ImgA"  style="position:absolute; top:10%; left:10%; height:25%;">
+<input id="Login" type="text" placeholder="digita!"  style="position:relative; width:90%; height:50px; top:0px; left:5%; " /><br />
 
-<img src="assets/images/icons/down.png" id="ImgD"  style="position:absolute; top:70%; right:10%; height:25%;">
+<br/>
+<a href="#" onclick="mYclick();" class="myButton">
+Invia!
+</a>
+</div>
+
+
 </div>
   
 </body>

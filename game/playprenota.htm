@@ -39,8 +39,16 @@ body {
 
 <script  type="text/javascript">
 	var serverip = localStorage.getItem("serverip");
+	var RicezioneOk = 0;
+	
     function mYclick(tasto) {
 
+		if (RicezioneOk == 1) {
+            return false;
+        }
+        RicezioneOk = 1;
+		
+		
         var login = "";
         
 		
@@ -61,6 +69,7 @@ body {
             },
             url: uri,
             success: function(data) {
+					RicezioneOk = 0;
                     if (tasto == 'A') {
                         $("#ImgA").fadeTo("fast", 0.33);
                         $("#ImgA").fadeTo("fast", 1);
@@ -89,7 +98,7 @@ body {
 					
             },
             error: function(jqXHR, textStatus, errorThrown) {
-
+				RicezioneOk = 0;
 				$("#statusicon").attr('src','assets/images/error.png');
 		
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
@@ -97,7 +106,9 @@ body {
         });
     }
 
-    $(document).ready(function() {                
+    $(document).ready(function() {
+		RicezioneOk = 0;
+		
 		CambioPagina('0');
 		
 		
