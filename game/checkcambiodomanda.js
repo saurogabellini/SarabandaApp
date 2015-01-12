@@ -41,6 +41,9 @@
 		if (data == 'M5' && pagina != data) {
 			document.location.href = 'playmatch5.htm';
 		}
+		if (data == 'CH' && pagina != data) {			
+			document.location.href = 'chat.htm';
+		}
 }
 
 

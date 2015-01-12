@@ -17,9 +17,8 @@
 
 <script src="checkcambiodomanda.js"></script>
 <!-- / Javascripts -->
-<style>
-
-body {
+ <style>
+      body {
 -webkit-touch-callout:none;
 -webkit-user-select:none;
 -khtml-user-select:none;
@@ -36,50 +35,83 @@ body {
 
 .ui-page { background: #000000;}
 
-.myButton {
-	background-color:#44c767;
-	-moz-border-radius:15px;
-	-webkit-border-radius:15px;
-	border-radius:15px;
-	border:1px solid #18ab29;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:arial;
-	font-size:17px;
-	padding:16px 65px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2f6627;
-
-}
-.myButton:hover {
-	background-color:#5cbf2a;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
-
-</style>
+	  .message
+      {
+        padding: 5px 5px 5px 5px;
+		color: yellow;
+      }
+      .username
+      {
+        font-weight: strong;
+        color: #0f0;
+      }
+      .msgContainerDiv
+      {
+        overflow-y: scroll;
+        height: 250px;
+      }
+	 
+	  
+    </style>
 
 
 <script  type="text/javascript">
 	var serverip = localStorage.getItem("serverip");
 	var RicezioneOk = 0;
     function mYclick() {
-
+		var tasto ="";
+		tasto = $("#messageText").val();
+		
+		if (tasto == '') {
+		  return false;
+		}
+		if (tasto.indexOf('>') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('<') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('=') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('&') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('\\') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('/') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+				
+		
+		var objToday = new Date();
+		var minuti = objToday.getMinutes();
+		if (minuti < 10) {
+			minuti = '0' + minuti;
+		}		
+		var secondi = objToday.getSeconds();
+		if (secondi < 10) {
+			secondi = '0' + secondi;
+		}		
+		
 	    if (RicezioneOk == 1) {
             return false;
         }
         RicezioneOk = 1;
 		
         var login = ""; 
-		var tasto ="";
+		
         login = localStorage.getItem("login");
-		tasto = $("#Login").val();
+		
 		$("#Login").val('');
 		
-		alert(tasto);
 
         var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
@@ -96,7 +128,10 @@ body {
             url: uri,
             success: function(data) {
 				RicezioneOk = 0;
-						
+				$("#messageText").val('');
+				$("#incomingMessages").append("<div class='message'><span class='username'>" + objToday.getHours() + ':' + minuti + ':' + secondi + '</span> ' + tasto + "</div>");
+				$("#incomingMessages").scrollTop($("#incomingMessages")[0].scrollHeight);
+        
 				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
 					$("#statusicon").attr('src','assets/images/ok.png');
 				}
@@ -142,27 +177,32 @@ body {
 
 </head>
 <body bgcolor="#000000">
-<div data-role="page"  data-title="Prenota">
-
-<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
-
-<div style="text-align:center; ">
-<br/>
-<img src="logosarabanda.png" style="width:40%" alt="Chi vuol esser Sarabanda?">
-<br/>
-<b>Chat :</b><br />
-<br/>
-
-<input id="Login" type="text" placeholder="digita!"  style="position:relative; width:90%; height:50px; top:0px; left:5%; " /><br />
-
-<br/>
-<a href="#" onclick="mYclick();" class="myButton">
-Invia!
-</a>
-</div>
-
-
-</div>
+<div data-role="page" id="chatPage" data-theme="a" data-url="chatPage">
+ 
+        <div data-role="header"  style="height:20%; ">
+			<img src="logosarabandamegafono.png" style="height:100%; position:absolute; top:0px;  float:left;" alt="" />
+            <h1>Sarabanda Chat</h1>			
+			<img src="logosarabandamegafono.png" style="height:100%; position:absolute; top:0px;  left:90%; float:right;" alt="" />
+        </div>
+ 
+        <div data-role="content">   
+        <div id="incomingMessages" name="incomingMessages" class="msgContainerDiv"></div>
+		
+		</div>
+				
+		<div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:black;">
+        <label for="messageText"><strong>Testo:</strong></label>
+        <textarea name="messageText" id="messageText"></textarea>
+ 
+        <div style="text-align:center;">
+		<button data-theme="a" onclick="mYclick();" id="chatSendButton" name="chatSendButton">Invia
+        </button>
+		</div>
+		</div>
+ 
+        
+    </div>
+ 
   
 </body>
 </html>
