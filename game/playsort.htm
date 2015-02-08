@@ -180,6 +180,10 @@ body {
 	    $("#sortable").bind("sortstop", function (event, ui) {
 	        $('#sortable').listview('refresh');
 	    });
+		
+		$("#statusicon").on("tap", function () {
+		    VerificaPagina(data, 'S');
+		});
 	});
 	
 	document.addEventListener("deviceready", onDeviceReady, false);

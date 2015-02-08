@@ -115,6 +115,10 @@ body {
 		$("#ImgD").on("tap",function(){
 			mYclick('D');
 		});		 
+		
+		$("#statusicon").on("tap", function () {
+		    VerificaPaginaServer('2');
+		});		
     });
 	
 		document.addEventListener("deviceready", onDeviceReady, false);

@@ -62,14 +62,14 @@ height:60px;
 </style>
 
 <script  type="text/javascript">
-    var serverip = '10.0.0.1';
-
+    var serverip = 'localhost'; // '10.0.0.1';
+	
     $(document).ready( function() {			
 		$("#Login").val(localStorage.getItem("login"));  		
 	});
 
     function login() {
-        		
+        				
         var login = "";
         var password = "";
 
@@ -85,6 +85,7 @@ height:60px;
 
         var uri = 'http://' +  serverip + '/verificacodice.ashx?codice=' + login;
 
+		
         $.ajax({
             cache: false,
             //type: "POST",

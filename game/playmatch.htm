@@ -197,6 +197,9 @@ body {
 	        $('#sortable').listview('refresh');
 	    });
 
+		$("#statusicon").on("tap", function () {
+		    VerificaPagina(data, 'M');
+		});
 	});
 	
 	document.addEventListener("deviceready", onDeviceReady, false);

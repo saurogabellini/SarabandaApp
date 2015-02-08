@@ -101,7 +101,11 @@ body {
 		});
 		$("#ImgB").on("tap",function(){
 			mYclick('B');
-		});		 
+		});		
+
+		$("#statusicon").on("tap", function () {
+		    VerificaPaginaServer('B');
+		});				
     });
 	
 		document.addEventListener("deviceready", onDeviceReady, false);

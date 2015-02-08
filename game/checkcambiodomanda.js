@@ -46,6 +46,33 @@
 		}
 }
 
+function VerificaPaginaServer(pagina)
+{
+        RicezioneOk = 0;
+
+        var uri = 'http://' + serverip + '/cambiapagina.ashx';
+
+        $.ajax({
+            cache: false,
+            dataType: "text",
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                    x.overrideMimeType("application/json;charset=UTF-8");
+                }
+            },
+            url: uri,
+            success: function(data) {
+			if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+				$("#statusicon").attr('src','assets/images/ok.png');
+			}
+			VerificaPagina(data,pagina);
+           },
+            error: function(jqXHR, textStatus, errorThrown) {
+			$("#statusicon").attr('src','assets/images/error.png');
+                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+}
 
 function CambioPagina(pagina) {
 
@@ -71,7 +98,7 @@ function CambioPagina(pagina) {
 			VerificaPagina(data,pagina);
            },
             error: function(jqXHR, textStatus, errorThrown) {
-		$("#statusicon").attr('src','assets/images/error.png');
+			$("#statusicon").attr('src','assets/images/error.png');
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
             }
         });

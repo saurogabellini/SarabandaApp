@@ -182,6 +182,10 @@ body {
 	    $("#sortable").bind("sortstop", function (event, ui) {
 	        $('#sortable').listview('refresh');
 	    });
+		
+		$("#statusicon").on("tap", function () {
+		    VerificaPaginaServer('S4');
+		});
 	});
 	
 	document.addEventListener("deviceready", onDeviceReady, false);

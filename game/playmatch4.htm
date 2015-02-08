@@ -193,6 +193,10 @@ body {
 	    $("#sortable").bind("sortstop", function (event, ui) {
 	        $('#sortable').listview('refresh');
 	    });
+		
+		$("#statusicon").on("tap", function () {
+		    VerificaPaginaServer('M4');
+		});
 
 	});
 	

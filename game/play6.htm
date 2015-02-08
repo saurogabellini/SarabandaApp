@@ -133,6 +133,10 @@ body {
 		$("#ImgF").on("tap",function(){
 			mYclick('F');
 		});			
+		
+		$("#statusicon").on("tap", function () {
+		    VerificaPaginaServer('6');
+		});		
     });
 	
 		document.addEventListener("deviceready", onDeviceReady, false);

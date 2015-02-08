@@ -188,6 +188,10 @@ body {
 		$("#invio").on("tap",function(){
 			mYclick();
 		});	
+		
+		$("#statusicon").on("tap", function () {
+		    VerificaPaginaServer('T');
+		});		
     });
 	
 		document.addEventListener("deviceready", onDeviceReady, false);

@@ -13,9 +13,6 @@
 <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
 <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
 
-<script src="../phonegap.js"></script>
-
-<script src="checkcambiodomanda.js"></script>
 <!-- / Javascripts -->
 <style>
 body {
@@ -38,21 +35,24 @@ body {
 
 
 <script  type="text/javascript">
-	var serverip = localStorage.getItem("serverip");
-	var RicezioneOk = 0;
+	var serverip = '10.0.0.1';
+	
     function mYclick(tasto) {
 
-	    if (RicezioneOk == 1) {
-            return false;
-        }
-        RicezioneOk = 1;
+	    
+		alert('go');
 		
         var login = "";       	
-        login = localStorage.getItem("login");
+        login = "VV77E";
 
 
-        var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
+        var uri = 'http://10.0.0.1/assegnarispostav.ashx?Risposta=A&Squadra=VV77E';
 
+		
+		var k=0;
+		
+		for (k=0; k <4000; k++)
+		{
 
         $.ajax({
             cache: false,
@@ -99,71 +99,25 @@ body {
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
             }
         });
+		}
+		
     }
 
     $(document).ready(function() {          
-        var login = "";
-        
-        
-        login = localStorage.getItem("login");
 
-        if (login == 'DEMO')
-        {
-            $("#backbuttonapple").html('<br /><a href="index.htm" rel="external"><img src="assets/images/icons/arrow.jpg"></a>');
-        }
-		CambioPagina('4');
+        
+		//CambioPagina('4');
 		
-		$("#ImgA").on("tap",function(){
-			mYclick('A');
-		});
-		$("#ImgB").on("tap",function(){
-			mYclick('B');
-		});
-		$("#ImgC").on("tap",function(){
-			mYclick('C');
-		});
-		$("#ImgD").on("tap",function(){
-			mYclick('D');
-		});		 
-		
-		$("#statusicon").on("tap", function () {
-		    VerificaPaginaServer('4');
-		});		
+		alert('s');
+		mYclick('D');
     });
 	
-	document.addEventListener("deviceready", onDeviceReady, false);
-
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
-    //
-    function onDeviceReady() {        
-		// Register the event listener
-        document.addEventListener("backbutton", onBackKeyDown, false);
-    }
-
-    // Handle the back button
-    //
-    function onBackKeyDown() {
-	  alert('Stai giocando non puoi uscire!');
-    }
 
 </script>
 
 </head>
 <body bgcolor="#000000">
 <div data-role="page"  data-title="Prenota">
-
-<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
-<div id="backbuttonapple"></div>
-
-
-<img src="assets/images/icons/A.png" id="ImgA" alt="img" style="position:absolute; top:10%; left:1%; height:25%;">
-
-<img src="assets/images/icons/B.png" id="ImgB" alt="img"  style="position:absolute; top:30%; right:1%; height:25%;">
-
-<img src="assets/images/icons/C.png" id="ImgC" alt="img" style="position:absolute; top:50%; left:1%; height:25%;">
-
-<img src="assets/images/icons/D.png" id="ImgD" alt="img" style="position:absolute; top:70%; right:1%; height:25%;">
-
 
 
 </div>
