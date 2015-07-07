@@ -1,0 +1,249 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+
+<!-- Javascripts -->
+<script src="assets/js/jquery.1.7.1.min.js"></script>
+<script src="../phonegap.js"></script>
+
+<style>
+
+<!-- / Javascripts -->
+body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.loginbox {
+background-color: #726e6e;
+
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+
+-moz-box-shadow: inset -3px -4px 3px 3px #888888;
+-webkit-box-shadow: inset -3px -4px 3px 3px #888888;
+box-shadow: inset -3px -4px 3px 3px #888888;
+height:60px;
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+.myButton {
+	background-color:#44c767;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:17px;
+	padding:16px 65px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.ui-page { background: #000000;}
+</style>
+
+
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+		
+    function mYclick() {
+	
+		
+	var nomesquadra ="";
+	var mailsquadra ="";
+        var login = "";
+				       
+		
+        login = localStorage.getItem("login");
+
+	var appoggio = $("#TxtNome").val();
+
+	nomesquadra = appoggio.toUpperCase();
+
+	if (nomesquadra.trim() == '') {
+		alert('nome squadra obbligatorio');
+	}
+
+
+	var appoggio2 = $("#TxtMail").val();
+
+	mailsquadra = appoggio2.toUpperCase();
+											
+        var uri = 'http://' + serverip + '/nuovaiscrizione.ashx?CODICE=' + login + '&NOME=' + nomesquadra + '&EMAIL=' + mailsquadra;
+
+
+        $.ajax({
+            cache: false,
+            //type: "POST",
+            dataType: "text",
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                    x.overrideMimeType("application/json;charset=UTF-8");
+                }
+            },
+            url: uri,
+            success: function(data) {
+				RicezioneOk = 0;
+                if (data != "OK") {
+
+                }
+                else {
+					//navigator.notification.vibrate(250);
+					document.location.href = 'play.htm';	
+               }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				RicezioneOk = 0;
+				$("#statusicon").attr('src','assets/images/error.png');
+		
+                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+    }
+
+    $(document).ready(function() {  
+					
+
+	$("#TxtNome").on("keypress", function(event) {
+
+	    // Disallow anything not matching the regex pattern (A to Z uppercase, a to z lowercase and white space)
+	    // For more on JavaScript Regular Expressions, look here: https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions
+	    var englishAlphabetAndWhiteSpace = /[A-Za-z ]/g;
+	   
+	    // Retrieving the key from the char code passed in event.which
+	    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
+	    var key = String.fromCharCode(event.which);
+	    
+	    //alert(event.keyCode);
+	    
+	    // For the keyCodes, look here: http://stackoverflow.com/a/3781360/114029
+	    // keyCode == 8  is backspace
+	    // keyCode == 37 is left arrow
+	    // keyCode == 39 is right arrow
+	    // englishAlphabetAndWhiteSpace.test(key) does the matching, that is, test the key just typed against the regex pattern
+        
+        // event.keyCode == 39 || APICE DISATTIVATO
+        // event.keyCode == 37 || PERCENTUALE DISATTIVATA
+        
+	    if (event.keyCode == 8 ||   englishAlphabetAndWhiteSpace.test(key)) {
+	        return true;
+	    }
+
+	    // If we got this far, just return false because a disallowed key was typed.
+	    return false;
+	});
+
+	$('#TxtNome').on("paste",function(e)
+	{
+	    e.preventDefault();
+	});
+
+
+	$("#TxtMail").on("keypress", function(event) {
+
+	    // Disallow anything not matching the regex pattern (A to Z uppercase, a to z lowercase and white space)
+	    // For more on JavaScript Regular Expressions, look here: https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions
+	    var englishAlphabetAndWhiteSpace = /[A-Za-z0-9 @._]/g;
+	   
+	    // Retrieving the key from the char code passed in event.which
+	    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
+	    var key = String.fromCharCode(event.which);
+	    
+	    //alert(event.keyCode);
+	    
+	    // For the keyCodes, look here: http://stackoverflow.com/a/3781360/114029
+	    // keyCode == 8  is backspace
+	    // keyCode == 37 is left arrow
+	    // keyCode == 39 is right arrow
+	    // englishAlphabetAndWhiteSpace.test(key) does the matching, that is, test the key just typed against the regex pattern
+        
+        // event.keyCode == 39 || APICE DISATTIVATO
+        // event.keyCode == 37 || PERCENTUALE DISATTIVATA
+        
+	    if (event.keyCode == 8 ||   englishAlphabetAndWhiteSpace.test(key)) {
+	        return true;
+	    }
+
+	    // If we got this far, just return false because a disallowed key was typed.
+	    return false;
+	});
+
+	$('#TxtMail').on("paste",function(e)
+	{
+	    e.preventDefault();
+	});
+
+    });
+	
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {        
+		// Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!');
+    }
+
+
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div data-role="page"  data-title="6 Tasti">
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
+<br />
+<div style="text-align:center; ">
+<img src="logosarabanda.png" style="width:40%" alt="Chi vuol esser Sarabanda?">
+</div>
+<div class="loginbox">
+<span style="top:20px; position:relative; font-family: Arial, Helvetica, sans-serif; color:white;">Nome Squadra :</span>
+<input id="TxtNome" type="text" placeholder="Nome Squadra"  style="position:relative; width:60%; height:30px; top:10px; float:right; margin-right:2%; text-transform: uppercase;" /><br />
+</div>
+<br />
+<div class="loginbox">
+<span style="top:20px; position:relative; font-family: Arial, Helvetica, sans-serif; color:white;">E-Mail :</span>
+<input id="TxtMail" type="text" placeholder="E-Mail"  style="position:relative; width:60%; height:30px; top:10px; float:right; margin-right:2%;" /><br />
+</div>
+<br/>
+<div style="text-align:center; ">
+<a href="#" onclick=" mYclick();" class="myButton">
+Invia
+</a>
+</div>
+
+</div>
+</body>
+</html>
