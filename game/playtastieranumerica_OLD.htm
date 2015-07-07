@@ -9,9 +9,11 @@
 <meta name="HandheldFriendly" content="true" />
 <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 <!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+ <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+ <link rel="stylesheet" href="assets/css/tastieranumerica.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
 
-<!-- Javascripts -->
-<script src="assets/js/jquery.1.7.1.min.js"></script>
 <script src="../phonegap.js"></script>
 
 <script src="checkcambiodomanda.js"></script>
@@ -27,46 +29,13 @@ body {
 user-select:none;
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
-.loginbox {
-background-color: #726e6e;
 
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-
--moz-box-shadow: inset -3px -4px 3px 3px #888888;
--webkit-box-shadow: inset -3px -4px 3px 3px #888888;
-box-shadow: inset -3px -4px 3px 3px #888888;
-height:60px;
-}
 body {
 	margin: 0;
 	padding: 0;
 	height: 100%;	
 }
-.myButton {
-	background-color:#44c767;
-	-moz-border-radius:15px;
-	-webkit-border-radius:15px;
-	border-radius:15px;
-	border:1px solid #18ab29;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:arial;
-	font-size:17px;
-	padding:16px 65px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2f6627;
 
-}
-.myButton:hover {
-	background-color:#5cbf2a;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
 .ui-page { background: #000000;}
 </style>
 
@@ -76,7 +45,6 @@ body {
 	var RicezioneOk = 0;
 	
     function mYclick() {
-	
 		if (RicezioneOk == 1) {
             return false;
         }
@@ -88,10 +56,15 @@ body {
 		
         login = localStorage.getItem("login");
 
-		var appoggio = $("#TxtRisposta").val();
-
-		tasto = appoggio.toUpperCase();
-											
+		var appoggio = $("#Mylabel").html();
+		if (appoggio.length > 17) {
+			tasto = appoggio.substring(17,appoggio.length);	
+			$("#Mylabel").html("La tua risposta :");
+		}
+		
+		
+				
+		
         var uri = 'http://' + serverip + '/assegnarisposta.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
 
@@ -130,44 +103,47 @@ body {
 		RicezioneOk = 0;
 		CambioPagina('N');
 		
+		$("#tasto1").on("tap",function(){		    		
+			tastopremuto('1');
+		});
+		$("#tasto2").on("tap",function(){		    
+			tastopremuto('2');
+		});
+		$("#tasto3").on("tap",function(){		    
+			tastopremuto('3');
+		});
+		$("#tasto4").on("tap",function(){		    
+			tastopremuto('4');
+		});
+		$("#tasto5").on("tap",function(){		    		
+			tastopremuto('5');
+		});
+		$("#tasto6").on("tap",function(){		    
+			tastopremuto('6');
+		});
+		$("#tasto7").on("tap",function(){		    
+			tastopremuto('7');
+		});
+		$("#tasto8").on("tap",function(){		    
+			tastopremuto('8');
+		});
+		$("#tasto9").on("tap",function(){		    
+			tastopremuto('9');
+		});
+		$("#tasto0").on("tap",function(){		    
+			tastopremuto('0');
+		});
+	    $("#tastoback").on("tap",function(){
+			tastopremuto('back');
+		});	
+
+		$("#invio").on("tap",function(){
+			mYclick();
+		});	
 		
 		$("#statusicon").on("tap", function () {
 		    VerificaPaginaServer('N');
 		});		
-
-		$("#TxtRisposta").on("keypress", function(event) {
-
-	    // Disallow anything not matching the regex pattern (A to Z uppercase, a to z lowercase and white space)
-	    // For more on JavaScript Regular Expressions, look here: https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions
-	    var englishAlphabetAndWhiteSpace = /[0-9]/g;
-	   
-	    // Retrieving the key from the char code passed in event.which
-	    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
-	    var key = String.fromCharCode(event.which);
-	    
-	    //alert(event.keyCode);
-	    
-	    // For the keyCodes, look here: http://stackoverflow.com/a/3781360/114029
-	    // keyCode == 8  is backspace
-	    // keyCode == 37 is left arrow
-	    // keyCode == 39 is right arrow
-	    // englishAlphabetAndWhiteSpace.test(key) does the matching, that is, test the key just typed against the regex pattern
-        
-        // event.keyCode == 39 || APICE DISATTIVATO
-        // event.keyCode == 37 || PERCENTUALE DISATTIVATA
-        
-	    if (event.keyCode == 8 ||   englishAlphabetAndWhiteSpace.test(key)) {
-	        return true;
-	    }
-
-	    // If we got this far, just return false because a disallowed key was typed.
-	    return false;
-	});
-
-	$('#TxtRisposta').on("paste",function(e)
-	{
-	    e.preventDefault();
-	});
     });
 	
 		document.addEventListener("deviceready", onDeviceReady, false);
@@ -205,19 +181,33 @@ body {
 <div data-role="page"  data-title="6 Tasti">
 <img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
 <br />
-<div style="text-align:center; ">
-<img src="logosarabanda.png" style="width:40%" alt="Chi vuol esser Sarabanda?">
-</div>
-<div class="loginbox">
-<span style="top:20px; position:relative; font-family: Arial, Helvetica, sans-serif; color:white;">Risposta</span>
-<input id="TxtRisposta" type="text" placeholder="risposta" pattern="[A-Z]"  style="position:relative; width:60%; height:30px; top:10px; float:right; margin-right:2%; text-transform: uppercase;" /><br />
-</div>
-<br />
-<div style="text-align:center; ">
-<a href="#" onclick=" mYclick();" class="myButton">
-Invia
-</a>
-</div>
+<label id="Mylabel" style="position: relative; color:white;">La tua risposta :</label>
+
+<div id="keyboard">
+    	<ul class="cf" id="qwerty">
+	    	<li><a href="#" id="tasto7" class="key c65"><span>7</span></a></li>
+			<li><a href="#" id="tasto8" class="key c66"><span>8</span></a></li>
+			<li><a href="#" id="tasto9" class="key c67"><span>9</span></a></li>			
+		</ul>
+		<ul class="cf" id="qwerty">				
+			<li><a href="#" id="tasto4" class="key c70"><span>4</span></a></li>
+			<li><a href="#" id="tasto5" class="key c71"><span>5</span></a></li>
+			<li><a href="#" id="tasto6" class="key c72"><span>6</span></a></li>						
+		</ul>
+		<ul class="cf" id="qwerty">				    
+			<li><a href="#" id="tasto1" class="key c75"><span>1</span></a></li>
+	    	<li><a href="#" id="tasto2" class="key c76"><span>2</span></a></li>
+	    	<li><a href="#" id="tasto3" class="key c77"><span>3</span></a></li>	    		    	
+		</ul>		
+        <ul class="cf" id="qwerty">
+	    	<li><a href="#"  id="tasto0" class="key c90"><span>0</span></a></li>	  
+			<li><a href="#"  id="tastoback" class="key enter" ><span>Canc.</span></a></li>	  
+			<li><a href="#"  id="invio" class="key enter"><span>Invio</span></a></li>	  						
+        </ul>
+		<ul class="cf" id="bottomrow">
+      
+  </ul>
+    </div>
 
 </div>
 </body>
