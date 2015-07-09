@@ -5,7 +5,7 @@
         version     = "2.2.0" >
 
 <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-    <string>220</string>
+    <string>221</string>
 </gap:config-file>
 
 	<gap:platform name="ios" />
