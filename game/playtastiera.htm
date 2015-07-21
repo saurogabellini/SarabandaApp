@@ -89,9 +89,21 @@ body {
         login = localStorage.getItem("login");
 
 		var appoggio = $("#TxtRisposta").val();
-	$("#TxtRisposta").val("");
+		$("#TxtRisposta").val("");
 
 		tasto = appoggio.toUpperCase();
+		
+		appoggio="";
+		for (i=0; i< tasto.length; i++)
+			{
+				var englishAlphabetAndWhiteSpace = /[A-Za-z ]/g;
+
+				if (englishAlphabetAndWhiteSpace.test(tasto.charAt(i))) {
+	        		appoggio = appoggio + tasto.charAt(i);
+	    		}
+		}
+
+		tasto=appoggio;
 											
         var uri = 'http://' + serverip + '/assegnarisposta.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
@@ -136,39 +148,39 @@ body {
 		    VerificaPaginaServer('T');
 		});		
 
-		$("#TxtRisposta").on("keydown", function(event) {
+		// $("#TxtRisposta").on("keydown", function(event) {
 
-	    // Disallow anything not matching the regex pattern (A to Z uppercase, a to z lowercase and white space)
-	    // For more on JavaScript Regular Expressions, look here: https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions
-	    var englishAlphabetAndWhiteSpace = /[A-Za-z ]/g;
+	 //    // Disallow anything not matching the regex pattern (A to Z uppercase, a to z lowercase and white space)
+	 //    // For more on JavaScript Regular Expressions, look here: https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions
+	 //    var englishAlphabetAndWhiteSpace = /[A-Za-z ]/g;
 	   
-	    // Retrieving the key from the char code passed in event.which
-	    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
-	    var key = String.fromCharCode(event.which);
+	 //    // Retrieving the key from the char code passed in event.which
+	 //    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
+	 //    var key = String.fromCharCode(event.which);
 	    
-	    //alert(event.keyCode);
+	 //    //alert(event.keyCode);
 	    
-	    // For the keyCodes, look here: http://stackoverflow.com/a/3781360/114029
-	    // keyCode == 8  is backspace
-	    // keyCode == 37 is left arrow
-	    // keyCode == 39 is right arrow
-	    // englishAlphabetAndWhiteSpace.test(key) does the matching, that is, test the key just typed against the regex pattern
+	 //    // For the keyCodes, look here: http://stackoverflow.com/a/3781360/114029
+	 //    // keyCode == 8  is backspace
+	 //    // keyCode == 37 is left arrow
+	 //    // keyCode == 39 is right arrow
+	 //    // englishAlphabetAndWhiteSpace.test(key) does the matching, that is, test the key just typed against the regex pattern
         
-        // event.keyCode == 39 || APICE DISATTIVATO
-        // event.keyCode == 37 || PERCENTUALE DISATTIVATA
+  //       // event.keyCode == 39 || APICE DISATTIVATO
+  //       // event.keyCode == 37 || PERCENTUALE DISATTIVATA
         
-	    if (event.keyCode == 8 ||   englishAlphabetAndWhiteSpace.test(key)) {
-	        return true;
-	    }
+	 //    if (event.keyCode == 8 ||   englishAlphabetAndWhiteSpace.test(key)) {
+	 //        return true;
+	 //    }
 
-	    // If we got this far, just return false because a disallowed key was typed.
-	    return false;
-	});
+	 //    // If we got this far, just return false because a disallowed key was typed.
+	 //    return false;
+		// });
 
-	$('#TxtRisposta').on("paste",function(e)
-	{
-	    e.preventDefault();
-	});
+		// $('#TxtRisposta').on("paste",function(e)
+		// {
+	 //    e.preventDefault();
+		// });
     });
 	
 		document.addEventListener("deviceready", onDeviceReady, false);
