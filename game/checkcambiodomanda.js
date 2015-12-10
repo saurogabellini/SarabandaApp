@@ -81,10 +81,12 @@ function CambioPagina(pagina) {
 
         var uri = 'http://' + serverip + '/cambiapagina.ashx';
 
+	//Inserito TimeOut a 3 secondi
 
         $.ajax({
             cache: false,
             dataType: "text",
+	    timeout: 3000,
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
                     x.overrideMimeType("application/json;charset=UTF-8");
@@ -92,19 +94,19 @@ function CambioPagina(pagina) {
             },
             url: uri,
             success: function(data) {
-			if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-				$("#statusicon").attr('src','assets/images/ok.png');
-			}
-			VerificaPagina(data,pagina);
+		if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+		    $("#statusicon").attr('src','assets/images/ok.png');
+		}
+		VerificaPagina(data,pagina);
            },
             error: function(jqXHR, textStatus, errorThrown) {
-			$("#statusicon").attr('src','assets/images/error.png');
-                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+		$("#statusicon").attr('src','assets/images/error.png');
             }
         });
         
 
     };
-    setInterval(doStuff, 1500);
 
+    // portato a 3 secondi da 1,5 l'intervallo di richiesta
+    setInterval(doStuff, 3000);
 }
