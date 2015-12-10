@@ -130,6 +130,35 @@ body {
     }
 
     $(document).ready(function() {  
+
+
+	
+	var login = "";
+				       
+		
+        login = localStorage.getItem("login");
+
+        var uri = 'http://' + serverip + '/nomesquadra.ashx?CODICE=' + login;
+
+
+        $.ajax({
+            cache: false,
+            dataType: "text",
+	    timeout: 1500,
+            beforeSend: function(x) {
+                if (x && x.overrideMimeType) {
+                    x.overrideMimeType("application/json;charset=UTF-8");
+                }
+            },
+            url: uri,
+            success: function(data) {
+                    $('#TxtNome').val(data);
+	    },
+            error: function(jqXHR, textStatus, errorThrown) {
+		
+		$("#statusicon").attr('src','assets/images/error.png');	
+            }
+        });
 					
 
 	$("#TxtNome").on("keypress", function(event) {
@@ -208,7 +237,7 @@ body {
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
     function onDeviceReady() {        
-		// Register the event listener
+	// Register the event listener
         document.addEventListener("backbutton", onBackKeyDown, false);
     }
 
