@@ -40,7 +40,7 @@
         Sauro Gabellini
     </author>
 
-    
+    <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="org.apache.cordova.vibration"  />
 	<gap:plugin name="nl.x-services.plugins.insomnia" version="4.0.1" />
 	<access origin="*" />
