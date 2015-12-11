@@ -86,7 +86,7 @@ function CambioPagina(pagina) {
         $.ajax({
             cache: false,
             dataType: "text",
-	    timeout: 3000,
+	        timeout: 3000,
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
                     x.overrideMimeType("application/json;charset=UTF-8");

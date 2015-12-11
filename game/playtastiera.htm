@@ -111,6 +111,7 @@ body {
         $.ajax({
             cache: false,
             //type: "POST",
+            timeout: 3000,
             dataType: "text",
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {

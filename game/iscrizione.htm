@@ -103,6 +103,7 @@ body {
         $.ajax({
             cache: false,
             //type: "POST",
+            timeout: 3000,
             dataType: "text",
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
@@ -144,7 +145,7 @@ body {
         $.ajax({
             cache: false,
             dataType: "text",
-	    timeout: 1500,
+	        timeout: 1500,
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
                     x.overrideMimeType("application/json;charset=UTF-8");
@@ -153,10 +154,10 @@ body {
             url: uri,
             success: function(data) {
                     $('#TxtNome').val(data);
-	    },
+		    },
             error: function(jqXHR, textStatus, errorThrown) {
 		
-		$("#statusicon").attr('src','assets/images/error.png');	
+			$("#statusicon").attr('src','assets/images/error.png');	
             }
         });
 					
