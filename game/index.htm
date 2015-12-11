@@ -101,7 +101,7 @@ height:60px;
                     alert('PASSWORD ERRATA');
                 }
                 else {				
-		            //window.plugins.insomnia.keepAwake();                    
+		            window.plugins.insomnia.keepAwake();                    
                     localStorage.setItem("login", login.toUpperCase());
                     if (login.toUpperCase().slice(-1) == 'E') {
                     document.location.href = 'play.htm';
