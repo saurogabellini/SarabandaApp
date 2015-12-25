@@ -18,6 +18,7 @@
     <script src="assets/uitouch/jquery.ui.touch-punch.min.js"></script>
 
 	<script src="checkcambiodomanda.js"></script>
+	<script src="JSErrore.js"></script>
 	<script src="../phonegap.js"></script>
 <!-- / Javascripts -->
 <style>
@@ -152,14 +153,13 @@ body {
         login = localStorage.getItem("login");
 
 
-        var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + risultato  + '&Squadra=' + login;
+        var uri = 'http://' + serverip + '/new_assegnarispostav.ashx?Risposta=' + risultato  + '&Squadra=' + login;
 
 
         $.ajax({
             cache: false,
             //type: "POST",
             dataType: "text",
-            timeout: 3000,
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
                     x.overrideMimeType("application/json;charset=UTF-8");
@@ -169,17 +169,21 @@ body {
             success: function(data) {
 					RicezioneOk = 0;
                                        
-                    VerificaPagina(data, 'M5');
+                    if (data == "RS") {
+
+						VisualizzaErrore('RISPOSTO');
+					}
 					
 					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
 						$("#statusicon").attr('src','assets/images/ok.png');
+						$("#statoconnessione").html("Connesso...");
 					}
 					navigator.notification.vibrate(250);
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				RicezioneOk = 0;
 				$("#statusicon").attr('src','assets/images/error.png');
-		
+				$("#statoconnessione").html("ERRORE CONNESSIONE");		
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
             }
         });
@@ -224,7 +228,7 @@ body {
 <body bgcolor="#000000">
 <div data-role="page"  data-title="Prenota">
     <div data-role="content" data-theme="c">
-        <img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">        
+        <img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px; top:2%;">        
         <br />
         <br />
             <table style="width:100%;  ">
@@ -250,13 +254,16 @@ body {
                     </td>
                 </tr>
             </table>        
-    <br/>
-    <br />
+    <br/>    
     <br />
     <div style="text-align:center;    top:10px;">
         <a href="#" onclick="mYclick();" class="myButton">Invia</a>
     </div>
     </div>
+
+    <div data-role="footer" data-position="fixed" style="background-color:red; height:20px;">
+	<span id="statoconnessione" style="color:white; font-size:small;font-weight:0;">Connesso...</span>
+</div>
 </div>
   
 </body>

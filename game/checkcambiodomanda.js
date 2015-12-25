@@ -1,4 +1,6 @@
-﻿function VerificaPagina(data,pagina) {
+﻿var nononline =0;
+
+function VerificaPagina(data,pagina) {
 		if (data == '4' && pagina != data){
 			document.location.href = 'play.htm';
 		}
@@ -44,6 +46,9 @@
 		if (data == 'CH' && pagina != data) {			
 			document.location.href = 'chat.htm';
 		}
+		if (data == 'LG' && pagina != data) {			
+			document.location.href = 'index.htm';
+		}
 }
 
 function VerificaPaginaServer(pagina)
@@ -62,13 +67,15 @@ function VerificaPaginaServer(pagina)
             },
             url: uri,
             success: function(data) {
-			if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-				$("#statusicon").attr('src','assets/images/ok.png');
-			}
-			VerificaPagina(data,pagina);
-           },
+					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+						$("#statusicon").attr('src','assets/images/ok.png');
+						$("#statoconnessione").html("Connesso...");
+					}
+					VerificaPagina(data,pagina);
+		           },
             error: function(jqXHR, textStatus, errorThrown) {
-			$("#statusicon").attr('src','assets/images/error.png');
+				  $("#statusicon").attr('src','assets/images/error.png');
+				  $("#statoconnessione").html("ERRORE CONNESSIONE");				
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
             }
         });
@@ -77,7 +84,7 @@ function VerificaPaginaServer(pagina)
 function CambioPagina(pagina) {
 
     var doStuff = function() {
-        RicezioneOk = 0;
+        RicezioneOk = 1;
 
         var uri = 'http://' + serverip + '/cambiapagina.ashx';
 
@@ -86,7 +93,7 @@ function CambioPagina(pagina) {
         $.ajax({
             cache: false,
             dataType: "text",
-	        timeout: 3000,
+	    	timeout: 3000,
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
                     x.overrideMimeType("application/json;charset=UTF-8");
@@ -94,13 +101,21 @@ function CambioPagina(pagina) {
             },
             url: uri,
             success: function(data) {
-		if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-		    $("#statusicon").attr('src','assets/images/ok.png');
-		}
-		VerificaPagina(data,pagina);
-           },
+            	RicezioneOk = 0;
+				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+				    $("#statusicon").attr('src','assets/images/ok.png');
+				    $("#statoconnessione").html("Connesso...");
+				}
+				VerificaPagina(data,pagina);
+	        },
             error: function(jqXHR, textStatus, errorThrown) {
-		$("#statusicon").attr('src','assets/images/error.png');
+            	RicezioneOk = 0;
+				$("#statusicon").attr('src','assets/images/error.png');
+				$("#statoconnessione").html("ERRORE CONNESSIONE");				
+				nononline++;
+				if (nononline > 10) {
+					document.location.href = 'index.htm';
+				}
             }
         });
         

@@ -57,7 +57,7 @@ body {
 
         $.ajax({
             cache: false,
-            timeout: 3000,
+            timeout: 3000,            
             //type: "POST",
             dataType: "text",
             beforeSend: function(x) {
@@ -141,12 +141,17 @@ body {
 <body bgcolor="#000000">
 <div data-role="page"  data-title="Up Down">
 
-<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px; top:2%;">
 
 
 <img src="assets/images/icons/Up.png" id="ImgA"  style="position:absolute; top:10%; left:10%; height:25%;">
 
-<img src="assets/images/icons/down.png" id="ImgD"  style="position:absolute; top:70%; right:10%; height:25%;">
+<img src="assets/images/icons/down.png" id="ImgD"  style="position:absolute; top:60%; right:10%; height:25%;">
+
+<div data-role="footer" data-position="fixed" style="background-color:red; height:20px;">
+    <span id="statoconnessione" style="color:white; font-size:small;font-weight:0;">Connesso...</span>
+</div>
+
 </div>
   
 </body>

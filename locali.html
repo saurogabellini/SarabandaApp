@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+  <head>
+    <title>
+      Sarabanda
+    </title>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="x-ua-compatible">
+    <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/keyframes.css" rel="stylesheet" type="text/css">
+    <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="m-scene" id="main"> <!-- Page Container -->
+
+      <!-- Sidebars -->
+      <div class="snap-drawers">
+
+        <!-- Left Sidebar -->
+        <div class="snap-drawer snap-drawer-left">
+          <div class="drawer-inner">
+            <ul>
+              <li><a href="index.html"><i class="mdi mdi-home"></i> <span>Home</span></a></li>
+              <li><a href="login.html"><i class="mdi mdi-account"></i> <span>Login</span></a></li>
+              <li><a href="regole.html"><i class="mdi mdi-book-open"></i> <span>Regole</span></a></li>
+              <li><a href="serate.html"><i class="mdi mdi-file-image-box"></i> <span>Serate</span></a></li>                            
+              <li><a href="contacts.html"><i class="mdi mdi-map-marker"></i> <span>Locali</span></a></li>
+              </ul>
+
+            <ul class="exit">
+              <li>
+                <a href="login.html"><i class="mdi mdi-exit-to-app"></i> <span>Logout</span></a>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- End of Left Sidebar -->
+      </div> <!-- End of Sidebars -->
+      
+
+      <!-- Page Content -->
+      <div class="snap-content z-depth-5" id="content">
+
+        <!-- Toolbar -->
+        <div id="toolbar">
+          <div class="open-left" id="open-left">
+            <i class="mdi mdi-sort-variant"></i>
+          </div>
+          <span class="title">Locali</span>          
+        </div>
+
+        <div class="scene_element scene_element--fadeinup">
+          
+          <!-- Profile HEader -->
+          <div class="profile-header">
+            <img alt="" src="img/13.jpg">
+            <div class="overlay-gradient">
+            </div>
+            <div class="contact profile-user" style="bottom:0;">
+              <img alt="" src="img/user8.jpg">
+              <h4 class="white-text">
+                Locali
+              </h4>
+            </div>
+          </div>
+
+          <div class="container">
+ 
+
+            <div class="profile-description">
+                <div id="elencolocali"></div>
+            </div>
+
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+                   <br />
+          <br />
+          <br />
+          <br />
+          
+          <!-- Footer -->
+          <div class="scene_element scene_element--fadeinup footer-copyright primary-color">
+            <div class="container">   
+            </div>
+          </div>
+
+        </div> <!-- End of Main Contents -->
+        <div id="blockui"></div>
+      </div> <!-- End of Page Content -->
+    </div> <!-- End of Page Container -->
+  
+    <script src="js/jquery-2.1.4.min.js"></script> 
+    <script>
+      $(function() {
+        var div = $('.box');
+        var width = div.width();
+        div.css('height', width);
+      });
+
+
+  </script>   
+    <script src="js/materialize.min.js"></script> 
+    <script src="js/snap.js"></script> 
+    <script src="js/jquery.smoothState.min.js"></script> 
+    <script src="js/sidebar.js"></script> 
+    <script src="js/functions.js"></script>
+  </body>
+</html>

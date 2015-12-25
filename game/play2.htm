@@ -14,7 +14,7 @@
 <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
 
 <script src="../phonegap.js"></script>
-
+<script src="JSErrore.js"></script>
 <script src="checkcambiodomanda.js"></script>
 <!-- / Javascripts -->
 <style>
@@ -54,13 +54,13 @@ body {
         login = localStorage.getItem("login");
 
 
-        var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
+        var uri = 'http://' + serverip + '/new_assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
 
         $.ajax({
             cache: false,
-            timeout: 3000,
             //type: "POST",
+            timeout: 3000,
             dataType: "text",
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
@@ -80,13 +80,19 @@ body {
 				}					
 				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
 					$("#statusicon").attr('src','assets/images/ok.png');
+					$("#statoconnessione").html("Connesso...");
 				}
-				VerificaPagina(data,'B');
+				if (data == "RS") {
+
+					VisualizzaErrore('RISPOSTO');
+				}
+
 				navigator.notification.vibrate(250);
 			
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				RicezioneOk = 0;
+				$("#statoconnessione").html("ERRORE CONNESSIONE");
 				$("#statusicon").attr('src','assets/images/error.png');
 		
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
@@ -130,12 +136,18 @@ body {
 <body bgcolor="#000000">
 <div data-role="page"  data-title="Up Down">
 
-<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;  top:2%;">
 
 
 <img src="assets/images/icons/A.png" id="ImgA"  style="position:absolute; top:10%; left:10%; height:25%;">
 
-<img src="assets/images/icons/B.png" id="ImgB"  style="position:absolute; top:70%; right:10%; height:25%;">
+<img src="assets/images/icons/B.png" id="ImgB"  style="position:absolute; top:60%; right:10%; height:25%;">
+
+
+<div data-role="footer" data-position="fixed" style="background-color:red; height:20px;">
+	<span id="statoconnessione" style="color:white; font-size:small;font-weight:0;">Connesso...</span>
+</div>
+
 </div>
   
 </body>

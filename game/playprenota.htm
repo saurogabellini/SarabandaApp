@@ -14,7 +14,7 @@
 <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
 
 <script src="../phonegap.js"></script>
-
+<script src="JSErrore.js"></script>
 <script src="checkcambiodomanda.js"></script>
 <!-- / Javascripts -->
 <style>
@@ -55,12 +55,11 @@ body {
         login = localStorage.getItem("login");
 
 
-        var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
+        var uri = 'http://' + serverip + '/new_assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
 
         $.ajax({
             cache: false,
-            timeout: 3000,
             //type: "POST",
             dataType: "text",
             beforeSend: function(x) {
@@ -93,8 +92,11 @@ body {
                     }					
 					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
 						$("#statusicon").attr('src','assets/images/ok.png');
+                        $("#statoconnessione").html("Connesso...");
 					}
-					VerificaPagina(data,'0');
+					if (data == "RS") {
+                        VisualizzaErrore('RISPOSTO');
+                    }
 					navigator.notification.vibrate(250);
 					
             },
@@ -143,12 +145,14 @@ body {
 <body bgcolor="#000000">
 <div data-role="page"  data-title="Up Down">
 
-<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;">
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px; top:2%;">
 
 
 <img src="assets/images/icons/P.png" id="ImgP"  style="width:50%; position:absolute; top:25%; left:25%; ">
 
-
+<div data-role="footer" data-position="fixed" style="background-color:red; height:20px;">
+    <span id="statoconnessione" style="color:white; font-size:small;font-weight:0;">Connesso...</span>
+</div>
 </div>
   
 </body>

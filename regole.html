@@ -1,106 +1,131 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="author" content="www.frebsite.nl" />
-		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+<html lang="it-IT">
+  <head>
+    <title>
+      Sarabanda
+    </title>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="x-ua-compatible">
+    <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href="css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/keyframes.css" rel="stylesheet" type="text/css">
+    <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="m-scene" id="main"> <!-- Page Container -->
 
-		<title>Regole</title>
-		<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+      <!-- Sidebars -->
+      <div class="snap-drawers">
 
-		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
-		<link type="text/css" rel="stylesheet" href="css/style.css" />
+        <!-- Left Sidebar -->
+        <div class="snap-drawer snap-drawer-left">
+          <div class="drawer-inner">
+            <ul>
+              <li><a href="index.html"><i class="mdi mdi-home"></i> <span>Home</span></a></li>
+              <li><a href="login.html"><i class="mdi mdi-account"></i> <span>Login</span></a></li>
+              <li><a href="regole.html"><i class="mdi mdi-book-open"></i> <span>Regole</span></a></li>
+              <li><a href="serate.html"><i class="mdi mdi-file-image-box"></i> <span>Serate</span></a></li>                            
+              <li><a href="contacts.html"><i class="mdi mdi-map-marker"></i> <span>Locali</span></a></li>
+              </ul>
 
-		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-		<link rel="apple-touch-startup-image" href="img/apple-touch-startup-image.png">
-		
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
-		<script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
-		<script type="text/javascript" src="js/o-script.js"></script>
-    <style>
-    	.subFooter {
-	    position: fixed !important;
-	    bottom: 0px;
-	    width: 100%;
-	}
-	</style>
-	</head>
-	<body class="o-page p-product-single">
-		<div id="page">
-			<div id="header">
-				<div class="header-content">
-					<a href="index.html" class="p-link-home"><i class="fa fa-home"></i></a>
-					<a class="menu-btn" href="#menu"></a>
-					<a href="javascript:history.back();" class="p-link-back"><i class="fa fa-arrow-left"></i></a>
-				</div>
-			</div>
-			<div id="content">
-				
-				<article>
-					<img src="img/gallery/2.jpg" />
-					
-					<div class="prod-single-content-h">
-						<div class="prod-pricePane">
-							<h2>Chi Vuol Esser Sarabanda?</h2>
-						</div>										
-					</div>
-					<div class="prod-single-content">
-						<h2><a href="#">Regole</a></h2>
-						<br/>
-						<p>
-							<b>1)</b> È un gioco a squadre. <br/>
-							<b>2)</b> Ogni squadra può giocare con un dispositivo che abbia il sistema operativo Android, Ios o Windows Phone.<br/>
-							<b>3)</b> Per giocare basta scaricare dallo store l’applicazione SarabandaApp e loggarsi con il proprio codice personale.<br/>
-							<b>4)</b> Il gioco consiste nel rispondere ad alcune domande di cultura generale selezionando, sulla propria tastiera, quella corretta tra le opzioni che compaiono.<br/>
-							<b>5)</b> La squadra che risponde più velocemente delle altre guadagna 30 punti, la seconda 29 e così via a scalare. Se la squadra non risponde  correttamente alla domanda perde 5 punti. Se non risponde affatto il suo punteggio rimane invariato.<br/>
-							<b>6)</b> Le domande speciali hanno un calcolo di punteggio particolare che verrà spiegato durante lo svolgimento del gioco.
-						</p>
-						<br/>
-						<br/>
-						<br/>
-					</div>					
-				</article>
+            <ul class="exit">
+              <li>
+                <a href="login.html"><i class="mdi mdi-exit-to-app"></i> <span>Logout</span></a>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- End of Left Sidebar -->
+      </div> <!-- End of Sidebars -->
+      
 
-			</div>
-			<div class="subFooter">www.chivuolessersarbanda.com</div>
-			
-			<!-- Menu navigation -->
-			<nav id="menu">
-				<ul>
-					<li class="Selected">
-						<a href="index.html" rel="external">
-							<i class="fa fa-home"></i>Inizio
-						</a>
-					</li>
-					<li>
-						<a href="ChiSiamo.html" rel="external">
-							<i class="fa fa-question"></i>Info
-						</a>
-					</li>
-					<li>
-						<a href="regole.html" rel="external">
-							<i class="fa fa-check"></i>Regole
-						</a>
-					</li>					
-					<li>
-						<a href="Tornei.html" rel="external">
-							<i class="fa fa-users"></i>Tornei
-						</a>
-					</li>
-					<li>
-						<a href="Serate.html" rel="external">
-							<i class="fa fa-calendar"></i>Serate
-						</a>
-					</li>
-					<li>
-						<a href="Gioca.html" rel="external">
-							<i class="fa fa-puzzle-piece"></i>Gioca
-						</a>
-					</li>
-				</ul>
-			</nav>
-			
-		</div>
-	</body>
+      <!-- Page Content -->
+      <div class="snap-content z-depth-5" id="content">
+
+        <!-- Toolbar -->
+        <div id="toolbar">
+          <div class="open-left" id="open-left">
+            <i class="mdi mdi-sort-variant"></i>
+          </div>
+          <span class="title">Regole</span>          
+        </div>
+
+        <div class="scene_element scene_element--fadeinup">
+          
+          <!-- Profile HEader -->
+          <div class="profile-header">
+            <img alt="" src="img/13.jpg">
+            <div class="overlay-gradient">
+            </div>
+            <div class="contact profile-user" style="bottom:0;">
+              <img alt="" src="img/user8.jpg">
+              <h4 class="white-text">
+                SarabandaApp
+              </h4>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="social-counter">
+              <i class="mdi mdi-twitter"></i><br>              
+              <span>
+              <a href="https://twitter.com/CVESarabanda">CVESarabanda</a>
+              </span>
+            </div>
+
+            <div class="social-counter last">
+              <i class="mdi mdi-facebook"></i><br>              
+              <span>
+                <a href="https://www.facebook.com/ChiVuolEsserSarabanda/?fref=ts">
+                   FaceBook Page
+                </a>
+              </span>
+            </div>
+            
+
+            <div class="profile-description">
+              <h4 class="paragraph-title">
+                Regole
+              </h4>
+
+          <p>
+              <b>1)</b> È un gioco a squadre. <br/>
+              <b>2)</b> Ogni squadra può giocare con un dispositivo che abbia il sistema operativo Android, Ios o Windows Phone.<br/>
+              <b>3)</b> Per giocare basta scaricare dallo store l’applicazione SarabandaApp e loggarsi con il proprio codice personale.<br/>
+              <b>4)</b> Il gioco consiste nel rispondere ad alcune domande di cultura generale selezionando, sulla propria tastiera, quella corretta tra le opzioni che compaiono.<br/>
+              <b>5)</b> La squadra che risponde più velocemente delle altre guadagna 30 punti, la seconda 29 e così via a scalare. Se la squadra non risponde  correttamente alla domanda perde 5 punti. Se non risponde affatto il suo punteggio rimane invariato.<br/>
+              <b>6)</b> Le domande speciali hanno un calcolo di punteggio particolare che verrà spiegato durante lo svolgimento del gioco.
+            </p>
+            </div>
+          </div>
+
+          
+          <!-- Footer -->
+          <div class="scene_element scene_element--fadeinup footer-copyright primary-color">
+            <div class="container">   
+            </div>
+          </div>
+
+        </div> <!-- End of Main Contents -->
+        <div id="blockui"></div>
+      </div> <!-- End of Page Content -->
+    </div> <!-- End of Page Container -->
+  
+    <script src="js/jquery-2.1.4.min.js"></script> 
+    <script>
+      $(function() {
+        var div = $('.box');
+        var width = div.width();
+        div.css('height', width);
+      });
+    </script> 
+    <script src="js/materialize.min.js"></script> 
+    <script src="js/snap.js"></script> 
+    <script src="js/jquery.smoothState.min.js"></script> 
+    <script src="js/sidebar.js"></script> 
+    <script src="js/functions.js"></script>
+  </body>
 </html>

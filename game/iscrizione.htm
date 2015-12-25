@@ -27,16 +27,14 @@ user-select:none;
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 .loginbox {
-background-color: #726e6e;
-
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-
--moz-box-shadow: inset -3px -4px 3px 3px #888888;
--webkit-box-shadow: inset -3px -4px 3px 3px #888888;
-box-shadow: inset -3px -4px 3px 3px #888888;
-height:100px;
+	margin-left: 10%;
+	width: 80%;
+	height: 180px;
+	border: 0px rgb(89,89,89) solid;
+	background: rgb(255,255,255);
+	-moz-box-shadow:  5px 6px 7px 4px rgb(128,128,128);
+	-webkit-box-shadow:  5px 6px 7px 4px rgb(128,128,128);
+	box-shadow:  5px 6px 7px 4px rgb(128,128,128);
 }
 body {
 	margin: 0;
@@ -44,19 +42,19 @@ body {
 	height: 100%;	
 }
 .myButton {
-	background-color:#44c767;
-	-moz-border-radius:15px;
-	-webkit-border-radius:15px;
-	border-radius:15px;
+	background-color:#20B2AA !important;
+	
 	border:1px solid #18ab29;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:arial;
 	font-size:17px;
-	padding:16px 65px;
+	padding:14px 65px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #2f6627;
+	width:40%;
+	margin-top: 40px;
 
 }
 .myButton:hover {
@@ -103,7 +101,6 @@ body {
         $.ajax({
             cache: false,
             //type: "POST",
-            timeout: 3000,
             dataType: "text",
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
@@ -145,7 +142,7 @@ body {
         $.ajax({
             cache: false,
             dataType: "text",
-	        timeout: 1500,
+	    timeout: 1500,
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
                     x.overrideMimeType("application/json;charset=UTF-8");
@@ -154,10 +151,14 @@ body {
             url: uri,
             success: function(data) {
                     $('#TxtNome').val(data);
-		    },
+                    if (data.trim() != '') 
+                    {                       	
+                    	$('#TxtNome').attr('disabled','disabled');
+                    }
+	    },
             error: function(jqXHR, textStatus, errorThrown) {
 		
-			$("#statusicon").attr('src','assets/images/error.png');	
+		$("#statusicon").attr('src','assets/images/error.png');	
             }
         });
 					
@@ -259,23 +260,23 @@ body {
 <br />
 <br />
 <div style="text-align:center; ">
-<img src="logosarabandaiscrizione.png" style="width:40%" alt="Chi vuol esser Sarabanda?">
+<img src="star.png" style="width:60%" alt="Chi vuol esser Sarabanda?">
 </div>
 <br />
 <br />
 <div class="loginbox">
-<span style="top:20px; position:relative; font-family: Arial, Helvetica, sans-serif; color:white;">Nome Team :</span>
-<input id="TxtNome" type="text" placeholder="Nome Squadra"  style="position:relative; width:60%; height:30px; top:10px; float:right; margin-right:2%; text-transform: uppercase;" /><br />
-
-<span style="top:40px; position:relative; font-family: Arial, Helvetica, sans-serif; color:white;">E-Mail :</span>
-<input id="TxtMail" type="text" placeholder="E-Mail"  style="position:relative; width:60%; height:30px; top:10px; float:right; margin-right:2%;" /><br />
-</div>
+<input id="TxtNome" type="text" placeholder="Nome Squadra"  style="position:relative; width:90%; height:30px; top:10px; float:right; margin-right:2%; text-transform: uppercase;" /><br />
 <br/>
+
+<input id="TxtMail" type="text" placeholder="E-Mail"  style="position:relative; width:90%; height:30px; top:10px; float:right; margin-right:2%;" />
+
 <div style="text-align:center; ">
 <a href="#" onclick=" mYclick();" class="myButton">
 Invia
 </a>
 </div>
+</div>
+
 
 </div>
 </body>
