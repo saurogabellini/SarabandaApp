@@ -15,7 +15,8 @@
     <access origin="*" />
     <access origin="10.0.0.1" />
 
-    
+    <allow-intent href="*" />
+<allow-navigation href="*" />
 
     <name>Sarabanda App</name>
     <icon src="icon.png" gap:platform="ios" width="57" height="57" />
