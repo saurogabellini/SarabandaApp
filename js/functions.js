@@ -248,8 +248,7 @@ function get_foto() {
             },
             url: uri,
             success: function(data) {
-                localStorage.setItem("codicelogged", data); 
-                alert(data);
+                localStorage.setItem("codicelogged", data);                 
                 get_nome();                 
                 
             },
