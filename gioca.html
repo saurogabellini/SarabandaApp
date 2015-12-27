@@ -14,7 +14,7 @@
     <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="game/assets/js/jquery.1.7.1.min.js"></script>
-    <script src="../phonegap.js"></script>
+    <script src="phonegap.js"></script>
     <script  type="text/javascript">
     var serverip = '10.0.0.1';
   
@@ -91,7 +91,7 @@
                     alert('PASSWORD ERRATA');
                 }
                 else {        
-                    window.plugins.insomnia.keepAwake();                    
+                    //window.plugins.insomnia.keepAwake();                    
                     localStorage.setItem("loginUser", login.toUpperCase());
                     var codicelogged = '';
 
