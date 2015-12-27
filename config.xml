@@ -37,6 +37,7 @@
         Sauro Gabellini
     </author>
 
+    <plugin name="org.apache.cordova.camera" spec="0.3.6" source="pgb" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="org.apache.cordova.vibration"  />
 	<gap:plugin name="nl.x-services.plugins.insomnia"/>
