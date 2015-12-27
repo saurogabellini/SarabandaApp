@@ -314,7 +314,7 @@ function get_foto() {
             cache: false,
             //type: "POST",            
             dataType: "text",
-            timeout: 30000,
+            //timeout: 30000,
             beforeSend: function(x) {
                 if (x && x.overrideMimeType) {
                     x.overrideMimeType("application/json;charset=UTF-8");
