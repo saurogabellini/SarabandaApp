@@ -64,7 +64,11 @@ $(function(){
   $('.splash').each(function(){        
     $(this).css('max-height', document.documentElement.clientHeight-56);
     $(this).css('min-height', document.documentElement.clientHeight-56);
-  })
+  });
+  $('.bottom').each(function(){            
+        $(this).css('top', document.documentElement.clientHeight-114-56);        
+  });        
+
 });
 
 $(function(){
