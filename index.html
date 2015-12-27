@@ -110,7 +110,7 @@
           <div class="bottom">
             <div class="container scene_element scene_element--fadein scene_element--delayed">
      
-              <a class="btn-large waves-effect waves-light primary-color-text primary-border transparent  fullwidth z-depth-1" rel="external" href="gioca.html">GIOCA</a>
+              <a class="btn-large waves-effect waves-light primary-color-text primary-border transparent  fullwidth z-depth-1" rel="external" href="gioca.html">GIOCA (1)</a>
             </div>
           </div>
 
@@ -120,6 +120,13 @@
     </div> <!-- End of Page Container -->
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> 
+    <script type="text/javascript">    
+       alert(document.documentElement.clientHeight);
+      $('.splash').each(function(){    
+        $(this).css('max-height', document.documentElement.clientHeight-56);
+        $(this).css('min-height', document.documentElement.clientHeight-56);
+      })
+    </script>
     <script src="js/materialize.min.js"></script> 
     <script src="js/snap.js"></script>     
     <script src="js/jquery.smoothState.min.js"></script> 
