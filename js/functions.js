@@ -315,11 +315,11 @@ function get_foto() {
             //type: "POST",            
             dataType: "text",
             //timeout: 30000,
-            beforeSend: function(x) {
-                if (x && x.overrideMimeType) {
-                    x.overrideMimeType("application/json;charset=UTF-8");
-                }
-            },
+            //beforeSend: function(x) {
+            //    if (x && x.overrideMimeType) {
+            //        x.overrideMimeType("application/json;charset=UTF-8");
+            //    }
+            //},
             url: uri,
             success: function(data) {
                 if (data != "OK") {
@@ -340,7 +340,7 @@ function get_foto() {
             },
             error: function(jqXHR, textStatus, errorThrown) {
 
-                alert("Non puoi usare questa funzione collegato alla wifi Sarabanda");
+                alert("Non puoi usare questa funzione collegato alla wifi Sarabanda" + textStatus);
             }
         });
     }
