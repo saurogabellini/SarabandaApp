@@ -178,7 +178,7 @@ body {
 
     	try{
 
-			navigator.camera.getPicture(onCaptureSuccess, onCaptureFail,  { quality: 10,destinationType: Camera.DestinationType.DATA_URL});
+			navigator.camera.getPicture(onCaptureSuccess, onCaptureFail,  { quality: 30,destinationType: Camera.DestinationType.DATA_URL, targetWidth: 320,targetHeight: 200,});
 
 			}
 
