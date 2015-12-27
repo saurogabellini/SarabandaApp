@@ -47,7 +47,7 @@ function VerificaPagina(data,pagina) {
 			document.location.href = 'chat.htm';
 		}
 		if (data == 'LG' && pagina != data) {			
-			document.location.href = 'index.htm';
+			document.location.href = '../gioca.htm';
 		}
 }
 
