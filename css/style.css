@@ -758,7 +758,7 @@ textarea.materialize-textarea:focus:not([readonly])+label {
 .contacts {
   width: 100%;
   min-height: calc(100vh - 56px);
-  max-height: calc(100vh - 56px);
+  max-height: calc(100vh - 56px); 
   overflow: hidden;
 }
 .contacts-button {

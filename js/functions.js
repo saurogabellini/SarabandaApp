@@ -61,6 +61,13 @@ function elencolocali()
 }
 
 $(function(){
+  $('.splash').each(function(){    
+    $(this).css('max-height', document.documentElement.clientHeight-56);
+    $(this).css('min-height', document.documentElement.clientHeight-56);
+  })
+});
+
+$(function(){
   'use strict';
 
   $('ul.tabs').tabs(); 
