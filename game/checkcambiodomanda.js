@@ -47,7 +47,7 @@ function VerificaPagina(data,pagina) {
 			document.location.href = 'chat.htm';
 		}
 		if (data == 'LG' && pagina != data) {			
-			document.location.href = '../gioca.htm';
+			document.location.href = 'errore.htm';
 		}
 }
 
@@ -114,7 +114,7 @@ function CambioPagina(pagina) {
 				$("#statoconnessione").html("ERRORE CONNESSIONE");				
 				nononline++;
 				if (nononline > 10) {
-					document.location.href = 'index.htm';
+					document.location.href = '../gioca.htm';
 				}
             }
         });

@@ -248,15 +248,24 @@ body {
 		</div>
 				
 		<div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:black;">
+
+
+	    <table style="width:100%;">
+	    <tr>
+        <td style="width:110px;">			
+		<button data-theme="a" data-icon="camera"  data-iconpos="top"  onclick="takephoto();" id="takePhoto" name="takePhoto" style="height:83px; width:105px;">Selfie
+        </button>
+		</td>
+        <td>
         <label for="messageText"><strong>Testo:</strong></label>
-        <textarea name="messageText" id="messageText"></textarea>
- 
+        <textarea name="messageText" id="messageText"></textarea> 		
         <div style="text-align:center;">
 		<button data-theme="a" onclick="mYclick();" id="chatSendButton" name="chatSendButton">Invia			
-        </button>
-        <button data-theme="a" onclick="takephoto();" id="chatSendButton" name="chatSendButton">Selfie
-        </button>
+        </button>                
 		</div>
+		</td>
+		</tr>
+		</table>
 		</div>
  
         
