@@ -87,8 +87,7 @@ body {
         login = localStorage.getItem("login");
 
 		var appoggio = $("#TxtRisposta").val();
-		$("#TxtRisposta").val("");
-
+		
 		tasto = appoggio.toUpperCase();
 		
 		appoggio="";
@@ -120,6 +119,7 @@ body {
 				RicezioneOk = 0;
        			if (data == "RS") {
 					VisualizzaErrore('RISPOSTO');
+					$("#TxtRisposta").val("");
 				}
 				navigator.notification.vibrate(250);
             },

@@ -22,6 +22,12 @@ function VerificaPagina(data,pagina) {
 		if (data == 'T' && pagina != data) {
 			document.location.href = 'playtastiera.htm';
 		}
+		if (data == 'T2' && pagina != data) {
+			document.location.href = 'playtastieraT2.htm';
+		}
+		if (data == 'T3' && pagina != data) {
+			document.location.href = 'playtastieraT3.htm';
+		}				
 		if (data == 'N' && pagina != data) {
 			document.location.href = 'playtastieranumerica.htm';
 		}
@@ -114,7 +120,7 @@ function CambioPagina(pagina) {
 				$("#statoconnessione").html("ERRORE CONNESSIONE");				
 				nononline++;
 				if (nononline > 10) {
-					document.location.href = '../gioca.htm';
+					document.location.href = '../gioca.html';
 				}
             }
         });

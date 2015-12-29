@@ -186,15 +186,15 @@ body {
 
 			{
 
-			alert(ex);
+				alert(ex);
 
 			}
     }
     function onCaptureSuccess(imageURI)
 
 	{
+		 $("#takePhoto").attr('data-icon', 'clock');
 
-	 alert('foto ok');
 		try
 		{
 
@@ -208,17 +208,19 @@ body {
 
 			}).done(function( msg ) {
 
+				$("#takePhoto").attr('data-icon', 'camera');
 				alert('Foto caricata');
 
 			}).fail(function(a,b){
-
-			alert('Failed to save:' + b);
+				$("#takePhoto").attr('data-icon', 'camera');
+				alert('Errore nel salvataggio :' + b);
 
 			});
 
 		}
 		catch(ex)
 		{	
+			$("#takePhoto").attr('data-icon', 'camera');
 			alert(ex);
 		}
 	}
@@ -227,7 +229,7 @@ body {
 
 	{
 
-	alert('Failed to capture!');
+	alert('Errore nelle foto');
 
 	}
 </script>
@@ -270,7 +272,8 @@ body {
  
         
     </div>
- 
+
+
   
 </body>
 </html>
