@@ -347,6 +347,16 @@ function get_foto() {
 
 function index_page()
 {
-  document.location.href = 'index.html?App=' + Math.random() * 10;
+   var ua = window.navigator.userAgent;
+   var msie = ua.indexOf("MSIE ");
+
+  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))  
+  {
+       document.location.href = 'index.html';
+  }  else
+  {
+       document.location.href = 'index.html?App=' + Math.random() * 10;
+  }
+
 }
       

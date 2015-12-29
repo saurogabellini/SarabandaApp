@@ -1212,3 +1212,116 @@ html {
     top: 0;
     display: none;
 }
+
+
+
+/*------------------------------------------------------------------
+INTERNET EXPLORER
+-------------------------------------------------------------------*/
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {   
+       /*Your styles*/
+    
+.mdi-home {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-home.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 100px;                        /* be sure to set height & width */
+    width: 600px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-home {
+    outline: none;  /* prevents dotted line when link is active */
+}
+.mdi-account{
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-account.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 100px;                        /* be sure to set height & width */
+    width: 600px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-account {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+.mdi-book-open {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-book-open.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 100px;                        /* be sure to set height & width */
+    width: 600px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-book-open {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+.mdi-file-image-box {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-file-image-box.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 100px;                        /* be sure to set height & width */
+    width: 600px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-file-image-box {
+    outline: none;  /* prevents dotted line when link is active */
+}
+.mdi-map-marker {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-map-marker.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 100px;                        /* be sure to set height & width */
+    width: 600px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-map-marker {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+.mdi-sort-variant {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-sort-variant.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 100px;                        /* be sure to set height & width */
+    width: 600px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-sort-variant {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+.mdi-exit-to-app {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-exit-to-app.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 100px;                        /* be sure to set height & width */
+    width: 600px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-exit-to-app {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+.mdi-arrow-left {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-arrow-left.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 100px;                        /* be sure to set height & width */
+    width: 600px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-arrow-left {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+}
