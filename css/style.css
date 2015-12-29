@@ -1226,8 +1226,8 @@ INTERNET EXPLORER
     text-indent: -9999px;                 /* sends the text off-screen */
     background-image: url(../img/mdi-home.png);  /* shows image */
     background-repeat: no-repeat;
-    height: 100px;                        /* be sure to set height & width */
-    width: 600px;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
     white-space: nowrap;            /* because only the first line is indented */
 }
 
@@ -1238,8 +1238,8 @@ INTERNET EXPLORER
     text-indent: -9999px;                 /* sends the text off-screen */
     background-image: url(../img/mdi-account.png);  /* shows image */
     background-repeat: no-repeat;
-    height: 100px;                        /* be sure to set height & width */
-    width: 600px;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
     white-space: nowrap;            /* because only the first line is indented */
 }
 
@@ -1251,8 +1251,8 @@ INTERNET EXPLORER
     text-indent: -9999px;                 /* sends the text off-screen */
     background-image: url(../img/mdi-book-open.png);  /* shows image */
     background-repeat: no-repeat;
-    height: 100px;                        /* be sure to set height & width */
-    width: 600px;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
     white-space: nowrap;            /* because only the first line is indented */
 }
 
@@ -1264,8 +1264,8 @@ INTERNET EXPLORER
     text-indent: -9999px;                 /* sends the text off-screen */
     background-image: url(../img/mdi-file-image-box.png);  /* shows image */
     background-repeat: no-repeat;
-    height: 100px;                        /* be sure to set height & width */
-    width: 600px;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
     white-space: nowrap;            /* because only the first line is indented */
 }
 
@@ -1276,8 +1276,8 @@ INTERNET EXPLORER
     text-indent: -9999px;                 /* sends the text off-screen */
     background-image: url(../img/mdi-map-marker.png);  /* shows image */
     background-repeat: no-repeat;
-    height: 100px;                        /* be sure to set height & width */
-    width: 600px;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
     white-space: nowrap;            /* because only the first line is indented */
 }
 
@@ -1289,8 +1289,8 @@ INTERNET EXPLORER
     text-indent: -9999px;                 /* sends the text off-screen */
     background-image: url(../img/mdi-sort-variant.png);  /* shows image */
     background-repeat: no-repeat;
-    height: 100px;                        /* be sure to set height & width */
-    width: 600px;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
     white-space: nowrap;            /* because only the first line is indented */
 }
 
@@ -1302,8 +1302,8 @@ INTERNET EXPLORER
     text-indent: -9999px;                 /* sends the text off-screen */
     background-image: url(../img/mdi-exit-to-app.png);  /* shows image */
     background-repeat: no-repeat;
-    height: 100px;                        /* be sure to set height & width */
-    width: 600px;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
     white-space: nowrap;            /* because only the first line is indented */
 }
 
@@ -1315,12 +1315,64 @@ INTERNET EXPLORER
     text-indent: -9999px;                 /* sends the text off-screen */
     background-image: url(../img/mdi-arrow-left.png);  /* shows image */
     background-repeat: no-repeat;
-    height: 100px;                        /* be sure to set height & width */
-    width: 600px;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
     white-space: nowrap;            /* because only the first line is indented */
 }
 
 .mdi-arrow-left {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+.mdi-account-circle{
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-account-circle.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-account-circle {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+.mdi-lock {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-lock.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-lock {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+.mdi-twitter {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-twitter.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-twitter {
+    outline: none;  /* prevents dotted line when link is active */
+}
+
+.mdi-facebook {
+    text-indent: -9999px;                 /* sends the text off-screen */
+    background-image: url(../img/mdi-facebook.png);  /* shows image */
+    background-repeat: no-repeat;
+    height: 33px;                        /* be sure to set height & width */
+    width: 100px;
+    white-space: nowrap;            /* because only the first line is indented */
+}
+
+.mdi-facebook {
     outline: none;  /* prevents dotted line when link is active */
 }
 
