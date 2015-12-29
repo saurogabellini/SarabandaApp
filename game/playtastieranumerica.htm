@@ -98,11 +98,11 @@ body {
             cache: false,
             //type: "POST",
             dataType: "text",
-            beforeSend: function(x) {
-                if (x && x.overrideMimeType) {
-                    x.overrideMimeType("application/json;charset=UTF-8");
-                }
-            },
+            // beforeSend: function(x) {
+            //     if (x && x.overrideMimeType) {
+            //         x.overrideMimeType("application/json;charset=UTF-8");
+            //     }
+            // },
             url: uri,
             success: function(data) {
 				RicezioneOk = 0;

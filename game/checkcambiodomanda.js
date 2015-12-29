@@ -60,11 +60,11 @@ function VerificaPaginaServer(pagina)
         $.ajax({
             cache: false,
             dataType: "text",
-            beforeSend: function(x) {
-                if (x && x.overrideMimeType) {
-                    x.overrideMimeType("application/json;charset=UTF-8");
-                }
-            },
+            // beforeSend: function(x) {
+            //     if (x && x.overrideMimeType) {
+            //         x.overrideMimeType("application/json;charset=UTF-8");
+            //     }
+            // },
             url: uri,
             success: function(data) {
 					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
@@ -94,11 +94,11 @@ function CambioPagina(pagina) {
             cache: false,
             dataType: "text",
 	    	timeout: 3000,
-            beforeSend: function(x) {
-                if (x && x.overrideMimeType) {
-                    x.overrideMimeType("application/json;charset=UTF-8");
-                }
-            },
+            // beforeSend: function(x) {
+            //     if (x && x.overrideMimeType) {
+            //         x.overrideMimeType("application/json;charset=UTF-8");
+            //     }
+            // },
             url: uri,
             success: function(data) {
             	RicezioneOk = 0;
