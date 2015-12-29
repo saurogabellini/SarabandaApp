@@ -220,11 +220,11 @@ function get_foto() {
             //type: "POST",            
             dataType: "text",
             timeout: 30000,
-            beforeSend: function(x) {
-                if (x && x.overrideMimeType) {
-                    x.overrideMimeType("application/json;charset=UTF-8");
-                }
-            },
+            //beforeSend: function(x) {
+            //    if (x && x.overrideMimeType) {
+            //        x.overrideMimeType("application/json;charset=UTF-8");
+            //    }
+            //},
             url: uri,
             success: function(data) {
                 localStorage.setItem("foto_squadra", data); 
@@ -252,11 +252,11 @@ function get_foto() {
             //type: "POST",            
             dataType: "text",
             timeout: 30000,
-            beforeSend: function(x) {
-                if (x && x.overrideMimeType) {
-                    x.overrideMimeType("application/json;charset=UTF-8");
-                }
-            },
+            //beforeSend: function(x) {
+            //   if (x && x.overrideMimeType) {
+            //        x.overrideMimeType("application/json;charset=UTF-8");
+            //    }
+            //},
             url: uri,
             success: function(data) {
                 localStorage.setItem("codicelogged", data);                 
@@ -284,11 +284,11 @@ function get_foto() {
             //type: "POST",            
             dataType: "text",
             timeout: 30000,
-            beforeSend: function(x) {
-                if (x && x.overrideMimeType) {
-                    x.overrideMimeType("application/json;charset=UTF-8");
-                }
-            },
+            //beforeSend: function(x) {
+            //    if (x && x.overrideMimeType) {
+            //        x.overrideMimeType("application/json;charset=UTF-8");
+            //    }
+            //},
             url: uri,
             success: function(data) {
                 localStorage.setItem("nome_squadra", data);                    
@@ -315,11 +315,11 @@ function get_foto() {
             //type: "POST",            
             dataType: "text",
             timeout: 30000,
-            beforeSend: function(x) {
-                if (x && x.overrideMimeType) {
-                    x.overrideMimeType("application/json;charset=UTF-8");
-                }
-            },
+            //beforeSend: function(x) {
+            //    if (x && x.overrideMimeType) {
+            //        x.overrideMimeType("application/json;charset=UTF-8");
+            //    }
+            //},
             url: uri,
             success: function(data) {
                 if (data != "OK") {
