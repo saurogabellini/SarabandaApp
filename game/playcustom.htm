@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
+
+<script src="../phonegap.js"></script>
+
+<script src="JSErrore.js"></script>
+<script src="checkcambiodomanda.js"></script>
+<!-- / Javascripts -->
+<style>
+body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+.ui-page { background: #000000;}
+</style>
+
+
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+	var RicezioneOk = 0;
+
+	function loadIframe(iframeName, url) {
+	    var $iframe = $('#' + iframeName);
+	    if ( $iframe.length ) {
+	        $iframe.attr('src',url);   
+	        return false;
+	    }
+	    return true;
+	}
+    $(document).ready(function() {          
+        var login = "";
+        
+        
+        login = localStorage.getItem("login");
+
+
+		CambioPagina('CU');
+		
+        $('#myiframe').css('max-height', document.documentElement.clientHeight-56);
+    	$('#myiframe').css('min-height', document.documentElement.clientHeight-56);
+    	
+		loadIframe("myiframe",'http://' + serverip + '/playcustom.html?login=' + login);
+		$("#statusicon").on("tap", function () {
+		    VerificaPaginaServer('CU');
+		});		
+    });
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {        
+		// Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!');
+    }
+
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div data-role="page"  data-title="Prenota">
+
+
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px; top:2%;">
+<div id="backbuttonapple"></div>
+
+<iframe src="" id="myiframe" style="width:100%; height:95vh;"></iframe>
+
+<div data-role="footer" data-position="fixed" style="background-color:red; height:20px;">
+	<span id="statoconnessione" style="color:white; font-size:small;font-weight:0;">Connesso...</span>
+</div>
+	
+
+</div>
+  
+</body>
+</html>

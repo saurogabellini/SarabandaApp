@@ -52,8 +52,11 @@ function VerificaPagina(data,pagina) {
 		if (data == 'CH' && pagina != data) {			
 			document.location.href = 'chat.htm';
 		}
+		if (data == 'CU' && pagina != data) {			
+			document.location.href = 'playcustom.htm';
+		}
 		if (data == 'LG' && pagina != data) {			
-			document.location.href = 'errore.htm';
+			document.location.href = '../gioca.html';
 		}
 }
 

@@ -70,32 +70,70 @@ body {
 
 <script  type="text/javascript">
 	var serverip = localStorage.getItem("serverip");
-		
-    function mYclick() {
-	
-		
+	var nomeassegnato = 0;
+
 	var nomesquadra ="";
 	var mailsquadra ="";
-        var login = "";
+    var login = "";
 				       
 		
-        login = localStorage.getItem("login");
+    login = localStorage.getItem("login");
 
-	var appoggio = $("#TxtNome").val();
+    function mYclick() {
 
-	nomesquadra = appoggio.toUpperCase();
+		var appoggio = $("#TxtNome").val();
 
-	if (nomesquadra.trim() == '') {
-		alert('nome squadra obbligatorio');
-		return ;
-	}
+		nomesquadra = appoggio.toUpperCase();
+
+		if (nomesquadra.trim() == '') {
+			alert('nome squadra obbligatorio');
+			return ;
+		}
+
+		if (nomesquadra.length > 12) {
+			alert('nome squadra troppo lungo');
+			return ;
+		}
+
+		if (nomeassegnato == 0)  {
+			var uri = 'http://' + serverip + '/nomepresente.ashx?NOME=' + nomesquadra.trim();
+			$.ajax({
+	            cache: false,            
+	            dataType: "text",
+	            url: uri,
+	            success: function(data) {				
+	                if (data != "OK") {
+	                	alert('Non puoi usare questo nome già presente');
+	                	return false;
+	                }
+	                else {
+						loggasquadra();
+	               }
+	            },
+	            error: function(jqXHR, textStatus, errorThrown) {				
+	            	alert('Errore connessione (1)');
+	            	return false;
+	            }
+			});    	
+    	} else
+    	{
+    		loggasquadra();
+    	}
+    }
+
+    function loggasquadra()
+    {
 
 
-	var appoggio2 = $("#TxtMail").val();
+		var appoggio = $("#TxtNome").val();
 
-	mailsquadra = appoggio2.toUpperCase();
-											
-        var uri = 'http://' + serverip + '/nuovaiscrizione.ashx?CODICE=' + login + '&NOME=' + nomesquadra + '&EMAIL=' + mailsquadra;
+		nomesquadra = appoggio.toUpperCase();
+
+		var appoggio2 = $("#TxtMail").val();
+
+		mailsquadra = appoggio2.toUpperCase();
+												
+	    var uri = 'http://' + serverip + '/nuovaiscrizione.ashx?CODICE=' + login + '&NOME=' + nomesquadra + '&EMAIL=' + mailsquadra;
 
 
         $.ajax({
@@ -119,13 +157,14 @@ body {
                }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-				RicezioneOk = 0;
-				$("#statusicon").attr('src','assets/images/error.png');
-		
-                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+				alert('Errore connessione (2)');
+				return false;
             }
         });
     }
+
+
+
 
     $(document).ready(function() {  
 
@@ -154,11 +193,13 @@ body {
                     if (data.trim() != '') 
                     {                       	
                     	$('#TxtNome').attr('disabled','disabled');
+                    	nomeassegnato =1;
                     }
 	    },
             error: function(jqXHR, textStatus, errorThrown) {
 		
-		$("#statusicon").attr('src','assets/images/error.png');	
+				alert('Errore connessione (3)');
+				return false;
             }
         });
 					
