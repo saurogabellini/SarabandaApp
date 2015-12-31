@@ -52,7 +52,7 @@ body {
         login = localStorage.getItem("login");
 
 
-        var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
+        var uri = 'http://' + serverip + '/new_assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
 
         $.ajax({
@@ -89,15 +89,16 @@ body {
                         $("#ImgP").fadeTo("fast", 1);
                     }
 					
-					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
-						$("#statusicon").attr('src','assets/images/ok.png');
-					}
-					VerificaPagina(data,'U');
+                    if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+                        $("#statusicon").attr('src','assets/images/ok.png');
+                        $("#statoconnessione").html("Connesso...");
+                    }			
 					navigator.notification.vibrate(250);
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				RicezioneOk = 0;
-				$("#statusicon").attr('src','assets/images/error.png');
+                    $("#statoconnessione").html("ERRORE CONNESSIONE");
+                    $("#statusicon").attr('src','assets/images/error.png');
 		
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
             }

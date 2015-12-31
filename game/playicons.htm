@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -27,15 +27,15 @@ body {
 user-select:none;
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
-.loginbox {
+.loginbox {		
 	margin-left: 10%;
 	width: 80%;
-	height: 160px;
+	height: 360px;
 	border: 0px rgb(89,89,89) solid;
 	background: rgb(255,255,255);
 	-moz-box-shadow:  5px 6px 7px 4px rgb(128,128,128);
 	-webkit-box-shadow:  5px 6px 7px 4px rgb(128,128,128);
-	box-shadow:  5px 6px 7px 4px rgb(128,128,128)
+	box-shadow:  5px 6px 7px 4px rgb(128,128,128);
 }
 body {
 	margin: 0;
@@ -73,6 +73,40 @@ body {
 	var serverip = localStorage.getItem("serverip");
 	var RicezioneOk = 0;
 	
+	function LeggiCodici() {
+		var login = "";				      
+		
+        login = localStorage.getItem("login");
+
+        var uri = 'http://' + serverip + '/new_domandaicons.ashx?login=' + login;
+
+        $.ajax({
+            cache: false,            
+            dataType: "text",            
+            url: uri,
+            dataType: "json",
+			beforeSend: function (x)
+			{
+				if(x && x.overrideMimeType)
+				{
+					x.overrideMimeType ("application/json;charset=UTF-8");
+				}
+			},
+            success: function(data) {
+
+            		$("#idicona1").attr('src','assets/images/icons/' + data.foto1 + '.png');
+            		$("#idicona2").attr('src','assets/images/icons/' + data.foto2 + '.png');
+
+            		$("#yourcodice").html(data.codice);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				RicezioneOk = 0;
+				$("#statusicon").attr('src','assets/images/error.png');
+				$("#statoconnessione").html("ERRORE CONNESSIONE");
+            }
+        });
+    }		
+
     function mYclick() {
 	
 		if (RicezioneOk == 1) {
@@ -89,6 +123,18 @@ body {
 		var appoggio = $("#TxtRisposta").val();
 		
 		tasto = appoggio.toUpperCase();
+		
+		appoggio="";
+		for (i=0; i< tasto.length; i++)
+			{
+				var englishAlphabetAndWhiteSpace = /[A-Za-z ]/g;
+
+				if (englishAlphabetAndWhiteSpace.test(tasto.charAt(i))) {
+	        		appoggio = appoggio + tasto.charAt(i);
+	    		}
+		}
+
+		tasto=appoggio;
 											
         var uri = 'http://' + serverip + '/new_assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
@@ -109,9 +155,7 @@ body {
 					VisualizzaErrore('RISPOSTO');
 					$("#TxtRisposta").val("");
 				}
-                
 				navigator.notification.vibrate(250);
-				               
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				RicezioneOk = 0;
@@ -124,46 +168,48 @@ body {
 
     $(document).ready(function() {  
 		RicezioneOk = 0;
-		CambioPagina('N');
+		LeggiCodici();
+
+		CambioPagina('IC');
 		
 		
 		$("#statusicon").on("tap", function () {
-		    VerificaPaginaServer('N');
+		    VerificaPaginaServer('IC');
 		});		
 
-		$("#TxtRisposta").on("keydown", function(event) {
+		// $("#TxtRisposta").on("keydown", function(event) {
 
-	    // Disallow anything not matching the regex pattern (A to Z uppercase, a to z lowercase and white space)
-	    // For more on JavaScript Regular Expressions, look here: https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions
-	    var englishAlphabetAndWhiteSpace = /[0-9]/g;
+	 //    // Disallow anything not matching the regex pattern (A to Z uppercase, a to z lowercase and white space)
+	 //    // For more on JavaScript Regular Expressions, look here: https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions
+	 //    var englishAlphabetAndWhiteSpace = /[A-Za-z ]/g;
 	   
-	    // Retrieving the key from the char code passed in event.which
-	    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
-	    var key = String.fromCharCode(event.which);
+	 //    // Retrieving the key from the char code passed in event.which
+	 //    // For more info on even.which, look here: http://stackoverflow.com/q/3050984/114029
+	 //    var key = String.fromCharCode(event.which);
 	    
-	    //alert(event.keyCode);
+	 //    //alert(event.keyCode);
 	    
-	    // For the keyCodes, look here: http://stackoverflow.com/a/3781360/114029
-	    // keyCode == 8  is backspace
-	    // keyCode == 37 is left arrow
-	    // keyCode == 39 is right arrow
-	    // englishAlphabetAndWhiteSpace.test(key) does the matching, that is, test the key just typed against the regex pattern
+	 //    // For the keyCodes, look here: http://stackoverflow.com/a/3781360/114029
+	 //    // keyCode == 8  is backspace
+	 //    // keyCode == 37 is left arrow
+	 //    // keyCode == 39 is right arrow
+	 //    // englishAlphabetAndWhiteSpace.test(key) does the matching, that is, test the key just typed against the regex pattern
         
-        // event.keyCode == 39 || APICE DISATTIVATO
-        // event.keyCode == 37 || PERCENTUALE DISATTIVATA
+  //       // event.keyCode == 39 || APICE DISATTIVATO
+  //       // event.keyCode == 37 || PERCENTUALE DISATTIVATA
         
-	    if (event.keyCode == 8 ||   englishAlphabetAndWhiteSpace.test(key)) {
-	        return true;
-	    }
+	 //    if (event.keyCode == 8 ||   englishAlphabetAndWhiteSpace.test(key)) {
+	 //        return true;
+	 //    }
 
-	    // If we got this far, just return false because a disallowed key was typed.
-	    return false;
-	});
+	 //    // If we got this far, just return false because a disallowed key was typed.
+	 //    return false;
+		// });
 
-	$('#TxtRisposta').on("paste",function(e)
-	{
-	    e.preventDefault();
-	});
+		// $('#TxtRisposta').on("paste",function(e)
+		// {
+	 //    e.preventDefault();
+		// });
     });
 	
 		document.addEventListener("deviceready", onDeviceReady, false);
@@ -186,8 +232,8 @@ body {
 		if (tasto == 'back') {
 			var appoggio = $("#Mylabel").html();
 			if (appoggio.length > 17) {
-				appoggio = appoggio.substring(0,appoggio.length -1);			
-				$("#Mylabel").html( appoggio );
+			   appoggio = appoggio.substring(0,appoggio.length -1);			
+			   $("#Mylabel").html(appoggio);
 			}
 		} else
 		{
@@ -199,20 +245,40 @@ body {
 </head>
 <body bgcolor="#000000">
 <div data-role="page"  data-title="6 Tasti">
-<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px; top:2%;">
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;top:2%;">
 <br />
 <br />
-<br />
-<br />
-<div style="text-align:center; ">
-<img src="star.png" style="width:60%" alt="Chi vuol esser Sarabanda?">
+<div >
+<img src="star.png" style="width:15%; left:10px;" alt="Chi vuol esser Sarabanda?">
+</div>
+<div style="text-align:center;">
+<div class="loginbox">
+<br/>
+<br/>
+<table style="width:100%;">
+<tr>
+<td>
+Tu Sei
+</td>
+<td>
+Cerchi 
+</td>
+<tr>
+<td>
+<img src="#"   id="idicona1" />
+</td>
+<td>
+<img src="#"  id="idicona2" />
+</td>
+</tr>
+</table>
+<br/>
+<div style="text-align:left;">
+Il tuo Codice : <label id="yourcodice" ></label>
 </div>
 <br />
 <br />
-<div class="loginbox">
-
-<input id="TxtRisposta" type="text" placeholder="risposta" pattern="[0-9]"  style="position:relative; width:95%; height:30px; top:20px; float:right; margin-right:2%; text-transform: uppercase;text-transform: uppercase;border-width: 0px;" /><br />
-
+<input id="TxtRisposta" type="text" placeholder="risposta" pattern="[A-Z]"  style="position:relative; width:95%; height:30px; top:20px; float:right; margin-right:2%; text-transform: uppercase;text-transform: uppercase;border-width: 0px;" /><br />
 <div style="text-align:center; ">
 <a href="#" onclick=" mYclick();" class="myButton">
 Invia
@@ -220,6 +286,9 @@ Invia
 </div>
 </div>
 <br />
+
+
+</div>
 
 </div>
 <div data-role="footer" data-position="fixed" style="background-color:red; height:20px; position:absolute;bottom:0px;width:100%;">

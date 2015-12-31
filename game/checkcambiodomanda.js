@@ -55,9 +55,12 @@ function VerificaPagina(data,pagina) {
 		if (data == 'CU' && pagina != data) {			
 			document.location.href = 'playcustom.htm';
 		}
-		if (data == 'LG' && pagina != data) {			
+		if (data == 'LG' && pagina != data) {						
 			document.location.href = '../gioca.html';
 		}
+		if (data == 'IC' && pagina != data) {			
+			document.location.href = 'playicons.htm';
+		}		
 }
 
 function VerificaPaginaServer(pagina)

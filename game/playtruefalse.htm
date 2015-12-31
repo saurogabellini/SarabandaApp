@@ -103,7 +103,8 @@ body {
             },
             error: function(jqXHR, textStatus, errorThrown) {
 				RicezioneOk = 0;
-				$("#statusicon").attr('src','assets/images/error.png');
+                    $("#statoconnessione").html("ERRORE CONNESSIONE");
+                    $("#statusicon").attr('src','assets/images/error.png');
 		
                 //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
             }
