@@ -72,7 +72,7 @@
             <div class="social-counter">
               <i class="mdi mdi-twitter"></i><br>              
               <span>
-              <a class="ext-link" href="https://twitter.com/CVESarabanda">CVESarabanda</a>
+              <a onclick="openDeviceBrowser ('http://www.google.de/')" href="#">CVESarabanda</a>
               </span>
             </div>
 
@@ -130,16 +130,10 @@
       $(function() {
         var div = $('.box');
         var width = div.width();
-        div.css('height', width);
-        iaEvent = "click";
-        if (typeof navigator !== "undefined" && navigator.app) {
-           iaEvent = "tap";
-        }
-        $('.ext-link').each.bind(iaEvent, function() {              
-              var linktarget = this.attr("href");
-              navigator.app.loadUrl(linktarget, {openExternal: true});
-        });
+        div.css('height', width);        
     });
+
+    function openDeviceBrowser (externalLinkToOpen){  window.open(externalLinkToOpen, '_system', 'location=no');}
     </script> 
     <script src="js/materialize.min.js"></script> 
     <script src="js/snap.js"></script> 
