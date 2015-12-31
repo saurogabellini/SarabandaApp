@@ -41,5 +41,6 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <gap:plugin name="org.apache.cordova.vibration"  />
 	<gap:plugin name="nl.x-services.plugins.insomnia"/>
+    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
 	<access origin="*" />
 </widget>
