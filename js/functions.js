@@ -360,16 +360,3 @@ function index_page()
 
 }
       
-if (typeof navigator !== "undefined" && navigator.app) {
-   iaEvent = "tap";
-}
-$('.ext-link').each.bind(iaEvent, function() {
-    if (typeof navigator !== "undefined" && navigator.app) {
-        // Mobile device.
-        var linktarget = this.attr("href");
-        navigator.app.loadUrl(linktarget, {openExternal: true});
-    } else {
-        // Possible web browser
-        window.open(linktarget, "_blank");
-    }
-});
