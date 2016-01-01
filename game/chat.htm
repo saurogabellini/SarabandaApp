@@ -191,9 +191,7 @@ body {
 			}
     }
 
-    function callBackFunctionB(){
-	
-	}
+
     function onCaptureSuccess(imageURI)
 
 	{
@@ -216,13 +214,7 @@ body {
 
 			}).done(function( msg ) {
 
-				$("#takePhoto").attr('data-icon', 'camera');
-				navigator.notification.alert(
-				    "Foto Caricata",
-				    callBackFunctionB, // Specify a function to be called 
-				    'Sarabanda Chat',
-				    "OK"
-				);
+				$("#takePhoto").attr('data-icon', 'camera');	
 				alert('Foto caricata');
 
 			}).fail(function(a,b){
