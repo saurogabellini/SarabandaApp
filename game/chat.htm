@@ -195,6 +195,10 @@ body {
 	{
 		 $("#takePhoto").attr('data-icon', 'clock');
 
+		var login = ""; 
+		
+        login = localStorage.getItem("login");
+
 		try
 		{
 
@@ -202,7 +206,7 @@ body {
 
 			type: 'POST',
 
-			url: 'http://10.0.0.1/upload.aspx',
+			url: 'http://10.0.0.1/upload.aspx?login=' + login,
 
 			data: { image: imageURI}
 
