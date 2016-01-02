@@ -127,7 +127,7 @@ body {
 		appoggio="";
 		for (i=0; i< tasto.length; i++)
 			{
-				var englishAlphabetAndWhiteSpace = /[A-Za-z ]/g;
+				var englishAlphabetAndWhiteSpace = /[A-Za-z 0-9]/g;
 
 				if (englishAlphabetAndWhiteSpace.test(tasto.charAt(i))) {
 	        		appoggio = appoggio + tasto.charAt(i);
@@ -278,7 +278,7 @@ Il tuo Codice : <label id="yourcodice" ></label>
 </div>
 <br />
 <br />
-<input id="TxtRisposta" type="text" placeholder="risposta" pattern="[A-Z]"  style="position:relative; width:95%; height:30px; top:20px; float:right; margin-right:2%; text-transform: uppercase;text-transform: uppercase;border-width: 0px;" /><br />
+<input id="TxtRisposta" type="text" placeholder="risposta" style="position:relative; width:95%; height:30px; top:20px; float:right; margin-right:2%; text-transform: uppercase;text-transform: uppercase;border-width: 0px;" /><br />
 <div style="text-align:center; ">
 <a href="#" onclick=" mYclick();" class="myButton">
 Invia
