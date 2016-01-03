@@ -61,13 +61,19 @@ function VerificaPagina(data,pagina) {
 		if (data == 'IC' && pagina != data) {			
 			document.location.href = 'playicons.htm';
 		}		
+		if (data == '4T' && pagina != data){
+			document.location.href = 'play4text.htm';
+		}
 }
 
 function VerificaPaginaServer(pagina)
 {
         RicezioneOk = 0;
 
-        var uri = 'http://' + serverip + '/cambiapagina.ashx';
+        var login = "";       	
+        login = localStorage.getItem("login");
+
+        var uri = 'http://' + serverip + '/new_cambiapagina.ashx?lg=' + login;
 
         $.ajax({
             cache: false,
@@ -98,7 +104,10 @@ function CambioPagina(pagina) {
     var doStuff = function() {
         RicezioneOk = 1;
 
-        var uri = 'http://' + serverip + '/cambiapagina.ashx';
+        var login = "";       	
+        login = localStorage.getItem("login");
+
+        var uri = 'http://' + serverip + '/new_cambiapagina.ashx?lg=' + login;
 
 	//Inserito TimeOut a 3 secondi
 

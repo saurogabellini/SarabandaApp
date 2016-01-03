@@ -1,0 +1,263 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
+
+<script src="../phonegap.js"></script>
+
+<script src="JSErrore.js"></script>
+<script src="checkcambiodomanda.js"></script>
+<!-- / Javascripts -->
+<style>
+body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+#ImgA {
+
+box-shadow: 0px 0px 10px 4px rgba(19, 50, 248, 0.75);
+-moz-box-shadow: 0px 0px 10px 4px rgba(19, 50, 248, 0.75);
+-webkit-box-shadow: 0px 0px 10px 4px rgba(19, 50, 248, 0.75);
+background-color: #cccccc;
+text-align:center;
+}
+
+
+#ImgB {
+
+box-shadow: 0px 0px 10px 4px rgba(255, 0, 0, 0.75);
+-moz-box-shadow: 0px 0px 10px 4px rgba(255, 0, 0, 0.75);
+-webkit-box-shadow: 0px 0px 10px 4px rgba(255, 0, 0, 0.75);
+background-color: #cccccc;
+text-align:center;
+}
+
+#ImgC {
+box-shadow: 0px 0px 10px 4px rgba(106, 207, 12, 0.75);
+-moz-box-shadow: 0px 0px 10px 4px rgba(106, 207, 12, 0.75);
+-webkit-box-shadow: 0px 0px 10px 4px rgba(106, 207, 12, 0.75);
+background-color: #cccccc;
+text-align:center;
+}
+
+#ImgD {
+box-shadow: 0px 0px 10px 4px rgba(241, 255, 0, 0.75);
+-moz-box-shadow: 0px 0px 10px 4px rgba(241, 255, 0, 0.75);
+-webkit-box-shadow: 0px 0px 10px 4px rgba(241, 255, 0, 0.75);
+background-color: #cccccc;
+text-align:center;
+}
+
+.ui-page { background: #000000;}
+</style>
+
+
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+	var RicezioneOk = 0;
+
+	function LeggiTesto() {
+		var login = "";				      
+		
+        login = localStorage.getItem("login");
+
+        var uri = 'http://' + serverip + '/new_dati4text.ashx?login=' + login;
+
+        $.ajax({
+            cache: false,            
+            dataType: "text",            
+            url: uri,
+            dataType: "json",
+			beforeSend: function (x)
+			{
+				if(x && x.overrideMimeType)
+				{
+					x.overrideMimeType ("application/json;charset=UTF-8");
+				}
+			},
+            success: function(data) {
+
+            		$("#ImgA").html(data.testo1);
+            		$("#ImgB").html(data.testo2);
+					$("#ImgC").html(data.testo3);
+            		$("#ImgD").html(data.testo4);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				RicezioneOk = 0;
+				$("#statusicon").attr('src','assets/images/error.png');
+				$("#statoconnessione").html("ERRORE CONNESSIONE");
+            }
+        });
+    }	
+    function mYclick(tasto) {
+
+	    if (RicezioneOk == 1) {
+            return false;
+        }
+        RicezioneOk = 1;
+		
+        var login = "";       	
+        login = localStorage.getItem("login");
+
+
+        var uri = 'http://' + serverip + '/new_assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
+
+
+        $.ajax({
+            cache: false,
+            //type: "POST",
+            timeout: 3000,
+            dataType: "text",
+            // beforeSend: function(x) {
+            //     if (x && x.overrideMimeType) {
+            //         x.overrideMimeType("application/json;charset=UTF-8");
+            //     }
+            // },
+            url: uri,
+            success: function(data) {
+				RicezioneOk = 0;
+				if (tasto == 'A') {
+					$("#ImgA").fadeTo("fast", 0.33);
+					$("#ImgA").fadeTo("fast", 1);
+				}
+				if (tasto == 'B') {
+					$("#ImgB").fadeTo("fast", 0.33);
+					$("#ImgB").fadeTo("fast", 1);
+				}
+				if (tasto == 'C') {
+					$("#ImgC").fadeTo("fast", 0.33);
+					$("#ImgC").fadeTo("fast", 1);
+				}
+				if (tasto == 'D') {
+					$("#ImgD").fadeTo("fast", 0.13);
+					$("#ImgD").fadeTo("fast", 1);
+				}
+				if (tasto == 'P') {
+					$("#ImgP").fadeTo("fast", 0.33);
+					$("#ImgP").fadeTo("fast", 1);
+				}				
+				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+					$("#statusicon").attr('src','assets/images/ok.png');
+					$("#statoconnessione").html("Connesso...");
+				}
+				
+				if (data == "RS") {
+
+					VisualizzaErrore('RISPOSTO');
+				}
+				navigator.notification.vibrate(250);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				RicezioneOk = 0;
+				$("#statoconnessione").html("ERRORE CONNESSIONE");
+				$("#statusicon").attr('src','assets/images/error.png');
+		
+                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+    }
+
+    $(document).ready(function() {          
+	        var login = "";
+        
+        
+        	login = localStorage.getItem("login");
+
+		CambioPagina('4T');
+		
+		$("#ImgA").on("tap",function(){
+			mYclick('A');
+		});
+		$("#ImgB").on("tap",function(){
+			mYclick('B');
+		});
+		$("#ImgC").on("tap",function(){
+			mYclick('C');
+		});
+		$("#ImgD").on("tap",function(){
+			mYclick('D');
+		});		 
+		
+		$("#statusicon").on("tap", function () {
+		    VerificaPaginaServer('4T');
+		});		
+		LeggiTesto();
+    });
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {        
+		// Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!');
+    }
+
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div data-role="page"  data-title="Prenota">
+
+
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px; top:2%;">
+<div id="backbuttonapple"></div>
+
+
+<div id="ImgA" alt="img" style="margin-top:25%;height:50px; ">
+A
+</div>
+
+
+<div id="ImgB" alt="img" style="margin-top:2%;height:50px; ">
+B
+</div>
+
+
+<div id="ImgC" alt="img" style="margin-top:2%;height:50px; ">
+C
+</div>
+
+
+<div id="ImgD" alt="img" style="margin-top:2%;height:50px; ">
+D
+</div>
+
+
+
+<div data-role="footer" data-position="fixed" style="background-color:red; height:20px;">
+	<span id="statoconnessione" style="color:white; font-size:small;font-weight:0;">Connesso...</span>
+</div>
+	
+
+</div>
+  
+</body>
+</html>
