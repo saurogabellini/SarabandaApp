@@ -45,7 +45,7 @@
         var password = "";
 
         login = localStorage.getItem("codicelogged");
-        var uri = 'http://' +  serverip + '/new_attivaregistrata.ashx?codice=' + login;
+        var uri = 'http://' +  serverip + '/new_attivaregistrata.ashx?codice=' + login + '&abilit=' + $("#Login").val();
 
         $.ajax({
             cache: false,
@@ -167,7 +167,7 @@
               <div class="container white z-depth-2">
                 <div class="input-field col s12">
                   <i class="mdi mdi-account-circle prefix"></i> 
-                  <input class="validate" id="Login" style="color:#000000;" type="text"> 
+                  <input class="validate" id="Login" style="color:#000000; text-transform: uppercase;" type="text"> 
                   <label for="login">Pin</label>
                 </div>
 
