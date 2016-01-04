@@ -88,8 +88,11 @@
         }
         localStorage.setItem("serverip", serverip);
 
+        var codicelogged = '';
 
-        var uri = 'http://' +  serverip + '/new_verificacodice.ashx?codice=' + login;
+        codicelogged = localStorage.getItem("codicelogged");
+
+        var uri = 'http://' +  serverip + '/new_verificacodice.ashx?codice=' + login + '&sqlg=' + codicelogged;
 
     
         $.ajax({
@@ -110,17 +113,19 @@
                 else {        
                     window.plugins.insomnia.keepAwake();                    
                     localStorage.setItem("loginUser", login.toUpperCase());
-                    var codicelogged = '';
-
-                    codicelogged = localStorage.getItem("codicelogged");
-
+               
                     if  ((codicelogged != '')  && (codicelogged != null)) {                    
                          localStorage.setItem("login", codicelogged);
                          loginRegistrata();
                     } else
                     {
                       localStorage.setItem("login", login.toUpperCase());
-                      document.location.href = 'game/iscrizione.htm';
+                      if (login.toUpperCase().slice(-1) == 'E') {
+                         document.location.href = 'game/play.htm';
+                      } else
+                      {
+                         document.location.href = 'game/iscrizione.htm';                         
+                       }
                     }
 
                } 
