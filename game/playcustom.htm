@@ -62,7 +62,9 @@ body {
         $('#myiframe').css('max-height', document.documentElement.clientHeight-56);
     	$('#myiframe').css('min-height', document.documentElement.clientHeight-56);
     	
-		loadIframe("myiframe",'http://' + serverip + '/playcustom.html?login=' + login);
+    	var milliseconds = new Date().getTime();
+
+		loadIframe("myiframe",'http://' + serverip + '/playcustom.html?login=' + login + '&app=' + milliseconds);
 		$("#statusicon").on("tap", function () {
 		    VerificaPaginaServer('CU');
 		});		
