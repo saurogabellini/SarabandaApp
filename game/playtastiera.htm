@@ -101,6 +101,11 @@ body {
 		}
 
 		tasto=appoggio;
+
+		if (tasto == "") {
+ 			return false;
+		}
+
 											
         var uri = 'http://' + serverip + '/new_assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
 
