@@ -69,20 +69,20 @@ body {
             success: function(data) {
 				RicezioneOk = 0;
 				if (tasto == 'A') {
-					$("#ImgA").fadeTo("fast", 0.33);
-					$("#ImgA").fadeTo("fast", 1);
+					$("#ImgA").attr('src','assets/images/icons/ADown.png');
+					setTimeout(function () { $("#ImgA").attr('src','assets/images/icons/AUp.png'); },200);
 				}
 				if (tasto == 'B') {
-					$("#ImgB").fadeTo("fast", 0.33);
-					$("#ImgB").fadeTo("fast", 1);
+					$("#ImgB").attr('src','assets/images/icons/BDown.png');
+					setTimeout(function () { $("#ImgB").attr('src','assets/images/icons/BUp.png'); },200);
 				}
 				if (tasto == 'C') {
-					$("#ImgC").fadeTo("fast", 0.33);
-					$("#ImgC").fadeTo("fast", 1);
+					$("#ImgC").attr('src','assets/images/icons/CDown.png');
+					setTimeout(function () { $("#ImgC").attr('src','assets/images/icons/CUp.png'); },200);
 				}
 				if (tasto == 'D') {
-					$("#ImgD").fadeTo("fast", 0.13);
-					$("#ImgD").fadeTo("fast", 1);
+					$("#ImgD").attr('src','assets/images/icons/DDown.png');
+					setTimeout(function () { $("#ImgD").attr('src','assets/images/icons/DUp.png'); },200);
 				}
 				if (tasto == 'P') {
 					$("#ImgP").fadeTo("fast", 0.33);
@@ -165,13 +165,13 @@ body {
 <div id="backbuttonapple"></div>
 
 
-<img src="assets/images/icons/A.png" id="ImgA" alt="img" style="position:absolute; top:10%; left:8%; height:23%;">
+<img src="assets/images/icons/AUp.png" id="ImgA" alt="img" style="position:absolute; top:10%; left:8%; height:23%;">
 
-<img src="assets/images/icons/B.png" id="ImgB" alt="img"  style="position:absolute; top:25%; right:8%; height:23%;">
+<img src="assets/images/icons/BUp.png" id="ImgB" alt="img"  style="position:absolute; top:25%; right:8%; height:23%;">
 
-<img src="assets/images/icons/C.png" id="ImgC" alt="img" style="position:absolute; top:50%; left:8%; height:23%;">
+<img src="assets/images/icons/CUp.png" id="ImgC" alt="img" style="position:absolute; top:50%; left:8%; height:23%;">
 
-<img src="assets/images/icons/D.png" id="ImgD" alt="img" style="position:absolute; top:65%; right:8%; height:23%;">
+<img src="assets/images/icons/DUp.png" id="ImgD" alt="img" style="position:absolute; top:65%; right:8%; height:23%;">
 
 <div data-role="footer" data-position="fixed" style="background-color:red; height:20px;">
 	<span id="statoconnessione" style="color:white; font-size:small;font-weight:0;">Connesso...</span>
