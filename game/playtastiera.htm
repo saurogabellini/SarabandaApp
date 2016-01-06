@@ -100,11 +100,13 @@ body {
 	    		}
 		}
 
-		tasto=appoggio;
-
-		if (tasto == "") {
+		if (appoggio.trim() == "") {
  			return false;
 		}
+
+
+		tasto=appoggio;
+
 
 											
         var uri = 'http://' + serverip + '/new_assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
