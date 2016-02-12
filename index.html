@@ -39,7 +39,7 @@
 
 }
  document.addEventListener('deviceready', function () {
-    alert('wwww');
+    alert('wwwwfile');
     
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {              
               alert('1');
@@ -47,7 +47,7 @@
               alert('2');
               var documentsDirectoryPath = decodeURIComponent(window.location.href);
               alert('3' + documentsDirectoryPath);
-              documentsDirectoryPath = documentsDirectoryPath.substring("file://".length);
+              //documentsDirectoryPath = documentsDirectoryPath.substring("file://".length);
               alert('4' + documentsDirectoryPath);
               documentsDirectoryPath = documentsDirectoryPath.substring(0, documentsDirectoryPath.indexOf("index.html"));
               alert('5' + documentsDirectoryPath);
