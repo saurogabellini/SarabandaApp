@@ -33,13 +33,14 @@
 </style>
  <script  type="text/javascript">
  document.addEventListener('deviceready', function () {
-    alert('qui');
-    var miourl = "http://www.sodo.it/Seniorweb/images/ImgLogin2.png";
+    alert('quixx');
+    var assetURL = "http://www.sodo.it/Seniorweb/images/ImgLogin2.png";
 
+    alert('qui1');
     var store = cordova.file.dataDirectory;
-
+    alert('qui2');
     var fileTransfer = new FileTransfer();
-    
+    alert('qui3');
     fileTransfer.download(assetURL, store + "/img/star.png", 
         function(entry) {
             alert("Bono");
