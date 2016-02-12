@@ -50,15 +50,15 @@
     );
 }
  document.addEventListener('deviceready', function () {
-    alert('qpdfappdir');
+    alert('fs.root.toURL()');
     
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-              alert(fs.root.fullPath);
-              alert(window.appRootDir.fullPath);
+              alert(fs.root.toURL());
+              
               downloadAndOpenPDFdownloadAndOpenPDF(
               'http://www.sodo.it/Seniorweb/images/ImgLogin.png',
               'www/img/star.png',
-              window.appRootDir.fullPath
+              fs.root.toURL()
             );
 
     });
