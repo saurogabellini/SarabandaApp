@@ -31,50 +31,6 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 </style>
- <script  type="text/javascript">
-
-  document.addEventListener("deviceready", onDeviceReady, false);
-  // Cordova is ready
-  function onDeviceReady() {
-      alert("Going to start download");
-      downloadFile();
-  }
-
-    function downloadFile(){
-        alert('ss');
-        window.requestFileSystem(
-                                 LocalFileSystem.PERSISTENT, 0,
-                                 function onFileSystemSuccess(fileSystem) {
-                                  alert('getfile');
-                                 fileSystem.root.getFile(
-                                                         "chat.html", {create: true, exclusive: false},
-                                                         function gotFileEntry(fileEntry)
-                                                         {
-                                                          alert('gotfile');
-                                                         var sPath = fileEntry.fullPath.replace("chat.html","");
-                                                         alert(sPath);
-                                                         var fileTransfer = new FileTransfer();
-                                                         fileEntry.remove();
-                                                         fileTransfer.download(
-                                                                               "http://www.sodo.it/Seniorweb/images/ImgLogin2.png",
-                                                                               sPath + "img/star.png",
-                                                                               function(theFile) {
-                                                                               alert("download complete: " + theFile.toURI());
-                                                                               
-                                                                               },
-                                                                               function(error) {
-                                                                               alert("download error source " + error.source);
-                                                                               alert("download error target " + error.target);
-                                                                               alert("upload error code: " + error.code);
-                                                                               }
-                                                                               );
-                                                         },
-                                                         fail);
-                                 },
-                                 fail);
-    }
-
-</script>
   </head>
   <body>
 
