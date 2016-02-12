@@ -33,33 +33,37 @@
 </style>
  <script  type="text/javascript">
  function downloadAndOpenPDF(url, fileName, folder) {
-    var fileTransfer = new FileTransfer();
+    
     var filePath = folder + fileName;
 
 
-    fileTransfer.download(
-        url,
-        filePath,
-        function(entry) {
-            alert('bene ma qui');
-            
-        },
-        function (error) {            
-            alert('Maremma CINNIALA');
-        }
-    );
 }
  document.addEventListener('deviceready', function () {
     alert('fs.root.toURL()');
     
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-              alert(fs.root.toURL());
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {              
+              alert('1');
+              var fileTransfer = new FileTransfer();
+              alert('2');
+              var documentsDirectoryPath = decodeURIComponent(window.location.href);
+              alert('3' + documentsDirectoryPath);
+              documentsDirectoryPath = documentsDirectoryPath.substring("file://".length);
+              alert('4' + documentsDirectoryPath);
+              documentsDirectoryPath = documentsDirectoryPath.substring(0, documentsDirectoryPath.indexOf("index.html"));
+              alert('5' + documentsDirectoryPath);
+              var url ="http://www.sodo.it/Seniorweb/images/ImgLogin3.png";
+              fileTransfer.download(
+                  url,
+                  documentsDirectoryPath + 'img/star.png',
+                  function(entry) {
+                      alert('bene ma qui');
+                      
+                  },
+                  function (error) {            
+                      alert('Maremma CINNIALA');
+                  }
+              );
               
-              downloadAndOpenPDFdownloadAndOpenPDF(
-              'http://www.sodo.it/Seniorweb/images/ImgLogin.png',
-              'www/img/star.png',
-              fs.root.toURL()
-            );
 
     });
    });
