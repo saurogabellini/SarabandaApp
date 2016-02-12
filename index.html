@@ -32,25 +32,32 @@
 }
 </style>
  <script  type="text/javascript">
- document.addEventListener('deviceready', function () {
-    alert('quixx');
-    var assetURL = "http://www.sodo.it/Seniorweb/images/ImgLogin2.png";
-
-    alert('qui1');
-    var store = cordova.file.dataDirectory;
-    alert('qui2');
+ function downloadAndOpenPDF(url, fileName, folder) {
     var fileTransfer = new FileTransfer();
-    alert('qui3');
-    fileTransfer.download(assetURL, store + "/www/img/star.png", 
-        function(entry) {
-            alert("Bono" + store);
-            
-        }, 
-        function(err) {
-            alert("Errore");            
-        });
+    var filePath = folder + fileName;
 
-   }, false);
+
+    fileTransfer.download(
+        url,
+        filePath,
+        function(entry) {
+            alert('bene ma qui');
+            
+        },
+        function (error) {            
+            alert('Maremma CINNIALA');
+        }
+    );
+}
+ document.addEventListener('deviceready', function () {
+    alert('qpdf');
+    
+    downloadAndOpenPDFdownloadAndOpenPDF(
+    'https://github.com/byBrick/Phonegap-PDF-downloader-viewer/raw/master/assets/www/suchpdf.pdf',
+    'suchpdf.pdf',
+    '/sdcard/Download/'
+  );
+   });
 
 </script>
   </head>
