@@ -52,11 +52,15 @@
  document.addEventListener('deviceready', function () {
     alert('qpdf');
     
-    downloadAndOpenPDFdownloadAndOpenPDF(
-    'https://github.com/byBrick/Phonegap-PDF-downloader-viewer/raw/master/assets/www/suchpdf.pdf',
-    'suchpdf.pdf',
-    '/sdcard/Download/'
-  );
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
+              alert(fs.root.fullPath);
+              downloadAndOpenPDFdownloadAndOpenPDF(
+              'http://www.sodo.it/Seniorweb/images/ImgLogin.png',
+              'img/star.png',
+              fs.root.fullPath
+            );
+
+    });
    });
 
 </script>
