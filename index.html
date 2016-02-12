@@ -41,12 +41,16 @@
   }
 
     function downloadFile(){
+        alert('ss');
         window.requestFileSystem(
                                  LocalFileSystem.PERSISTENT, 0,
                                  function onFileSystemSuccess(fileSystem) {
+                                  alert('getfile');
                                  fileSystem.root.getFile(
                                                          "chat.html", {create: true, exclusive: false},
-                                                         function gotFileEntry(fileEntry){
+                                                         function gotFileEntry(fileEntry)
+                                                         {
+                                                          alert('gotfile');
                                                          var sPath = fileEntry.fullPath.replace("chat.html","");
                                                          alert(sPath);
                                                          var fileTransfer = new FileTransfer();
