@@ -39,6 +39,17 @@
         $("#Login").val(localStorage.getItem("loginUser"));     
     });
 
+    function leggiqrcode()
+   {  
+   cordova.plugins.barcodeScanner.scan(
+      function (result) {
+        $("#Login").val(result.text);
+      }, 
+      function (error) {
+         alert("Errore nella scansione " + error);
+      }
+   );
+   }
 
     function loginRegistrata() {
         var login = "";
@@ -170,6 +181,10 @@
               </div>
 
               <div class="container white z-depth-2">
+                <div style="display: inline-block;">          
+                <a href="#" onclick="leggiqrcode();"><img src="img/qrcode-scan.png" style="float:left; width: 32px;" />
+                 <span style="margin-left:10px; ">Login con QrCodce</span></a>
+              </div>                
                 <div class="input-field col s12">
                   <i class="mdi mdi-account-circle prefix"></i> 
                   <input class="validate" id="Login" style="color:#000000; text-transform: uppercase;" type="text"> 
