@@ -48,7 +48,7 @@ body {
 }
 
 #sortable { list-style-type: none; padding: 0; width: 100%; }
-#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 10%; text-align:center; }
+#sortable li { margin: 0 3px 10px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1em; height: 10%; text-align:center; }
 #sortable li span { position: absolute; margin-left: -1.3em; }
   
 
@@ -94,27 +94,6 @@ body {
 	    var tasto = "";
 	    tasto = $("#sortable").html();
 
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
 
         
 	    var risultato ="";
@@ -123,20 +102,20 @@ body {
 	    
 	    for (i = 0; i < tasto.length; i ++)
 	    {	        
-         if (tasto.charAt(i) == "A") {
-             risultato  +=tasto.charAt(i); 
+         if (tasto.charAt(i) + tasto.charAt(i +1) + tasto.charAt(i +2) == "(A)") {
+             risultato  +=tasto.charAt(i+1); 
 	       }
-         if (tasto.charAt(i) == "B") {
-             risultato  +=tasto.charAt(i); 
+         if (tasto.charAt(i) + tasto.charAt(i +1) + tasto.charAt(i +2) == "(B)") {
+             risultato  +=tasto.charAt(i+1); 
          }
-         if (tasto.charAt(i) == "C") {
-             risultato  +=tasto.charAt(i); 
+         if (tasto.charAt(i) + tasto.charAt(i +1) + tasto.charAt(i +2) == "(C)") {
+             risultato  +=tasto.charAt(i+1); 
          }
-         if (tasto.charAt(i) == "D") {
-             risultato  +=tasto.charAt(i); 
+         if (tasto.charAt(i) + tasto.charAt(i +1) + tasto.charAt(i +2) == "(D)") {
+             risultato  +=tasto.charAt(i+1); 
          }
-         if (tasto.charAt(i) == "E") {
-             risultato  +=tasto.charAt(i); 
+         if (tasto.charAt(i) + tasto.charAt(i +1) + tasto.charAt(i +2) == "(E)") {
+             risultato  +=tasto.charAt(i+1); 
          }
 	    }
 
@@ -179,6 +158,41 @@ body {
         });
 	}
 
+	function LeggiTesto() {
+		var login = "";				      
+		
+        login = localStorage.getItem("login");
+
+        var uri = 'http://' + serverip + '/new_dati4text.ashx?login=' + login;
+
+        $.ajax({
+            cache: false,            
+            dataType: "text",            
+            url: uri,
+            dataType: "json",
+			beforeSend: function (x)
+			{
+				if(x && x.overrideMimeType)
+				{
+					x.overrideMimeType ("application/json;charset=UTF-8");
+				}
+			},
+            success: function(data) {
+
+            		$("#opa").html(data.testoA);
+            		$("#opb").html(data.testoB);
+					$("#opc").html(data.testoC);
+            		$("#opd").html(data.testoD);
+            		$("#ope").html(data.testoE);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				RicezioneOk = 0;
+				$("#statusicon").attr('src','assets/images/error.png');
+				$("#statoconnessione").html("ERRORE CONNESSIONE");
+            }
+        });
+    }	
+
 	$(document).bind('pageinit', function () {
 		CambioPagina('S5');
 		RicezioneOk = 0;
@@ -191,7 +205,8 @@ body {
 	    $("#sortable").bind("sortstop", function (event, ui) {
 	        $('#sortable').listview('refresh');
 	    });
-		
+		LeggiTesto();
+
 		$("#statusicon").on("tap", function () {
 		    VerificaPaginaServer('S5');
 		});
@@ -227,20 +242,18 @@ body {
                     <td>
     <div data-role="content" data-theme="c">
         <ul data-role="listview" data-inset="true" data-theme="d" id="sortable" style="text-align:center;">            
-            <li>A</li>
-            <li>B</li>
-            <li>C</li>
-            <li>D</li>
-            <li>E</li>
+            <li id="opa" myvalue="(A)">A</li>
+            <li id="opb" myvalue="(B)">B</li>
+            <li id="opc" myvalue="(C)">C</li>
+            <li id="opd" myvalue="(D)">D</li>
+            <li id="ope" myvalue="(E)">E</li>
         </ul>
     </div>
 	</td>
 	<td style="width:10%;"></td>
 	</tr>
 	</table>
-    <br/>
-    <br />
-    <br />
+    <br/>    
     <div style="text-align:center;    top:10px;">
         <a href="#" onclick="mYclick();" class="myButton">Invia</a>
     </div>

@@ -44,6 +44,7 @@
    cordova.plugins.barcodeScanner.scan(
       function (result) {
         $("#Login").val(result.text);
+        setTimeout( function() { loginPin(); } , 10000);
       }, 
       function (error) {
          alert("Errore nella scansione " + error);

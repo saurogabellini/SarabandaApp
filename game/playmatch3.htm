@@ -49,11 +49,11 @@ body {
 }
 
 #sortable { list-style-type: none;  top:20%; padding: 0; width: 100%; }
-#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 10%; text-align:center; }
+#sortable li { margin: 0 3px 10px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1em; height: 10%; text-align:center; }
 #sortable li span { position: absolute; margin-left: -1.3em; }
     
 #sortable2 { list-style-type: none; top:20%; padding: 0; width: 100%;  }
-#sortable2 li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 10%; text-align:center; background-color:aqua; }
+#sortable2 li { margin: 0 3px 10px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1em; height: 10%; text-align:center; background-color:aqua; }
 #sortable2 li span { position:  relative;  margin-left: -1.3em; }
 
 .myButton {
@@ -100,29 +100,7 @@ body {
 	    var tasto2 = "";
 	    tasto2 = $("#sortable2").html();
 
-	    
-
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align:center;">', '');
-	    tasto = tasto.replace('</li>', '');
-
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
-	    tasto = tasto.replace('<li class="ui-state-default ui-sortable-handle" style="text-align: center;">', '');
-	    tasto = tasto.replace('</li>', '');
+	   
 
         
 	    var risultato ="";
@@ -132,17 +110,16 @@ body {
 	    
 	    for (i = 0; i < tasto.length; i ++)
 	    {	        
-         if (tasto.charAt(i) == "A") {
-             risultato  +=tasto.charAt(i); 
+         if (tasto.charAt(i) + tasto.charAt(i +1) + tasto.charAt(i +2) == "(A)") {
+             risultato  +=tasto.charAt(i+1); 
 	       }
-         if (tasto.charAt(i) == "B") {
-             risultato  +=tasto.charAt(i); 
+         if (tasto.charAt(i) + tasto.charAt(i +1) + tasto.charAt(i +2) == "(B)") {
+             risultato  +=tasto.charAt(i+1); 
          }
-         if (tasto.charAt(i) == "C") {
-             risultato  +=tasto.charAt(i); 
-         }         
+         if (tasto.charAt(i) + tasto.charAt(i +1) + tasto.charAt(i +2) == "(C)") {
+             risultato  +=tasto.charAt(i+1); 
+         }
 	    }
-
 
         login = localStorage.getItem("login");
 
@@ -183,6 +160,43 @@ body {
         });
 	}
 
+		function LeggiTesto() {
+		var login = "";				      
+		
+        login = localStorage.getItem("login");
+
+        var uri = 'http://' + serverip + '/new_dati4text.ashx?login=' + login;
+
+        $.ajax({
+            cache: false,            
+            dataType: "text",            
+            url: uri,
+            dataType: "json",
+			beforeSend: function (x)
+			{
+				if(x && x.overrideMimeType)
+				{
+					x.overrideMimeType ("application/json;charset=UTF-8");
+				}
+			},
+            success: function(data) {
+
+            		$("#opa").html(data.testoA);
+            		$("#opb").html(data.testoB);
+					$("#opc").html(data.testoC);
+
+            		$("#op1").html(data.testo1);
+            		$("#op2").html(data.testo2);
+					$("#op3").html(data.testo3);            		
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				RicezioneOk = 0;
+				$("#statusicon").attr('src','assets/images/error.png');
+				$("#statoconnessione").html("ERRORE CONNESSIONE");
+            }
+        });
+    }	
+
 	$(document).bind('pageinit', function () {
 		RicezioneOk = 0;
 		CambioPagina('M3');
@@ -194,11 +208,13 @@ body {
 	    $("#sortable").disableSelection();
 	    $("#sortable").bind("sortstop", function (event, ui) {
 	        $('#sortable').listview('refresh');
-	    });
+	    });	    
 		
+		LeggiTesto();
 		$("#statusicon").on("tap", function () {
 		    VerificaPaginaServer('M3');
 		});
+		
 	});
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
@@ -228,17 +244,17 @@ body {
                 <tr>
                     <td>
 
-                        <ul data-role="listview" data-inset="true" data-theme="d" id="sortable" style="text-align:center;">
-                            <li>A</li>
-                            <li>B</li>
-                            <li>C</li>                            
+                        <ul data-role="listview" data-inset="true" data-theme="d" id="sortable" style="text-align:center; ">
+				            <li id="opa" myvalue="(A)">A</li>
+				            <li id="opb" myvalue="(B)">B</li>
+				            <li id="opc" myvalue="(C)">C</li>                            
                         </ul>
                     </td>
                     <td>
-                        <ul data-role="listview" data-inset="true" data-theme="d" id="sortable2" style="text-align:center;">
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>                            
+                        <ul data-role="listview" data-inset="true" data-theme="d" id="sortable2" style="text-align:center; ">
+                            <li id="op1">1</li>
+                            <li id="op2">2</li>
+                            <li id="op3">3</li>                          
                         </ul>
                     </td>
                 </tr>
