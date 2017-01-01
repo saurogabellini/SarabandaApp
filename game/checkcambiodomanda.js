@@ -64,6 +64,9 @@ function VerificaPagina(data,pagina) {
 		if (data == '4T' && pagina != data){
 			document.location.href = 'play4text.htm';
 		}
+		if (data == 'BJ' && pagina != data){
+			document.location.href = 'playblackjack.htm';
+		}	
 }
 
 function VerificaPaginaServer(pagina)

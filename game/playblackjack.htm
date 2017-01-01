@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+
+<!-- Javascripts -->
+<script src="assets/js/jquery.1.7.1.min.js"></script>
+<script src="../phonegap.js"></script>
+<script src="JSErrore.js"></script>
+<script src="checkcambiodomanda.js"></script>
+<style>
+
+<!-- / Javascripts -->
+body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.carta {		
+	margin-left: 10%;
+	width: 200px;
+	height: 360px;
+	border: 0px rgb(89,89,89) solid;
+	background: rgb(255,255,255);
+	-moz-box-shadow:  5px 6px 7px 4px rgb(128,128,128);
+	-webkit-box-shadow:  5px 6px 7px 4px rgb(128,128,128);
+	box-shadow:  5px 6px 7px 4px rgb(128,128,128);	
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+.cerchio{ 
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    background: yellow;
+}
+
+.myButton {
+	background-color:#20B2AA !important;
+	 display:inline-block; 
+	border:1px solid #18ab29;	
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:18px;
+	height: 40px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+	width:100px;	
+}
+.myButton2 {
+
+	background-color:#20B2AA !important;
+	 display:inline-block; 
+	border:1px solid #18ab29;	
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:18px;
+	height: 40px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+	width:100px;
+	
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.ui-page { background: #000000;}
+</style>
+
+
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+	var RicezioneOk = 0;
+	var numerocarta= 0;
+	var vettorenumerocarta =[];
+	var vettorenumerotipo =[];
+	var totale =0;
+
+	function estraicarta()
+	{
+
+        if (totale > 21) {
+        	return ;
+        }
+
+        var numero = 0;
+
+        do
+        {
+        numero = Math.round(Math.random() * 13);
+        }  while (numero == 0)
+
+        
+        var tipo ="";
+        if (numero < 11)
+        {
+        	tipo =numero;
+        }
+        if (numero == 11)
+        {
+           tipo ="J"	
+        }
+        if (numero == 12)
+        {
+           tipo ="Q"	
+        }
+      	if (numero == 13)
+        {
+           tipo ="K"	
+        }
+      
+
+        var segno =0;
+		do
+        {
+        segno = Math.round(Math.random() * 4);
+        }  while (segno == 0)
+        var colore="";
+        if ((segno == 1) || (segno == 2)) {
+        	colore ="red";
+        } else {
+        	colore = "black";
+        }
+
+        vettorenumerocarta[numerocarta] = numero;
+        vettorenumerotipo[numerocarta] = segno;
+
+		var testo ="";
+		testo = '<div class="carta" style="position:absolute; top:20%;  height:50%; left:' +  numerocarta * 40 + 'px;">';
+		testo += '<font color="' + colore + '" size="10">' + tipo+ '</font><br/>';
+
+		if (segno == 1) { testo += '<img src="assets/images/cuori.png" width="30px"><br/>'; }
+		if (segno == 2) { testo += '<img src="assets/images/denari.png" width="30px"><br/>'; }
+		if (segno == 3) { testo += '<img src="assets/images/picche.png" width="30px"><br/>'; }
+		if (segno == 4) { testo += '<img src="assets/images/fiori.png" width="30px"><br/>'; }
+		
+		testo += '<br>';
+		if (segno == 1) { testo += '<center><img src="assets/images/cuori.png"  width="70%"></center><br/>'; }
+		if (segno == 2) { testo += '<center><img src="assets/images/denari.png" width="70%"></center><br/>'; }
+		if (segno == 3) { testo += '<center><img src="assets/images/picche.png" width="70%"></center><br/>'; }
+		if (segno == 4) { testo += '<center><img src="assets/images/fiori.png"  width="70%"></center><br/>'; }
+		testo += '</div>';
+
+		$("#carte").append(testo);
+
+
+		totale =0;		
+		
+		for (i = 0; i <= numerocarta; i++)
+		{			
+			if (vettorenumerocarta[i] > 1) {
+				if (vettorenumerocarta[i] > 10) {
+					totale =totale +10;
+				} else
+				{
+					totale =totale +vettorenumerocarta[i];
+				}
+			}
+		}
+
+		for (i = 1; i <= numerocarta; i++)
+		{
+			if (vettorenumerocarta[i] == 1) {
+				if (totale > 10) {
+					totale =totale +1;
+				} else
+				{
+					totale =totale + 11;
+				}
+			}
+		}
+
+		if (totale < 22) {
+			$("#punteggio").html('<br>' + totale);
+		} else
+		{
+			$("#punteggio").html('<br><font  color="red" style="text-decoration: line-through;">' + totale + '</font>');
+			InviaCarte();
+		}
+		numerocarta = numerocarta +1;
+	}
+	
+	function altracarta()
+	{
+		
+		estraicarta();
+	}
+
+
+    $(document).ready(function() {  
+		RicezioneOk = 0;
+		estraicarta();
+
+		CambioPagina('BJ');
+		
+		
+		$("#statusicon").on("tap", function () {
+		    VerificaPaginaServer('BJ');
+		});		
+    });
+	
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {        
+		// Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!');
+    }
+	
+	function InviaCarte()
+	{
+		$("#idaltracarta").attr("onclick","");
+		$("#idinvio").attr("onclick","");
+		
+	    login = localStorage.getItem("login");
+				
+		risultato = totale;
+		
+
+        var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + risultato  + '&Squadra=' + login;
+
+
+        $.ajax({
+            cache: false,            
+            dataType: "text",            
+            url: uri,
+            success: function(data) {
+					RicezioneOk = 0;
+                                       
+                    VerificaPagina(data, 'M');
+					
+					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+						$("#statusicon").attr('src','assets/images/ok.png');
+					}
+					navigator.notification.vibrate(250);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				RicezioneOk = 0;
+				$("#statusicon").attr('src','assets/images/error.png');		               
+            }
+        });
+	}
+
+	function tastopremuto(tasto)
+	{
+		if (tasto == 'back') {
+			var appoggio = $("#Mylabel").html();
+			if (appoggio.length > 17) {
+			   appoggio = appoggio.substring(0,appoggio.length -1);			
+			   $("#Mylabel").html(appoggio);
+			}
+		} else
+		{
+			$("#Mylabel").html($("#Mylabel").html() + tasto);
+		}
+	}
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div data-role="page"  data-title="6 Tasti">
+<img id="statusicon" src="assets/images/ok.png" style="position:absolute; right:50px;top:2%;">
+<br />
+<br />
+<div >
+<img src="star.png" style="width:15%; left:10px;" alt="Chi vuol esser Sarabanda?">
+</div>
+
+<dic class="cerchio" id="punteggio" style="position:absolute; right:50px;top:10%; text-align:center;">
+</div>
+<div style="text-align:left; display:in-line;">
+
+<div id="carte"></div>
+
+
+</div>
+<br />
+</div>
+
+<div style="text-align:center; position:absolute; top:80%; display:inline-block; width:100%; ">
+<a href="#" onclick="altracarta();" id="idaltracarta"  style="left:20%;">	
+<div class="myButton">
+CARTA
+</div>
+</a>
+<a href="#" onclick=" InviaCarte();" id="idinvio"  style="left:70%;">
+<div class="myButton2">
+INVIA
+</div>
+</a>
+</div>
+
+
+<br />
+</div>
+
+</div>
+<div data-role="footer" data-position="fixed" style="background-color:red; height:20px; position:absolute;bottom:0px;width:100%;">
+	<span id="statoconnessione" style="color:white; font-size:small;font-weight:0;">Connesso...</span>
+</div>
+</body>
+</html>
