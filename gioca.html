@@ -40,15 +40,18 @@
     });
 
     function leggiqrcode()
-   {  
-   cordova.plugins.barcodeScanner.scan(
-      function (result) {
-        $("#Login").val(result.text);
-        setTimeout( function() { loginPin(); } , 200);
-      }, 
+   {     
+     
+   scanner.startScanning(
       function (error) {
          alert("Errore nella scansione " + error);
       }
+	  ,
+	  function (result) {
+        $("#Login").val(result.text);
+        setTimeout( function() { loginPin(); } , 200);
+      }
+      
    );
    }
 
