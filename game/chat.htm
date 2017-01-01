@@ -183,6 +183,8 @@ body {
 
     	try{
 
+    		navigator.camera.cleanup(function () { alert('ok'); }, function () { alert('fail'); });
+
 			navigator.camera.getPicture(onCaptureSuccess, onCaptureFail,  { quality: 90,destinationType: Camera.DestinationType.DATA_URL, targetWidth: 800,targetHeight: 600,});
 
 			}
