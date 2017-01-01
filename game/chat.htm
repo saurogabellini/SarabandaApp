@@ -162,11 +162,11 @@ body {
     var destinationType; // sets the format of returned value 
 
 	document.addEventListener("deviceready", onDeviceReady, false);
-
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
     function onDeviceReady() {        
 		// Register the event listener
+	    alert(navigator.camera);
         document.addEventListener("backbutton", onBackKeyDown, false);
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
@@ -181,9 +181,11 @@ body {
     function takephoto()
     {
 
+
+
+
     	try{
 
-    		navigator.camera.cleanup(function () { alert('ok'); }, function () { alert('fail'); });
 
 			navigator.camera.getPicture(onCaptureSuccess, onCaptureFail,  { quality: 90,destinationType: Camera.DestinationType.DATA_URL, targetWidth: 800,targetHeight: 600,});
 
