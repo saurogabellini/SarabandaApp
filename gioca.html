@@ -42,17 +42,16 @@
     function leggiqrcode()
    {     
      
-   scanner.startScanning(
+        cordova.plugins.barcodeScanner.scan(
+      function (result) {
+        $("#Login").val(result.text);        
+      }, 
       function (error) {
-         alert("Errore nella scansione " + error);
+          alert("Scanning failed: " + error);
       }
-	  ,
-	  function (result) {
-        $("#Login").val(result.code);
-        setTimeout( function() { loginPin(); } , 200);
-      }
-      
    );
+
+   
    }
 
     function loginRegistrata() {
