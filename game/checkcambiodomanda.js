@@ -50,7 +50,7 @@ function VerificaPagina(data,pagina) {
 			document.location.href = 'playmatch5.htm';
 		}
 		if (data == 'CH' && pagina != data) {			
-			document.location.href = '../chat.htm';
+			document.location.href = 'chat.htm';
 		}
 		if (data == 'CU' && pagina != data) {			
 			document.location.href = 'playcustom.htm';
