@@ -8,7 +8,7 @@
         <string>310</string>
     </gap:config-file>
 
-    <preference name="phonegap-version" value="3.7.0" />
+    <preference name="phonegap-version"  />
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
     <gap:platform name="winphone" />
