@@ -1,0 +1,295 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chi Vuol Esser Sarabanda</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<!-- Javascripts -->
+<script src="assets/js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
+<script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
+
+<script src="../phonegap.js"></script>
+<script src="phonegap.js"></script>
+
+<script src="checkcambiodomanda.js"></script>
+<!-- / Javascripts -->
+ <style>
+      body {
+-webkit-touch-callout:none;
+-webkit-user-select:none;
+-khtml-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;	
+}
+
+.ui-page { background: #000000;}
+
+	  .message
+      {
+        padding: 5px 5px 5px 5px;
+		color: yellow;
+      }
+      .username
+      {
+        font-weight: strong;
+        color: #0f0;
+      }
+      .msgContainerDiv
+      {
+        overflow-y: scroll;
+        height: 250px;
+      }
+	 
+	  
+    </style>
+
+
+<script  type="text/javascript">
+	var serverip = localStorage.getItem("serverip");
+	var RicezioneOk = 0;
+    function mYclick() {
+		var tasto ="";
+		tasto = $("#messageText").val();
+		
+		if (tasto == '') {
+		  return false;
+		}
+		if (tasto.indexOf('>') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('<') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('=') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('&') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('\\') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+		if (tasto.indexOf('/') >= 0) {
+		  alert('carattere non autorizzato');
+		  return false;
+		}
+				
+		
+		var objToday = new Date();
+		var minuti = objToday.getMinutes();
+		if (minuti < 10) {
+			minuti = '0' + minuti;
+		}		
+		var secondi = objToday.getSeconds();
+		if (secondi < 10) {
+			secondi = '0' + secondi;
+		}		
+		
+	    if (RicezioneOk == 1) {
+            return false;
+        }
+        RicezioneOk = 1;
+		
+        var login = ""; 
+		
+        login = localStorage.getItem("login");
+		
+		$("#Login").val('');
+		
+
+        var uri = 'http://' + serverip + '/assegnarispostav.ashx?Risposta=' + tasto + '&Squadra=' + login;
+
+
+        $.ajax({
+            cache: false,
+            //type: "POST",
+            dataType: "text",
+            // beforeSend: function(x) {
+            //     if (x && x.overrideMimeType) {
+            //         x.overrideMimeType("application/json;charset=UTF-8");
+            //     }
+            // },
+            url: uri,
+            success: function(data) {
+				RicezioneOk = 0;
+				$("#messageText").val('');
+				$("#incomingMessages").append("<div class='message'><span class='username'>" + objToday.getHours() + ':' + minuti + ':' + secondi + '</span> ' + tasto + "</div>");
+				$("#incomingMessages").scrollTop($("#incomingMessages")[0].scrollHeight);
+        
+				if ($("#statusicon").attr('src') == 'assets/images/error.png') {
+					$("#statusicon").attr('src','assets/images/ok.png');
+				}
+				VerificaPagina(data,'CH');
+				navigator.vibrate(250);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+				RicezioneOk = 0;
+				$("#statusicon").attr('src','assets/images/error.png');
+		
+                //alert(textStatus + ', ' + errorThrown + ':\n' + jqXHR.responseText);
+            }
+        });
+    }
+
+    $(document).ready(function() {          
+        var login = "";
+        
+        
+        login = localStorage.getItem("login");
+
+        
+		CambioPagina('CH');
+			 
+    });
+	
+	var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
+	document.addEventListener("deviceready", onDeviceReady, false);
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {        
+		// Register the event listener
+	    alert(navigator.camera);
+        document.addEventListener("backbutton", onBackKeyDown, false);
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+	  alert('Stai giocando non puoi uscire!');
+    }
+
+    function takephoto()
+    {
+
+
+
+
+    	try{
+
+
+			navigator.camera.getPicture(onCaptureSuccess, onCaptureFail,  { quality: 90,destinationType: Camera.DestinationType.DATA_URL, targetWidth: 800,targetHeight: 600,});
+
+			}
+
+			catch(ex)
+
+			{
+
+				alert(ex);
+
+			}
+    }
+
+
+    function onCaptureSuccess(imageURI)
+
+	{
+		 $("#takePhoto").attr('data-icon', 'clock');
+
+		var login = ""; 
+		
+        login = localStorage.getItem("login");
+
+		try
+		{
+
+			$.ajax({
+
+			type: 'POST',
+
+			url: 'http://10.0.0.1/upload.aspx?login=' + login,
+
+			data: { image: imageURI}
+
+			}).done(function( msg ) {
+
+				$("#takePhoto").attr('data-icon', 'camera');	
+				alert('Foto caricata');
+
+			}).fail(function(a,b){
+				$("#takePhoto").attr('data-icon', 'camera');
+				alert('Errore nel salvataggio :' + b);
+
+			});
+
+		}
+		catch(ex)
+		{	
+			$("#takePhoto").attr('data-icon', 'camera');
+			alert(ex);
+		}
+	}
+
+	function onCaptureFail()
+
+	{
+
+	alert('Errore nelle foto');
+
+	}
+</script>
+
+</head>
+<body bgcolor="#000000">
+<div data-role="page" id="chatPage" data-theme="a" data-url="chatPage">
+ 
+        <div data-role="header"  style="height:20%; ">
+			<img src="logosarabandamegafono.png" style="height:100%; position:absolute; top:0px;  float:left;" alt="" />
+            <h1>Sarabanda Chat</h1>			
+			<img src="logosarabandamegafono.png" style="height:100%; position:absolute; top:0px;  left:90%; float:right;" alt="" />
+        </div>
+ 
+        <div data-role="content">   
+        <div id="incomingMessages" name="incomingMessages" class="msgContainerDiv"></div>
+		
+		</div>
+				
+		<div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:black;">
+
+
+	    <table style="width:100%;">
+	    <tr>
+        <td style="width:110px;">			
+		<button data-theme="a" data-icon="camera"  data-iconpos="top"  onclick="takephoto();" id="takePhoto" name="takePhoto" style="height:83px; width:105px;">Selfie
+        </button>
+		</td>
+        <td>
+        <label for="messageText"><strong>Testo:</strong></label>
+        <textarea name="messageText" id="messageText"></textarea> 		
+        <div style="text-align:center;">
+		<button data-theme="a" onclick="mYclick();" id="chatSendButton" name="chatSendButton">Invia			
+        </button>                
+		</div>
+		</td>
+		</tr>
+		</table>
+		</div>
+ 
+        
+    </div>
+
+
+  
+</body>
+</html>
