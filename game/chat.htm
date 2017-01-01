@@ -158,6 +158,9 @@ body {
 			 
     });
 	
+	var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
 	document.addEventListener("deviceready", onDeviceReady, false);
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
@@ -165,6 +168,8 @@ body {
     function onDeviceReady() {        
 		// Register the event listener
         document.addEventListener("backbutton", onBackKeyDown, false);
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
     }
 
     // Handle the back button
