@@ -40,7 +40,7 @@
     
 	<plugin name="cordova-plugin-camera" spec="~2.3.1" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
-    <plugin name="net.roughshod.plugins.barcodescanner" spec="3.0.0" source="pgb" />
+    <plugin name="manateeworks-barcodescanner" />
     
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <plugin name="cordova-plugin-vibration" spec="~2.1.3" />
