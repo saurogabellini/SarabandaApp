@@ -19,6 +19,10 @@
     <allow-intent href="*" />
     <allow-navigation href="*" />
 
+    <feature name="Camera">
+      <param name="android-package" value="org.apache.cordova.CameraLauncher"/>
+    </feature>
+
     <name>Sarabanda App</name>
     <icon src="icon.png" gap:platform="ios" width="57" height="57" />
     <icon src="img/icon-certify-72.png" gap:platform="ios" width="72" height="72"/>
