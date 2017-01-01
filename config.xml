@@ -38,7 +38,7 @@
     </author>
 
     
-	<plugin name="cordova-plugin-camera" spec="~2.3.1" />
+	<plugin name="cordova-plugin-camera" />
     <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
     <plugin name="manateeworks-barcodescanner" />
     
