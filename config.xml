@@ -40,7 +40,7 @@
 
 	
     <plugin name="org.apache.cordova.camera"  />
-    <plugin name="cordova-plugin-inappbrowser" spec="1.0.1" />
+    <plugin name="cordova-plugin-inappbrowser" />
     <plugin name="cordova-plugin-barcodescanner" />
 
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
