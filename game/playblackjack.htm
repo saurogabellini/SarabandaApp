@@ -255,7 +255,9 @@ body {
             success: function(data) {
 					RicezioneOk = 0;
                                        
-                    VerificaPagina(data, 'M');
+                    VerificaPagina(data, 'BJ');
+                    $("#idaltracarta").hide();
+                    $("#idaltracarta").hide();
 					
 					if ($("#statusicon").attr('src') == 'assets/images/error.png') {
 						$("#statusicon").attr('src','assets/images/ok.png');
