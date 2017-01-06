@@ -5,7 +5,7 @@
         version     = "3.1.1" >
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-        <string>311</string>
+        <string>312</string>
     </gap:config-file>
 
     <preference name="phonegap-version"  />
