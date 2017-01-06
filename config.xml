@@ -42,6 +42,8 @@
     <plugin name="org.apache.cordova.camera"  />
     <plugin name="cordova-plugin-inappbrowser" />
     <plugin name="cordova-plugin-barcodescanner" />
+    <variable name="CAMERA_USAGE_DESCRIPTION" value="Take photo during the game" />
+    <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Send photo during the game" />
 
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <plugin name="cordova-plugin-vibration" spec="~2.1.3" />
