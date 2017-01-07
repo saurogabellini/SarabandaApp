@@ -39,13 +39,15 @@
     </author>
 
 	
-    <plugin name="org.apache.cordova.camera"  />
+    <plugin name="org.apache.cordova.camera"  >
+	     <variable name="CAMERA_USAGE_DESCRIPTION" value="Take photo during the game" />
+             <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Take photo during the game" />
+    </plugin>
     <plugin name="cordova-plugin-inappbrowser" />
-    <plugin name="cordova-plugin-barcodescanner" />
-<platform name="ios">
-     <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
-     <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
-  </platform>	    
+    <plugin name="cordova-plugin-barcodescanner" >
+     <variable name="CAMERA_USAGE_DESCRIPTION" value="Read QrCode to read the PIN" />
+     <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Read QrCode to read the PIN" />
+    </plugin>	    
 
     <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
     <plugin name="cordova-plugin-vibration" spec="~2.1.3" />
