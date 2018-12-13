@@ -2,7 +2,7 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "www.chivuolessersarabada.com"
-        version     = "3.1.1" >
+        version     = "3.1.2" >
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
         <string>316</string>
