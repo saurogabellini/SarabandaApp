@@ -39,7 +39,7 @@
     </author>
 
 	
-    <plugin name="org.apache.cordova.camera"  >
+    <plugin name="cordova-plugin-camera"  >
 	     <variable name="CAMERA_USAGE_DESCRIPTION" value="Take photo during the game" />
              <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Take photo during the game" />
     </plugin>
